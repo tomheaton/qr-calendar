@@ -25,6 +25,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 This is the todo list:
 
 - [x] start project 
+- [ ] add `layout.tsx`
 - [ ] move to `src` directory structure
 - [ ] add `_document.tsx`
 - [ ] add css
