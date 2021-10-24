@@ -1,15 +1,28 @@
 import {NextPage} from "next";
 import {useRouter} from "next/router";
 import styles from "../styles/Event.module.css";
-import {google, outlook, office365, yahoo, ics} from "calendar-link";
+import {google, outlook, office365, yahoo, ics, CalendarEvent} from "calendar-link";
 
 const Event: NextPage = () => {
 
     const router = useRouter();
-    const {time, date, service, operator} = router.query;
+    const {time, date, service, operator} = router.query as {time: string, date: string, service: string, operator: string};
+
+    const event: CalendarEvent = {
+        title: service,
+        description: operator,
+        start: "2019-12-29 18:00:00 +0100",
+        duration: [3, "hour"],
+    };
 
     const saveToCalendar = () => {
         console.log("save to calendar")
+        console.log("link", );
+        save()
+    }
+
+    const save = () => {
+        router.push(google(event))
     }
 
     const returnHome = () => {
@@ -43,6 +56,7 @@ const Event: NextPage = () => {
             </div>
 
             <button onClick={saveToCalendar}>Save to Calendar</button>
+
 
         </div>
     );
