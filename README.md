@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, create a `.env.local` file and add the following:
+First, create a `.env` file and add the following:
 
 ```dotenv
 MAIN_URL=*insert_url_here*
@@ -27,5 +27,6 @@ This is the todo list:
 - [x] start project 
 - [ ] move to `src` directory structure
 - [ ] add `_document.tsx`
+- [ ] add css
 - [ ] clean up css
 - [ ] finish project
