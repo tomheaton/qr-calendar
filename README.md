@@ -26,7 +26,7 @@ This is the todo list:
 
 - [x] start project 
 - [ ] add `layout.tsx`
-- [ ] move to `src` directory structure
+- [x] move to `src` directory structure
 - [ ] add `_document.tsx`
 - [ ] add css
 - [ ] clean up css

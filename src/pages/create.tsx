@@ -9,7 +9,7 @@ const Create: NextPage = () => {
 
     const router = useRouter();
 
-    const [done, setDone] = useState<boolean>(true);
+    const [done, setDone] = useState<boolean>(false);
     const [link, setLink] = useState<string>("");
 
     const [time, setTime] = useState<string>("");
@@ -29,34 +29,39 @@ const Create: NextPage = () => {
         await setDone(true);
     }
 
+    // TODO: change inputs to hidden instead of not rendering them to preserve state
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Create</h1>
 
             <br/>
 
-            <div className={styles.grid}>
-                <div className={styles.card}>
-                    <input type={"text"} placeholder={"time"} onChange={e => setTime(e.target.value)}/>
-                    <input type={"text"} placeholder={"date"} onChange={e => setDate(e.target.value)}/>
-                    <input type={"text"} placeholder={"service"} onChange={e => setService(e.target.value)}/>
-                    <input type={"text"} placeholder={"operator"} onChange={e => setOperator(e.target.value)}/>
-                    <br/>
-                    <button onClick={generate}>create</button>
-                </div>
-            </div>
-
-            <div className={styles.error}>
-                <p>please fill out all fields</p>
-            </div>
-
             <br/>
 
-            {done && (
+            {done ? (
                 <>
                     {/*<QRCode id={"QRCode"} value={`https://qrcalendar.${process.env.MAIN_URL}/event`}/>*/}
                     <QRCode id={"QRCode"} value={link}/>
                     <p>please scan the QR Code</p>
+                    <br/>
+                    <button onClick={() => {setDone(false)}}>Edit</button>
+                </>
+            ) : (
+                <>
+                    <div className={styles.grid}>
+                        <div className={styles.card}>
+                            <input type={"text"} placeholder={"time"} onChange={e => setTime(e.target.value)}/>
+                            <input type={"text"} placeholder={"date"} onChange={e => setDate(e.target.value)}/>
+                            <input type={"text"} placeholder={"service"} onChange={e => setService(e.target.value)}/>
+                            <input type={"text"} placeholder={"operator"} onChange={e => setOperator(e.target.value)}/>
+                            <br/>
+                            <button onClick={generate}>create</button>
+                        </div>
+                    </div>
+
+                    <div className={styles.error}>
+                        <p>please fill out all fields</p>
+                    </div>
                 </>
             )}
 
