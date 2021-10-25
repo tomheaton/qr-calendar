@@ -4,10 +4,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, create a `.env` file and add the following:
+First, create a `.env.local` file and add the following:
 
 ```dotenv
-MAIN_URL=*insert_url_here*
+NEXT_PUBLIC_MAIN_URL=*insert_url_here*
 ```
 
 Second, run the development server:
