@@ -38,7 +38,6 @@ const Event: NextPage = () => {
         <div className={styles.container}>
             <h1 className={styles.title}>Event</h1>
 
-            <p>main url: {process.env.MAIN_URL}</p>
             <div>
                 <p>Time: {time}</p>
                 <p>Date: {date}</p>

@@ -25,7 +25,7 @@ const Create: NextPage = () => {
             }
         });*/
 
-        await setLink(`https://qrcalendar.${process.env.MAIN_URL}/event?time=${time}&date=${date}&service=${service}&operator=${operator}`);
+        await setLink(`https://qrcalendar.${process.env.NEXT_PUBLIC_MAIN_URL}/event?time=${time}&date=${date}&service=${service}&operator=${operator}`);
         await setDone(true);
     }
 
@@ -40,7 +40,7 @@ const Create: NextPage = () => {
 
             {done ? (
                 <>
-                    {/*<QRCode id={"QRCode"} value={`https://qrcalendar.${process.env.MAIN_URL}/event`}/>*/}
+                    {/*<QRCode id={"QRCode"} value={`https://qrcalendar.${process.env.NEXT_PUBLIC_MAIN_URL}/event`}/>*/}
                     <QRCode id={"QRCode"} value={link}/>
                     <p>please scan the QR Code</p>
                     <br/>
