@@ -2,6 +2,8 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+Check out a live version [here](https://qr-calendar.vercel.app).
+
 ## Getting Started
 
 First, create a `.env.local` file and add the following:
