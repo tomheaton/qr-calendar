@@ -30,6 +30,7 @@ This is the todo list:
 - [x] add `layout.tsx`
 - [x] move to `src` directory structure
 - [ ] add `_document.tsx`
+- [ ] fix whitespace issue
 - [ ] add css
 - [ ] mobile optimization
 - [ ] clean up css

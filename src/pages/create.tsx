@@ -37,7 +37,7 @@ const Create: NextPage = () => {
             }
         });*/
 
-        await setLink(`https://qrcalendar.${process.env.NEXT_PUBLIC_CALENDAR_URL}/event?dateTime=${dateTime}&duration=${duration}&service=${service}&operator=${operator}`);
+        await setLink(`https://qr-calendar.${process.env.NEXT_PUBLIC_CALENDAR_URL}/event?dateTime=${dateTime}&duration=${duration}&service=${service}&operator=${operator}`);
         await setDone(true);
     }
 
