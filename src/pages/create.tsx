@@ -5,6 +5,7 @@ import QRCode from "react-qr-code";
 import {useRouter} from "next/router";
 import Datetime from "react-datetime";
 import moment from 'moment';
+import {parseUrl} from "query-string";
 
 const Create: NextPage = () => {
 
@@ -29,15 +30,16 @@ const Create: NextPage = () => {
     }
 
     const generate = async () => {
-        // Testing:
-/*        router.push({
+/*        await router.push({
             pathname: "/event",
             query: {
                 dateTime: dateTime, duration: duration, service: service, operator: operator
             }
         });*/
 
-        await setLink(`https://qr-calendar.${process.env.NEXT_PUBLIC_CALENDAR_URL}/event?dateTime=${dateTime}&duration=${duration}&service=${service}&operator=${operator}`);
+        let newLink = `https://qr-calendar.${process.env.NEXT_PUBLIC_CALENDAR_URL}/event?dateTime=${encodeURIComponent(dateTime)}&duration=${encodeURIComponent(duration)}&service=${encodeURIComponent(service)}&operator=${encodeURIComponent(operator)}`;
+
+        await setLink(newLink);
         await setDone(true);
     }
 
