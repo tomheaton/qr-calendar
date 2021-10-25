@@ -5,13 +5,10 @@ import {CalendarEvent, google, ics, outlook} from "calendar-link";
 
 const Event: NextPage = () => {
 
+    type Query = { dateTime: string, duration: string, service: string, operator: string };
+
     const router = useRouter();
-    const {
-        dateTime,
-        duration,
-        service,
-        operator
-    } = router.query as { dateTime: string, duration: string, service: string, operator: string };
+    const {dateTime, duration, service, operator} = router.query as Query;
 
     const event: CalendarEvent = {
         title: service,
@@ -64,21 +61,15 @@ const Event: NextPage = () => {
             </div>
             <br/>
             <div className={styles.calendarContainer}>
-                <button className={styles.button} onClick={() => {
-                    router.push(google(event))
-                }}>
+                <button className={styles.button} onClick={() => {router.push(google(event))}}>
                     <i className="bi bi-google" aria-label="Google Calendar"/>
                     <p>Google Calendar</p>
                 </button>
-                <button className={styles.button} onClick={() => {
-                    router.push(ics(event))
-                }}>
+                <button className={styles.button} onClick={() => {router.push(ics(event))}}>
                     <i className="bi bi-calendar-event" aria-label="iCalendar"/>
                     <p>iCalendar</p>
                 </button>
-                <button className={styles.button} onClick={() => {
-                    router.push(outlook(event))
-                }}>
+                <button className={styles.button} onClick={() => {router.push(outlook(event))}}>
                     <i className="bi bi-microsoft" aria-label="Outlook"/>
                     <p>Outlook</p>
                 </button>
