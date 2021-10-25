@@ -7,7 +7,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, create a `.env.local` file and add the following:
 
 ```dotenv
-NEXT_PUBLIC_MAIN_URL=*insert_url_here*
+NEXT_PUBLIC_CALENDAR_URL=*url*
+NEXT_PUBLIC_CALENDAR_NAME=*name*
+NEXT_PUBLIC_CALENDAR_LOCATION=*location*
 ```
 
 Second, run the development server:

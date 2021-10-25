@@ -18,7 +18,7 @@ const Event: NextPage = () => {
         description: `Operator: ${operator}`,
         start: dateTime,
         duration: [parseFloat(duration), "hours"],
-        location: "Clear Cut, 45 High St, Malmesbury SN16 9AG, UK"
+        location: `${process.env.NEXT_PUBLIC_CALENDAR_LOCATION}`
     };
 
     const returnHome = () => {

@@ -30,6 +30,7 @@ const Create: NextPage = () => {
     }
 
     const generate = async () => {
+        // Testing:
         router.push({
             pathname: "/event",
             query: {
@@ -37,7 +38,7 @@ const Create: NextPage = () => {
             }
         });
 
-        await setLink(`https://qrcalendar.${process.env.NEXT_PUBLIC_MAIN_URL}/event?dateTime=${dateTime}&duration=${duration}&service=${service}&operator=${operator}`);
+        await setLink(`https://qrcalendar.${process.env.NEXT_PUBLIC_CALENDAR_URL}/event?dateTime=${dateTime}&duration=${duration}&service=${service}&operator=${operator}`);
         await setDone(true);
     }
 
