@@ -40,10 +40,14 @@ const Create: NextPage = () => {
 
             {done ? (
                 <>
-                    <QRCode id={"QRCode"} value={link}/>
-                    <p>please scan the QR Code</p>
-                    <br/>
-                    <button className={styles.button} onClick={() => {setDone(false)}}>Edit</button>
+                    <div className={styles.grid}>
+                        <div className={styles.cardQr}>
+                            <QRCode id={"QRCode"} value={link}/>
+                            <p>please scan the QR Code</p>
+                            <br/>
+                            <button className={styles.button} onClick={() => {setDone(false)}}>Edit</button>
+                        </div>
+                    </div>
                 </>
             ) : (
                 <>

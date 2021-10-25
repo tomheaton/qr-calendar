@@ -38,11 +38,14 @@ const Event: NextPage = () => {
         <div className={styles.container}>
             <h1 className={styles.title}>Event</h1>
 
-            <div>
-                <p>Time: {time}</p>
-                <p>Date: {date}</p>
-                <p>Service: {service}</p>
-                <p>Operator: {operator}</p>
+
+            <div className={styles.grid}>
+                <div className={styles.card}>
+                    <p>Time: {time}</p>
+                    <p>Date: {date}</p>
+                    <p>Service: {service}</p>
+                    <p>Operator: {operator}</p>
+                </div>
             </div>
 
             <div className={styles.calendarContainer}>
