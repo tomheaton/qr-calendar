@@ -19,8 +19,6 @@ const Create: NextPage = () => {
     const [operator, setOperator] = useState<string>("");
     const [date, setDate] = useState<Date>(new Date());
 
-    const showButton = (dateTime && duration && service && operator)
-
     let yesterday = moment().subtract(1, 'day');
     let valid = (current: any) => current.isAfter(yesterday);
 
@@ -42,16 +40,16 @@ const Create: NextPage = () => {
     // TODO: change inputs to hidden instead of not rendering them to preserve state.
     return (
         <div className={"container"}>
-            <h1 className={"title"}>Create</h1>
+            <h1 className={"title"}>{done ? "Share your" : "Create an"} Event</h1>
 
             <br/>
 
             {done ? (
                 <>
                     <div className={"grid"}>
-                        <div className={styles.cardQr}>
+                        <div className={styles.card2}>
                             <QRCode id={"QRCode"} value={link}/>
-                            <p>please scan the QR Code</p>
+                            <p className={"text"}>Scan the QR Code to share!</p>
                             <br/>
                             <button className={"button-9"} onClick={() => {setDone(false)}}>
                                 Edit
@@ -73,7 +71,7 @@ const Create: NextPage = () => {
                             </div>
                             <input type={"text"} placeholder={"service"} onChange={e => setService(e.target.value)}/>
                             <input type={"text"} placeholder={"operator"} onChange={e => setOperator(e.target.value)}/>
-                            <br/>
+                            <br/><br/>
                             {(dateTime && duration && service && operator) ? (
                                 <button className={"button-9"} onClick={generate}>
                                     Create
@@ -83,8 +81,8 @@ const Create: NextPage = () => {
                                     <button disabled={true} className={"button-9"}>
                                         Create
                                     </button>
-                                    <br/>
-                                    <p className={styles.errorMessage}>Please fill out all fields!</p>
+                                    <br/><br/>
+                                    <p className={"text"}>Please fill out all fields!</p>
                                 </>
                             )}
                         </div>

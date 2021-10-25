@@ -37,8 +37,8 @@ const Event: NextPage = () => {
             <div className={"container"}>
                 <div className={"grid"}>
                     <div className={styles.cardQr}>
-                        <p className={"description"}>invalid url params</p>
-                        <button className={styles.button} onClick={returnHome}>Return Home</button>
+                        <p className={"description"}>Invalid URL Params 🛠️</p>
+                        <button className={"button-9"} onClick={returnHome}>Return Home</button>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@ const Event: NextPage = () => {
 
     return (
         <div className={"container"}>
-            <h1 className={"title"}>Event</h1>
+            <h1 className={"title"}>Your Event</h1>
             <br/>
             <div className={"grid"}>
                 <div className={styles.card}>
@@ -66,7 +66,7 @@ const Event: NextPage = () => {
                     <p>Google Calendar</p>
                 </button>
                 <button className={styles.button} onClick={() => {router.push(ics(event))}}>
-                    <i className="bi bi-calendar-event" aria-label="iCalendar"/>
+                    <i className="bi bi-calendar-event-fill" aria-label="iCalendar"/>
                     <p>iCalendar</p>
                 </button>
                 <button className={styles.button} onClick={() => {router.push(outlook(event))}}>

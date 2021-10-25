@@ -5,11 +5,6 @@
     align-items: center;
 }
 
-.duration input {
-    width: 4rem;
-    margin: 1px 0 1px
-}
-
 .main {
     padding: 5rem 0;
     flex: 1;
@@ -39,7 +34,7 @@
     width: 60%;
 }
 
-.card-qr {
+.card2 {
     margin: 1rem;
     padding: 1.5rem;
     text-align: center;
@@ -51,7 +46,7 @@
     width: 100%;
 }
 
-.card:hover, .card:focus, .card:active, .card-qr:hover, .card-qr:focus, .card-qr:active {
+.card:hover, .card:focus, .card:active, .card2:hover, .card2:focus, .card2:active {
     border-color: #0070f3;
 }
 
@@ -68,8 +63,14 @@
 
 .card input {
     font-size: 1.2rem;
-    margin: 4px;
+    margin: 4px 0;
     line-height: 1.5;
+    width: 100%;
+}
+
+.duration input {
+    width: 4rem;
+    margin-right: 10px;
 }
 
 @media (max-width: 600px) {
@@ -77,10 +78,4 @@
         width: 100%;
         flex-direction: column;
     }
-}
-
-.error-message {
-    padding: 8px;
-    width: 100%;
-    text-align: center;
 }
