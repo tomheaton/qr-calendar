@@ -35,6 +35,6 @@ This is the todo list:
 - [x] fix whitespace issue
 - [x] add css
 - [ ] add more logic checks etc.
-- [ ] mobile optimization
+- [x] mobile optimization
 - [ ] clean up css
 - [ ] finish project
