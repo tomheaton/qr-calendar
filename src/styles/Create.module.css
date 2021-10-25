@@ -1,16 +1,5 @@
-.container {
-    min-height: 100vh;
-    padding: 0 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
 .duration {
     width: 100%;
-    border: solid red 1px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -36,39 +25,6 @@
     border-radius: 4px;
     text-align: center;
     cursor: pointer;
-}
-
-.title a {
-    color: #0070f3;
-    text-decoration: none;
-}
-
-.title a:hover, .title a:focus, .title a:active {
-    text-decoration: underline;
-}
-
-.title {
-    margin: 0;
-    line-height: 1.15;
-    font-size: 4rem;
-}
-
-.title, .description {
-    text-align: center;
-}
-
-.description {
-    line-height: 1.5;
-    font-size: 1.5rem;
-}
-
-.grid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 800px;
-    margin-top: 3rem;
 }
 
 .card {
@@ -116,14 +72,15 @@
     line-height: 1.5;
 }
 
-.logo {
-    height: 1em;
-    margin-left: 0.5rem;
-}
-
 @media (max-width: 600px) {
     .grid {
         width: 100%;
         flex-direction: column;
     }
+}
+
+.error-message {
+    padding: 8px;
+    width: 100%;
+    text-align: center;
 }

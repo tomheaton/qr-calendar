@@ -1,28 +1,35 @@
-.container {
-    min-height: 100vh;
-    padding: 0 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
 .calendar-container {
     display: flex;
     flex-direction: column;
 }
 
 .button {
-    margin: 10px;
-    width: 100%;
-    padding: 10px;
-    border-radius: 4px;
+    margin: 12px 0 0;
+    padding: 0 25px;
     display: flex;
     flex-direction: row;
     align-items: center;
     text-align: center;
     cursor: pointer;
+
+    background-color: #405cf5;
+    border-radius: 6px;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .1) 0 2px 5px 0, rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    height: 44px;
+    line-height: 1.15;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    text-transform: none;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
 }
 
 .button i {
@@ -37,39 +44,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.title a {
-    color: #0070f3;
-    text-decoration: none;
-}
-
-.title a:hover, .title a:focus, .title a:active {
-    text-decoration: underline;
-}
-
-.title {
-    margin: 0;
-    line-height: 1.15;
-    font-size: 4rem;
-}
-
-.title, .description {
-    text-align: center;
-}
-
-.description {
-    line-height: 1.5;
-    font-size: 1.5rem;
-}
-
-.grid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 800px;
-    margin-top: 3rem;
 }
 
 .card {
@@ -98,11 +72,6 @@
     margin: 0;
     font-size: 1.25rem;
     line-height: 1.5;
-}
-
-.logo {
-    height: 1em;
-    margin-left: 0.5rem;
 }
 
 @media (max-width: 600px) {

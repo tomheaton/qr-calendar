@@ -8,7 +8,7 @@ const Home: NextPage = () => {
     const router = useRouter();
 
     return (
-        <div className={styles.container}>
+        <div className={"container"}>
             <Head>
                 <title>QR Calendar</title>
                 <meta name="description" content="Simple webapp to create calendar events."/>
@@ -16,18 +16,18 @@ const Home: NextPage = () => {
             </Head>
 
             <main className={styles.main}>
-                <h1 className={styles.title}>
+                <h1 className={"title"}>
                     QR Calendar
                 </h1>
 
-                <p className={styles.description}>
+                <p className={"description"}>
                     To begin, click the{" "}
                     <code className={styles.code}>Create</code>
                     button below!
                 </p>
 
                 <div>
-                    <button className={styles.button} onClick={() => {router.push("/create")}}>
+                    <button className={"button-9"} onClick={() => {router.push("/create")}}>
                         Create
                     </button>
                 </div>

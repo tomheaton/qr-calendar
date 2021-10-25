@@ -24,20 +24,20 @@ const Event: NextPage = () => {
 
     if (!router.query) {
         return (
-            <div className={styles.container}>
-                <div className={styles.grid}>
+            <div className={"container"}>
+                <div className={"grid"}>
                     <div className={styles.cardQr}>
-                        <p className={styles.description}>loading</p>
+                        <p className={"description"}>loading</p>
                     </div>
                 </div>
             </div>
         );
     } else if (!dateTime || !duration || !service || !operator) {
         return (
-            <div className={styles.container}>
-                <div className={styles.grid}>
+            <div className={"container"}>
+                <div className={"grid"}>
                     <div className={styles.cardQr}>
-                        <p className={styles.description}>invalid url params</p>
+                        <p className={"description"}>invalid url params</p>
                         <button className={styles.button} onClick={returnHome}>Return Home</button>
                     </div>
                 </div>
@@ -46,10 +46,10 @@ const Event: NextPage = () => {
     }
 
     return (
-        <div className={styles.container}>
-            <h1 className={styles.title}>Event</h1>
+        <div className={"container"}>
+            <h1 className={"title"}>Event</h1>
             <br/>
-            <div className={styles.grid}>
+            <div className={"grid"}>
                 <div className={styles.card}>
                     <p>Time: {new Date(dateTime).toTimeString()}</p>
                     <p>Date: {new Date(dateTime).toDateString()}</p>
