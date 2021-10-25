@@ -12,6 +12,8 @@ const Create: NextPage = () => {
     const [done, setDone] = useState<boolean>(false);
     const [link, setLink] = useState<string>("");
 
+    const [clockTime, setClockTime] = useState<string>("10:00");
+
     const [time, setTime] = useState<string>("");
     const [date, setDate] = useState<string>("");
     const [service, setService] = useState<string>("");
@@ -36,15 +38,12 @@ const Create: NextPage = () => {
 
             <br/>
 
-            <br/>
-
             {done ? (
                 <>
-                    {/*<QRCode id={"QRCode"} value={`https://qrcalendar.${process.env.NEXT_PUBLIC_MAIN_URL}/event`}/>*/}
                     <QRCode id={"QRCode"} value={link}/>
                     <p>please scan the QR Code</p>
                     <br/>
-                    <button onClick={() => {setDone(false)}}>Edit</button>
+                    <button className={styles.button} onClick={() => {setDone(false)}}>Edit</button>
                 </>
             ) : (
                 <>
@@ -55,7 +54,7 @@ const Create: NextPage = () => {
                             <input type={"text"} placeholder={"service"} onChange={e => setService(e.target.value)}/>
                             <input type={"text"} placeholder={"operator"} onChange={e => setOperator(e.target.value)}/>
                             <br/>
-                            <button onClick={generate}>create</button>
+                            <button className={styles.button} onClick={generate}>create</button>
                         </div>
                     </div>
 

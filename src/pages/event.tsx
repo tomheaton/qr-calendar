@@ -58,6 +58,10 @@ const Event: NextPage = () => {
                     <i className="bi bi-microsoft" aria-label="Outlook"/>
                     <p>Outlook</p>
                 </button>
+                <button className={styles.button} onClick={() => {router.push(office365(event))}}>
+                    <i className="bi bi-windows" aria-label="Office 365"/>
+                    <p>Office 365</p>
+                </button>
             </div>
 
         </div>
