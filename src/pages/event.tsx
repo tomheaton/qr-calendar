@@ -1,7 +1,7 @@
 import {NextPage} from "next";
 import {useRouter} from "next/router";
 import styles from "../styles/Event.module.css";
-import {google, ics, outlook, office365, yahoo, CalendarEvent} from "calendar-link";
+import {google, ics, outlook, CalendarEvent} from "calendar-link";
 
 const Event: NextPage = () => {
 
@@ -22,14 +22,22 @@ const Event: NextPage = () => {
     if (!router.query) {
         return (
             <div className={styles.container}>
-                <p>loading</p>
+                <div className={styles.grid}>
+                    <div className={styles.cardQr}>
+                        <p className={styles.description}>loading</p>
+                    </div>
+                </div>
             </div>
         );
     } else if (!time || !date || !service || !operator) {
         return (
             <div className={styles.container}>
-                <p>invalid url params</p>
-                <button onClick={returnHome}>Return Home</button>
+                <div className={styles.grid}>
+                    <div className={styles.cardQr}>
+                        <p className={styles.description}>invalid url params</p>
+                        <button className={styles.button} onClick={returnHome}>Return Home</button>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -37,8 +45,7 @@ const Event: NextPage = () => {
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Event</h1>
-
-
+            <br/>
             <div className={styles.grid}>
                 <div className={styles.card}>
                     <p>Time: {time}</p>
@@ -47,7 +54,7 @@ const Event: NextPage = () => {
                     <p>Operator: {operator}</p>
                 </div>
             </div>
-
+            <br/>
             <div className={styles.calendarContainer}>
                 <button className={styles.button} onClick={() => {router.push(google(event))}}>
                     <i className="bi bi-google" aria-label="Google Calendar"/>
@@ -61,12 +68,11 @@ const Event: NextPage = () => {
                     <i className="bi bi-microsoft" aria-label="Outlook"/>
                     <p>Outlook</p>
                 </button>
-                <button className={styles.button} onClick={() => {router.push(office365(event))}}>
+                {/*<button className={styles.button} onClick={() => {router.push(office365(event))}}>
                     <i className="bi bi-windows" aria-label="Office 365"/>
                     <p>Office 365</p>
-                </button>
+                </button>*/}
             </div>
-
         </div>
     );
 }
