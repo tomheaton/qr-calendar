@@ -62,14 +62,14 @@
     line-height: 1.5;
 }
 
-.card input {
+.card input, .card select {
     font-size: 1.2rem;
     margin: 4px 0;
     line-height: 1.5;
     width: 100%;
 }
 
-.duration input {
+.duration input, .duration select {
     width: 4rem;
     margin-right: 10px;
 }

@@ -124,12 +124,17 @@ a {
     font-size: 1.25rem;
 }
 
-input {
+input, select {
     border-style: solid;
     border-radius: 4px;
 }
 
-input:hover, input:focus {
+input:hover, input:focus, select:hover, select:focus {
     border-color: #0070f3;
     outline-color: #0070f3;
+}
+
+select {
+    padding: 4px;
+    border-width: 2px;
 }

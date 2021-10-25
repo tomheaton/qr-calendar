@@ -66,11 +66,21 @@ const Create: NextPage = () => {
                             <Datetime onChange={handleDateTimeChange} isValidDate={valid} initialValue={new Date()} value={date}/>
                             <div className={styles.duration}>
                                 <div className={styles.durationInput}>
-                                    <input type={"number"} placeholder={"1"} min={"0"} max={"24"} step={"1"} onChange={e => setHours(e.target.value)} value={hours}/>
+                                    {/*<input type={"number"} placeholder={"1"} min={"0"} max={"24"} step={"1"} onChange={e => setHours(e.target.value)} value={hours}/>*/}
+                                    <select value={hours} onChange={(e) => {setHours((parseInt(e.target.value)).toString())}}>
+                                        {Array.from(Array(25), (_, i) => i).map((x) => {
+                                            return (<option value={x} key={x}>{x}</option>);
+                                        })}
+                                    </select>
                                     <p style={{paddingRight: "20px"}}>hours</p>
                                 </div>
                                 <div className={styles.durationInput} >
-                                    <input type={"number"} placeholder={"1"} min={"0"} max={"59"} step={"1"} onChange={e => setMinutes(e.target.value)} value={minutes}/>
+                                    {/*<input type={"number"} placeholder={"1"} min={"0"} max={"59"} step={"1"} onChange={e => setMinutes(e.target.value)} value={minutes}/>*/}
+                                    <select value={minutes} onChange={(e) => {setMinutes(e.target.value)}}>
+                                        {Array.from(Array(12), (_, i) => (i)*5).map((x) => {
+                                            return (<option value={x} key={x}>{x}</option>);
+                                        })}
+                                    </select>
                                     <p>minutes</p>
                                 </div>
                             </div>
