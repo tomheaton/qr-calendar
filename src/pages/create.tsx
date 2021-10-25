@@ -2,10 +2,9 @@ import {NextPage} from "next";
 import styles from "../styles/Create.module.css";
 import {useState} from "react";
 import QRCode from "react-qr-code";
-import {router} from "next/client";
 import {useRouter} from "next/router";
 import Datetime from "react-datetime";
-import moment, {Moment} from 'moment';
+import moment from 'moment';
 
 const Create: NextPage = () => {
 

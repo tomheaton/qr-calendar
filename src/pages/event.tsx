@@ -1,7 +1,7 @@
 import {NextPage} from "next";
 import {useRouter} from "next/router";
 import styles from "../styles/Event.module.css";
-import {google, ics, outlook, CalendarEvent} from "calendar-link";
+import {CalendarEvent, google, ics, outlook} from "calendar-link";
 
 const Event: NextPage = () => {
 
