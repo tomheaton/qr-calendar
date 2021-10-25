@@ -18,15 +18,15 @@ const Create: NextPage = () => {
     const [operator, setOperator] = useState<string>("");
 
     const generate = async () => {
-        router.push({
+/*        router.push({
             pathname: "/event",
             query: {
                 time: time, date: date, service: service, operator: operator
             }
-        });
+        });*/
 
-        //await setLink(`https://qrcalendar.${process.env.MAIN_URL}/event?time=${time}&date=${date}&service=${service}&operator=${operator}`);
-        //await setDone(true);
+        await setLink(`https://qrcalendar.${process.env.MAIN_URL}/event?time=${time}&date=${date}&service=${service}&operator=${operator}`);
+        await setDone(true);
     }
 
     // TODO: change inputs to hidden instead of not rendering them to preserve state

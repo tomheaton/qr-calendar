@@ -8,6 +8,27 @@
     height: 100vh;
 }
 
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    margin: 10px;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.button i {
+    font-size: 20px;
+    padding: 10px;
+}
+
+
+
 .main {
     padding: 5rem 0;
     flex: 1;

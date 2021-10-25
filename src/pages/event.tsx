@@ -1,7 +1,7 @@
 import {NextPage} from "next";
 import {useRouter} from "next/router";
 import styles from "../styles/Event.module.css";
-import {google, outlook, office365, yahoo, ics, CalendarEvent} from "calendar-link";
+import {google, ics, outlook, office365, yahoo, CalendarEvent} from "calendar-link";
 
 const Event: NextPage = () => {
 
@@ -12,18 +12,8 @@ const Event: NextPage = () => {
         title: service,
         description: operator,
         start: "2019-12-29 18:00:00 +0100",
-        duration: [3, "hour"],
+        duration: [3.5, "hours"],
     };
-
-    const saveToCalendar = () => {
-        console.log("save to calendar")
-        console.log("link", );
-        save()
-    }
-
-    const save = () => {
-        router.push(google(event))
-    }
 
     const returnHome = () => {
         router.push("/");
@@ -48,6 +38,7 @@ const Event: NextPage = () => {
         <div className={styles.container}>
             <h1 className={styles.title}>Event</h1>
 
+            <p>main url: {process.env.MAIN_URL}</p>
             <div>
                 <p>Time: {time}</p>
                 <p>Date: {date}</p>
@@ -55,8 +46,20 @@ const Event: NextPage = () => {
                 <p>Operator: {operator}</p>
             </div>
 
-            <button onClick={saveToCalendar}>Save to Calendar</button>
-
+            <div className={styles.calendarContainer}>
+                <button className={styles.button} onClick={() => {router.push(google(event))}}>
+                    <i className="bi bi-google" aria-label="Google Calendar"/>
+                    <p>Google Calendar</p>
+                </button>
+                <button className={styles.button} onClick={() => {router.push(ics(event))}}>
+                    <i className="bi bi-calendar-event" aria-label="iCalendar"/>
+                    <p>iCalendar</p>
+                </button>
+                <button className={styles.button} onClick={() => {router.push(outlook(event))}}>
+                    <i className="bi bi-microsoft" aria-label="Outlook"/>
+                    <p>Outlook</p>
+                </button>
+            </div>
 
         </div>
     );

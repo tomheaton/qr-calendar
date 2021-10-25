@@ -1,16 +1,24 @@
-html,
-body {
+/*colour palette*/
+:root {
+  --cream-color: #F1EEDF;
+  --light-blue-colour: #567099;
+  --dark-blue-color: #313B4A;
+  --alt-blue-color: #365169;
+  --red-color: #C74044;
+}
+
+html, body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   color: inherit;
   text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
 }
