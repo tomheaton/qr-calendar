@@ -34,8 +34,7 @@ const Create: NextPage = () => {
 
         let newLink = `https://qr-calendar.${process.env.NEXT_PUBLIC_CALENDAR_URL}/event?dateTime=${encodeURIComponent(dateTime)}&duration=${encodeURIComponent(duration)}&service=${encodeURIComponent(service)}&operator=${encodeURIComponent(operator)}`;
 
-        await router.push(newLink);
-
+        //await router.push(newLink); // Testing.
         await setLink(newLink);
         await setDone(true);
     }
