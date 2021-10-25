@@ -21,7 +21,7 @@ const Home: NextPage = () => {
                 </h1>
 
                 <p className={"description"}>
-                    To begin, click the{" "}
+                    To begin, click the
                     <code className={styles.code}>Create</code>
                     button below!
                 </p>

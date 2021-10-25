@@ -73,7 +73,7 @@ const Create: NextPage = () => {
                             <input type={"text"} placeholder={"service"} onChange={e => setService(e.target.value)} value={service}/>
                             <input type={"text"} placeholder={"operator"} onChange={e => setOperator(e.target.value)} value={operator}/>
                             <br/><br/>
-                            {(dateTime && (hours || minutes) && service && operator) ? (
+                            {(dateTime && (parseInt(hours) > 0 || parseInt(minutes) > 0) && service && operator) ? (
                                 <button className={"button-9"} onClick={generate}>
                                     Create
                                 </button>

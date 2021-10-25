@@ -109,3 +109,13 @@ a {
     text-align: center;
     font-size: 1.25rem;
 }
+
+input {
+    border-style: solid;
+    border-radius: 4px;
+}
+
+input:hover, input:focus {
+    border-color: #0070f3;
+    outline-color: #0070f3;
+}
