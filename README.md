@@ -33,7 +33,8 @@ This is the todo list:
 - [x] move to `src` directory structure
 - [ ] add `_document.tsx`
 - [x] fix whitespace issue
-- [ ] add css
+- [x] add css
+- [ ] add more logic checks etc.
 - [ ] mobile optimization
 - [ ] clean up css
 - [ ] finish project

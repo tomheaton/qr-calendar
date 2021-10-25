@@ -14,13 +14,16 @@ const Create: NextPage = () => {
     const [link, setLink] = useState<string>("");
 
     const [dateTime, setDateTime] = useState<string>("");
-    const [duration, setDuration] = useState<string>("1");
+    const [hours, setHours] = useState<string>("1");
+    const [minutes, setMinutes] = useState<string>("0");
     const [service, setService] = useState<string>("");
     const [operator, setOperator] = useState<string>("");
     const [date, setDate] = useState<Date>(new Date());
 
     let yesterday = moment().subtract(1, 'day');
     let valid = (current: any) => current.isAfter(yesterday);
+
+    let duration: number = parseInt(hours) + (parseInt(minutes)/60);
 
     const handleDateTimeChange = (a: any) => {
         let d: Date = a.toDate();
@@ -37,7 +40,6 @@ const Create: NextPage = () => {
         await setDone(true);
     }
 
-    // TODO: change inputs to hidden instead of not rendering them to preserve state.
     return (
         <div className={"container"}>
             <h1 className={"title"}>{done ? "Share your" : "Create an"} Event</h1>
@@ -62,17 +64,16 @@ const Create: NextPage = () => {
                     <div className={"grid"}>
                         <div className={styles.card}>
                             <Datetime onChange={handleDateTimeChange} isValidDate={valid} initialValue={new Date()} value={date}/>
-                            {/*TODO: rework duration, maybe separate hours and minutes.*/}
                             <div className={styles.duration}>
-                                <input type={"number"} placeholder={"1"} min={"0"} max={"24"} onChange={e => setDuration(e.target.value)}/>
+                                <input type={"number"} placeholder={"1"} min={"0"} max={"24"} step={"1"} onChange={e => setHours(e.target.value)} value={hours}/>
                                 <p style={{paddingRight: "20px"}}>hours</p>
-                                <input type={"number"} placeholder={"1"} min={"0"} max={"59"} onChange={e => setDuration(e.target.value)}/>
+                                <input type={"number"} placeholder={"1"} min={"0"} max={"59"} step={"1"} onChange={e => setMinutes(e.target.value)} value={minutes}/>
                                 <p>minutes</p>
                             </div>
-                            <input type={"text"} placeholder={"service"} onChange={e => setService(e.target.value)}/>
-                            <input type={"text"} placeholder={"operator"} onChange={e => setOperator(e.target.value)}/>
+                            <input type={"text"} placeholder={"service"} onChange={e => setService(e.target.value)} value={service}/>
+                            <input type={"text"} placeholder={"operator"} onChange={e => setOperator(e.target.value)} value={operator}/>
                             <br/><br/>
-                            {(dateTime && duration && service && operator) ? (
+                            {(dateTime && (hours || minutes) && service && operator) ? (
                                 <button className={"button-9"} onClick={generate}>
                                     Create
                                 </button>
