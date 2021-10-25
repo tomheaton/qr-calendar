@@ -6,13 +6,19 @@ import {google, ics, outlook, CalendarEvent} from "calendar-link";
 const Event: NextPage = () => {
 
     const router = useRouter();
-    const {time, date, service, operator} = router.query as {time: string, date: string, service: string, operator: string};
+    const {
+        dateTime,
+        duration,
+        service,
+        operator
+    } = router.query as { dateTime: string, duration: string, service: string, operator: string };
 
     const event: CalendarEvent = {
         title: service,
-        description: operator,
-        start: "2019-12-29 18:00:00 +0100",
-        duration: [3.5, "hours"],
+        description: `Operator: ${operator}`,
+        start: dateTime,
+        duration: [parseFloat(duration), "hours"],
+        location: "Clear Cut, 45 High St, Malmesbury SN16 9AG, UK"
     };
 
     const returnHome = () => {
@@ -29,7 +35,7 @@ const Event: NextPage = () => {
                 </div>
             </div>
         );
-    } else if (!time || !date || !service || !operator) {
+    } else if (!dateTime || !duration || !service || !operator) {
         return (
             <div className={styles.container}>
                 <div className={styles.grid}>
@@ -48,23 +54,31 @@ const Event: NextPage = () => {
             <br/>
             <div className={styles.grid}>
                 <div className={styles.card}>
-                    <p>Time: {time}</p>
-                    <p>Date: {date}</p>
+                    <p>Time: {new Date(dateTime).toTimeString()}</p>
+                    <p>Date: {new Date(dateTime).toDateString()}</p>
+                    {/*TODO: fancy duration display.*/}
+                    <p>Duration: {duration} hour(s)</p>
                     <p>Service: {service}</p>
                     <p>Operator: {operator}</p>
                 </div>
             </div>
             <br/>
             <div className={styles.calendarContainer}>
-                <button className={styles.button} onClick={() => {router.push(google(event))}}>
+                <button className={styles.button} onClick={() => {
+                    router.push(google(event))
+                }}>
                     <i className="bi bi-google" aria-label="Google Calendar"/>
                     <p>Google Calendar</p>
                 </button>
-                <button className={styles.button} onClick={() => {router.push(ics(event))}}>
+                <button className={styles.button} onClick={() => {
+                    router.push(ics(event))
+                }}>
                     <i className="bi bi-calendar-event" aria-label="iCalendar"/>
                     <p>iCalendar</p>
                 </button>
-                <button className={styles.button} onClick={() => {router.push(outlook(event))}}>
+                <button className={styles.button} onClick={() => {
+                    router.push(outlook(event))
+                }}>
                     <i className="bi bi-microsoft" aria-label="Outlook"/>
                     <p>Outlook</p>
                 </button>

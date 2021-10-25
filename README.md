@@ -29,5 +29,6 @@ This is the todo list:
 - [x] move to `src` directory structure
 - [ ] add `_document.tsx`
 - [ ] add css
+- [ ] mobile optimization
 - [ ] clean up css
 - [ ] finish project

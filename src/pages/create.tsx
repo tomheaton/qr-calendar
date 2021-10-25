@@ -4,6 +4,8 @@ import {useState} from "react";
 import QRCode from "react-qr-code";
 import {router} from "next/client";
 import {useRouter} from "next/router";
+import Datetime from "react-datetime";
+import moment, {Moment} from 'moment';
 
 const Create: NextPage = () => {
 
@@ -12,26 +14,34 @@ const Create: NextPage = () => {
     const [done, setDone] = useState<boolean>(false);
     const [link, setLink] = useState<string>("");
 
-    const [clockTime, setClockTime] = useState<string>("10:00");
-
-    const [time, setTime] = useState<string>("");
-    const [date, setDate] = useState<string>("");
+    const [dateTime, setDateTime] = useState<string>("");
+    const [duration, setDuration] = useState<string>("1");
     const [service, setService] = useState<string>("");
     const [operator, setOperator] = useState<string>("");
+    const [date, setDate] = useState<Date>(new Date());
+
+    let yesterday = moment().subtract(1, 'day');
+    let valid = (current: any) => current.isAfter(yesterday);
+
+    const handleDateTimeChange = (a: any) => {
+        let d: Date = a.toDate();
+        setDate(d);
+        setDateTime(d.toISOString());
+    }
 
     const generate = async () => {
-/*        router.push({
+        router.push({
             pathname: "/event",
             query: {
-                time: time, date: date, service: service, operator: operator
+                dateTime: dateTime, duration: duration, service: service, operator: operator
             }
-        });*/
+        });
 
-        await setLink(`https://qrcalendar.${process.env.NEXT_PUBLIC_MAIN_URL}/event?time=${time}&date=${date}&service=${service}&operator=${operator}`);
+        await setLink(`https://qrcalendar.${process.env.NEXT_PUBLIC_MAIN_URL}/event?dateTime=${dateTime}&duration=${duration}&service=${service}&operator=${operator}`);
         await setDone(true);
     }
 
-    // TODO: change inputs to hidden instead of not rendering them to preserve state
+    // TODO: change inputs to hidden instead of not rendering them to preserve state.
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Create</h1>
@@ -45,7 +55,10 @@ const Create: NextPage = () => {
                             <QRCode id={"QRCode"} value={link}/>
                             <p>please scan the QR Code</p>
                             <br/>
-                            <button className={styles.button} onClick={() => {setDone(false)}}>Edit</button>
+                            <button className={styles.button} onClick={() => {
+                                setDone(false)
+                            }}>Edit
+                            </button>
                         </div>
                     </div>
                 </>
@@ -53,18 +66,27 @@ const Create: NextPage = () => {
                 <>
                     <div className={styles.grid}>
                         <div className={styles.card}>
-                            <input type={"text"} placeholder={"time"} onChange={e => setTime(e.target.value)}/>
-                            <input type={"text"} placeholder={"date"} onChange={e => setDate(e.target.value)}/>
+                            <Datetime onChange={handleDateTimeChange} isValidDate={valid} initialValue={new Date()}
+                                      value={date}/>
+                            {/*TODO: rework duration, maybe separate hours and minutes.*/}
+                            <input type={"number"} placeholder={"1"} min={"0"} max={"24"}
+                                   onChange={e => setDuration(e.target.value)}/>
                             <input type={"text"} placeholder={"service"} onChange={e => setService(e.target.value)}/>
                             <input type={"text"} placeholder={"operator"} onChange={e => setOperator(e.target.value)}/>
                             <br/>
-                            <button className={styles.button} onClick={generate}>create</button>
+                            <br/>
+                            {(dateTime && duration && service && operator) ? (
+                                <button className={styles.button} onClick={generate}>create</button>
+                            ) : (
+                                <div className={styles.error}>
+                                    <p>Please fill out all fields!</p>
+                                </div>
+                            )}
+
                         </div>
                     </div>
 
-                    <div className={styles.error}>
-                        <p>please fill out all fields</p>
-                    </div>
+
                 </>
             )}
 

@@ -27,7 +27,9 @@ const Home: NextPage = () => {
                 </p>
 
                 <div>
-                    <button className={styles.button} onClick={() => {router.push("/create")}}>
+                    <button className={styles.button} onClick={() => {
+                        router.push("/create")
+                    }}>
                         Create
                     </button>
                 </div>

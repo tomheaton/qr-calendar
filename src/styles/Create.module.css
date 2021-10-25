@@ -83,7 +83,6 @@
 }
 
 .card:hover, .card:focus, .card:active, .card-qr:hover, .card-qr:focus, .card-qr:active {
-    color: #0070f3;
     border-color: #0070f3;
 }
 
