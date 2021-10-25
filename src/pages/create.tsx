@@ -65,10 +65,14 @@ const Create: NextPage = () => {
                         <div className={styles.card}>
                             <Datetime onChange={handleDateTimeChange} isValidDate={valid} initialValue={new Date()} value={date}/>
                             <div className={styles.duration}>
-                                <input type={"number"} placeholder={"1"} min={"0"} max={"24"} step={"1"} onChange={e => setHours(e.target.value)} value={hours}/>
-                                <p style={{paddingRight: "20px"}}>hours</p>
-                                <input type={"number"} placeholder={"1"} min={"0"} max={"59"} step={"1"} onChange={e => setMinutes(e.target.value)} value={minutes}/>
-                                <p>minutes</p>
+                                <div className={styles.durationInput}>
+                                    <input type={"number"} placeholder={"1"} min={"0"} max={"24"} step={"1"} onChange={e => setHours(e.target.value)} value={hours}/>
+                                    <p style={{paddingRight: "20px"}}>hours</p>
+                                </div>
+                                <div className={styles.durationInput} >
+                                    <input type={"number"} placeholder={"1"} min={"0"} max={"59"} step={"1"} onChange={e => setMinutes(e.target.value)} value={minutes}/>
+                                    <p>minutes</p>
+                                </div>
                             </div>
                             <input type={"text"} placeholder={"service"} onChange={e => setService(e.target.value)} value={service}/>
                             <input type={"text"} placeholder={"operator"} onChange={e => setOperator(e.target.value)} value={operator}/>

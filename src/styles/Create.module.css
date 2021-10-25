@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    overflow: hidden;
 }
 
 .main {
@@ -73,9 +74,22 @@
     margin-right: 10px;
 }
 
+.durationInput {
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
 @media (max-width: 600px) {
     .grid {
         width: 100%;
+        flex-direction: column;
+    }
+    .card {
+        width: 80%;
+    }
+    .duration {
         flex-direction: column;
     }
 }
