@@ -26,9 +26,14 @@ const Event: NextPage = () => {
     if (!router.query) {
         return (
             <div className={"container"}>
+                <Head>
+                    <title>Event | QR Calendar</title>
+                    <meta name="description" content="Simple webapp to create calendar events and share then via QR Codes."/>
+                    <link rel="icon" href="/favicon.ico"/>
+                </Head>
                 <div className={"grid"}>
                     <div className={styles.cardQr}>
-                        <p className={"description"}>loading</p>
+                        <p className={"description"}>loading...</p>
                     </div>
                 </div>
             </div>
@@ -36,6 +41,11 @@ const Event: NextPage = () => {
     } else if (!dateTime || !hours || !minutes || !service || !operator) {
         return (
             <div className={"container"}>
+                <Head>
+                    <title>Event | QR Calendar</title>
+                    <meta name="description" content="Simple webapp to create calendar events and share then via QR Codes."/>
+                    <link rel="icon" href="/favicon.ico"/>
+                </Head>
                 <div className={"grid"}>
                     <div className={styles.cardQr}>
                         <p className={"description"}>Invalid URL Params 🛠️</p>
