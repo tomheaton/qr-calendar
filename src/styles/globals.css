@@ -15,6 +15,7 @@ html, body {
     -ms-overflow-style: none;
     scrollbar-width: none;
     height: 100vh;
+    /*position: relative;*/
 }
 
 body::-webkit-scrollbar {
@@ -82,7 +83,6 @@ a {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    position: relative;
 }
 
 .title a {
