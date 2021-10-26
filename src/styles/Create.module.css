@@ -15,14 +15,6 @@
     align-items: center;
 }
 
-.button {
-    width: 100%;
-    padding: 10px;
-    border-radius: 4px;
-    text-align: center;
-    cursor: pointer;
-}
-
 .card {
     margin: 1rem;
     padding: 1.5rem;

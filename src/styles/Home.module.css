@@ -43,3 +43,9 @@
         flex-direction: column;
     }
 }
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

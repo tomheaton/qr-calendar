@@ -23,8 +23,8 @@ const Home: NextPage = () => {
                     <code className={styles.code}>Create</code>
                     button below!
                 </p>
-                <div>
-                    <button className={"button-9"} onClick={() => {router.push("/create")}}>
+                <div className={styles.buttonContainer}>
+                    <button className={"button-9"} style={{width: "80%"}} onClick={() => {router.push("/create")}}>
                         Create
                     </button>
                 </div>
