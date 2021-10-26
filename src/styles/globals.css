@@ -67,7 +67,7 @@ a {
     width: 100%;
 }
 .button-9:disabled {
-    cursor: default;
+    cursor: not-allowed;
     background-color: rgba(88, 115, 255, 0.56);
 }
 
