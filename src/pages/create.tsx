@@ -23,9 +23,14 @@ const Create: NextPage = () => {
     let valid = (current: Moment) => current.isAfter(moment().subtract(1, 'day'));
 
     const handleDateTimeChange = (a: any) => {
-        let d: Date = a.toDate();
-        setDate(d);
-        setDateTime(d.toISOString());
+        try {
+            let d: Date = a.toDate();
+            setDate(d);
+            setDateTime(d.toISOString());
+        }
+        catch (e: any) {
+            return;
+        }
     }
 
     const generate = async () => {
