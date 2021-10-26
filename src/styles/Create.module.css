@@ -93,3 +93,8 @@
         flex-direction: column;
     }
 }
+
+.quickLink {
+    font-weight: bold;
+    color: #0070f3;
+}

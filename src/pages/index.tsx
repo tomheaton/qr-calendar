@@ -14,27 +14,23 @@ const Home: NextPage = () => {
                 <meta name="description" content="Simple webapp to create calendar events and share then via QR Codes."/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-
             <main className={styles.main}>
                 <h1 className={"title"}>
                     QR Calendar
                 </h1>
-
                 <p className={"description"}>
                     To begin, click the
                     <code className={styles.code}>Create</code>
                     button below!
                 </p>
-
                 <div>
                     <button className={"button-9"} onClick={() => {router.push("/create")}}>
                         Create
                     </button>
                 </div>
-
             </main>
         </div>
-    )
+    );
 }
 
 export default Home;

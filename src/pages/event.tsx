@@ -5,16 +5,16 @@ import {CalendarEvent, google, ics, outlook} from "calendar-link";
 
 const Event: NextPage = () => {
 
-    type Query = { dateTime: string, duration: string, service: string, operator: string };
-
     const router = useRouter();
-    const {dateTime, duration, service, operator} = router.query as Query;
+    const {dateTime, hours, minutes, service, operator} = router.query as { dateTime: string, hours: string, minutes: string, service: string, operator: string };
+
+    let duration: number = parseInt(hours) + (parseInt(minutes)/60);
 
     const event: CalendarEvent = {
         title: service,
         description: `Operator: ${operator}`,
         start: dateTime,
-        duration: [parseFloat(duration), "hours"],
+        duration: [duration, "hours"],
         location: `${process.env.NEXT_PUBLIC_CALENDAR_LOCATION}`
     };
 
@@ -32,7 +32,7 @@ const Event: NextPage = () => {
                 </div>
             </div>
         );
-    } else if (!dateTime || !duration || !service || !operator) {
+    } else if (!dateTime || !hours || !minutes || !service || !operator) {
         return (
             <div className={"container"}>
                 <div className={"grid"}>
@@ -53,8 +53,10 @@ const Event: NextPage = () => {
                 <div className={styles.card}>
                     <p>Time: {new Date(dateTime).toTimeString()}</p>
                     <p>Date: {new Date(dateTime).toDateString()}</p>
-                    {/*TODO: fancy duration display.*/}
-                    <p>Duration: {duration} hour(s)</p>
+                    <p>
+                        Duration: {hours} hour{parseInt(hours) > 1 ? "s" : ""}
+                        {parseInt(minutes) > 0 ? ` ${minutes} minutes` : ""}
+                    </p>
                     <p>Service: {service}</p>
                     <p>Operator: {operator}</p>
                 </div>
