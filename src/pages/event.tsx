@@ -2,6 +2,7 @@ import {NextPage} from "next";
 import {useRouter} from "next/router";
 import styles from "../styles/Event.module.css";
 import {CalendarEvent, google, ics, outlook} from "calendar-link";
+import Head from "next/head";
 
 const Event: NextPage = () => {
 
@@ -47,6 +48,11 @@ const Event: NextPage = () => {
 
     return (
         <div className={"container"}>
+            <Head>
+                <title>Event | QR Calendar</title>
+                <meta name="description" content="Simple webapp to create calendar events and share then via QR Codes."/>
+                <link rel="icon" href="/favicon.ico"/>
+            </Head>
             <h1 className={"title"}>Your Event</h1>
             <br/>
             <div className={"grid"}>

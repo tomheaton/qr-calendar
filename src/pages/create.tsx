@@ -4,6 +4,7 @@ import {useState} from "react";
 import QRCode from "react-qr-code";
 import Datetime from "react-datetime";
 import moment, {Moment} from 'moment';
+import Head from "next/head";
 
 const Create: NextPage = () => {
 
@@ -42,6 +43,11 @@ const Create: NextPage = () => {
 
     return (
         <div className={"container"}>
+            <Head>
+                <title>Create | QR Calendar</title>
+                <meta name="description" content="Simple webapp to create calendar events and share then via QR Codes."/>
+                <link rel="icon" href="/favicon.ico"/>
+            </Head>
             <h1 className={"title"}>{done ? "Share your" : "Create an"} Event</h1>
             <br/>
             {done ? (
