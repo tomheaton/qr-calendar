@@ -6,7 +6,7 @@ import {CalendarEvent, google, ics, outlook} from "calendar-link";
 const Event: NextPage = () => {
 
     const router = useRouter();
-    const {dateTime, hours, minutes, service, operator} = router.query as { dateTime: string, hours: string, minutes: string, service: string, operator: string };
+    const {dateTime, hours, minutes, service, operator, location} = router.query as { dateTime: string, hours: string, minutes: string, service: string, operator: string, location: string | null};
 
     let duration: number = parseInt(hours) + (parseInt(minutes)/60);
 
@@ -15,7 +15,7 @@ const Event: NextPage = () => {
         description: `Operator: ${operator}`,
         start: dateTime,
         duration: [duration, "hours"],
-        location: `${process.env.NEXT_PUBLIC_CALENDAR_LOCATION}`
+        location: location ? location : `${process.env.NEXT_PUBLIC_CALENDAR_LOCATION}`
     };
 
     const returnHome = () => {
@@ -59,6 +59,9 @@ const Event: NextPage = () => {
                     </p>
                     <p>Service: {service}</p>
                     <p>Operator: {operator}</p>
+                    {location && (
+                        <p>Location: {location}</p>
+                    )}
                 </div>
             </div>
             <br/>

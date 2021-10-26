@@ -13,6 +13,7 @@ const Home: NextPage = () => {
                 <title>QR Calendar</title>
                 <meta name="description" content="Simple webapp to create calendar events and share then via QR Codes."/>
                 <link rel="icon" href="/favicon.ico"/>
+                {/*<meta name="viewport" content="width=device-width" />*/}
             </Head>
             <main className={styles.main}>
                 <h1 className={"title"}>

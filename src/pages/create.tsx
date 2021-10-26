@@ -9,6 +9,7 @@ const Create: NextPage = () => {
 
     const [done, setDone] = useState<boolean>(false);
     const [link, setLink] = useState<string>("");
+    const [showLocation, setShowLocation] = useState<boolean>(false);
 
     const [dateTime, setDateTime] = useState<string>("");
     const [hours, setHours] = useState<string>("1");
@@ -16,6 +17,7 @@ const Create: NextPage = () => {
     const [service, setService] = useState<string>("");
     const [operator, setOperator] = useState<string>("");
     const [date, setDate] = useState<Date>(new Date());
+    const [location, setLocation] = useState<string>("");
 
     let valid = (current: Moment) => current.isAfter(moment().subtract(1, 'day'));
 
@@ -26,7 +28,15 @@ const Create: NextPage = () => {
     }
 
     const generate = async () => {
-        await setLink(`https://qr-calendar.${process.env.NEXT_PUBLIC_CALENDAR_URL}/event?dateTime=${encodeURIComponent(dateTime)}&hours=${encodeURIComponent(hours)}&minutes=${encodeURIComponent(minutes)}&service=${encodeURIComponent(service)}&operator=${encodeURIComponent(operator)}`);
+        await setLink(
+            `https://qr-calendar.${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`
+            +`?dateTime=${encodeURIComponent(dateTime)}`
+            +`&hours=${encodeURIComponent(hours)}`
+            +`&minutes=${encodeURIComponent(minutes)}`
+            +`&service=${encodeURIComponent(service)}`
+            +`&operator=${encodeURIComponent(operator)}`
+            +`${showLocation && location.length > 0 ? `&location=${encodeURIComponent(location)}` : ""}`
+        );
         await setDone(true);
     }
 
@@ -79,6 +89,13 @@ const Create: NextPage = () => {
                             </div>
                             <input type={"text"} placeholder={"service"} onChange={e => setService(e.target.value)} value={service}/>
                             <input type={"text"} placeholder={"operator"} onChange={e => setOperator(e.target.value)} value={operator}/>
+                            {
+                                showLocation ? (
+                                    <input type={"text"} placeholder={"location"} onChange={e => setLocation(e.target.value)} value={location}/>
+                                ) : (
+                                    <button className={"button-9"} onClick={() => {setShowLocation(true)}}>add location</button>
+                                )
+                            }
                             <br/><br/>
                             {(dateTime && (parseInt(hours) > 0 || parseInt(minutes) > 0) && service && operator) ? (
                                 <button className={"button-9"} onClick={generate}>
