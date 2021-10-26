@@ -23,14 +23,18 @@ const Event: NextPage = () => {
         router.push("/");
     }
 
+    const head = (
+        <Head>
+            <title>Event | QR Calendar</title>
+            <meta name="description" content="Simple webapp to create calendar events and share then via QR Codes."/>
+            <link rel="icon" href="/favicon.ico"/>
+        </Head>
+    );
+
     if (!router.query) {
         return (
             <div className={"container"}>
-                <Head>
-                    <title>Event | QR Calendar</title>
-                    <meta name="description" content="Simple webapp to create calendar events and share then via QR Codes."/>
-                    <link rel="icon" href="/favicon.ico"/>
-                </Head>
+                {head}
                 <div className={"grid"}>
                     <div className={styles.cardQr}>
                         <p className={"description"}>loading...</p>
@@ -41,11 +45,7 @@ const Event: NextPage = () => {
     } else if (!dateTime || !hours || !minutes || !service || !operator) {
         return (
             <div className={"container"}>
-                <Head>
-                    <title>Event | QR Calendar</title>
-                    <meta name="description" content="Simple webapp to create calendar events and share then via QR Codes."/>
-                    <link rel="icon" href="/favicon.ico"/>
-                </Head>
+                {head}
                 <div className={"grid"}>
                     <div className={styles.cardQr}>
                         <p className={"description"}>Invalid URL Params 🛠️</p>
@@ -58,11 +58,7 @@ const Event: NextPage = () => {
 
     return (
         <div className={"container"}>
-            <Head>
-                <title>Event | QR Calendar</title>
-                <meta name="description" content="Simple webapp to create calendar events and share then via QR Codes."/>
-                <link rel="icon" href="/favicon.ico"/>
-            </Head>
+            {head}
             <h1 className={"title"}>Your Event</h1>
             <br/>
             <div className={"grid"}>
