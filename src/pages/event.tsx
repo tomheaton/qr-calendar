@@ -1,7 +1,7 @@
 import {NextPage} from "next";
 import {useRouter} from "next/router";
 import styles from "../styles/Event.module.css";
-import {CalendarEvent, google, ics, outlook} from "calendar-link";
+import {CalendarEvent, google, ics, outlook, yahoo} from "calendar-link";
 import Head from "next/head";
 
 const Event: NextPage = () => {
@@ -89,6 +89,10 @@ const Event: NextPage = () => {
                 <button className={styles.button} onClick={() => {router.push(outlook(event))}}>
                     <i className="bi bi-microsoft" aria-label="Outlook"/>
                     <p>Outlook</p>
+                </button>
+                <button className={styles.button} onClick={() => {router.push(yahoo(event))}}>
+                    <i className="bi bi-calendar-event-fill" aria-label="Yahoo"/>
+                    <p>Yahoo</p>
                 </button>
                 {/*<button className={styles.button} onClick={() => {router.push(office365(event))}}>
                     <i className="bi bi-windows" aria-label="Office 365"/>
