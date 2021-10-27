@@ -5,6 +5,7 @@
     --dark-blue-color: #313B4A;
     --alt-blue-color: #365169;
     --red-color: #C74044;
+    --lighter-blue-color: #0086f3;
 }
 
 html, body {
@@ -23,11 +24,11 @@ body::-webkit-scrollbar {
 }
 
 *::selection {
-    background: var(--red-color);
+    background: var(--lighter-blue-color);
 }
 
 *::-moz-selection {
-    background: var(--red-color);
+    background: var(--lighter-blue-color);
 }
 
 * {
