@@ -6,7 +6,20 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started :gear:
 
-First, create a `.env.local` file and add the following:
+First, clone the repository:
+
+```bash
+git clone https://github.com/tomheaton/qr-calendar.git
+```
+
+Second, install all the node dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+Third, create a `.env.local` file and add the following:
 
 ```dotenv
 NEXT_PUBLIC_CALENDAR_URL=*url*
@@ -14,7 +27,7 @@ NEXT_PUBLIC_CALENDAR_NAME=*name*
 NEXT_PUBLIC_CALENDAR_LOCATION=*location*
 ```
 
-Second, run the development server:
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -22,7 +35,7 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+And finally, open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Todo :pencil:
 
@@ -34,7 +47,7 @@ This is the todo list:
 - [ ] add `_document.tsx`
 - [x] fix whitespace issue
 - [x] add css
-- [ ] add more logic checks etc.
+- [x] add more logic checks etc.
 - [x] mobile optimization
-- [ ] clean up css
-- [ ] finish project
+- [x] clean up css
+- [x] finish project
