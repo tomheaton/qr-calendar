@@ -2,15 +2,15 @@ import Footer from "./footer";
 
 const Layout = ({children}: { children: any }) => {
 
-    const toggleDarkMode = () => {
-        console.log("toggle theme mode");
+    const toggleTheme = () => {
+        console.log("toggle theme");
     }
 
     return (
         <>
             {/*<Navbar />*/}
             <main>{children}</main>
-            <Footer toggleDarkMode={toggleDarkMode}/>
+            <Footer toggleTheme={toggleTheme}/>
         </>
     )
 }
