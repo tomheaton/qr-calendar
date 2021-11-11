@@ -16,3 +16,12 @@
     align-items: center;
     flex-grow: 1;
 }
+
+.footer button {
+    border: none;
+    font-size: 1em;
+}
+
+.footer button:hover {
+    cursor: pointer;
+}
