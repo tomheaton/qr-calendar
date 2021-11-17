@@ -44,7 +44,7 @@ This is the todo list:
 - [x] start project 
 - [x] add `layout.tsx`
 - [x] move to `src` directory structure
-- [ ] add `_document.tsx`
+- [x] add `_document.tsx`
 - [x] fix whitespace issue
 - [x] add css
 - [x] add more logic checks etc.
