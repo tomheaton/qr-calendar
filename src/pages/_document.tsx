@@ -1,5 +1,5 @@
 // eslint-disable-next-line @next/next/no-document-import-in-page
-import Document, {Head, Html, Main, NextScript} from 'next/document';
+import Document, {Html, Main, Head, NextScript} from 'next/document';
 
 class MyDocument extends Document {
 
@@ -26,9 +26,9 @@ class MyDocument extends Document {
 
                     <meta charSet="utf-8" />
                     {/*<meta name="viewport" content="width=device-width, initial-scale=1"/>*/}
-                    <meta name="color-scheme" content="dark light"/>
-                    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#212529"/>
+                    <meta name="color-scheme" content="light dark"/>
                     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff"/>
+                    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#212529"/>
                     <meta name="author" content="Tom Heaton"/>
                     <meta name="description" content="QR Calendar - Create and Share events to calendars using QR codes"/>
                     <meta name="keywords" content="Software, Developer, Code, Programming"/>

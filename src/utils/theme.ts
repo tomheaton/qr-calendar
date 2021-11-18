@@ -3,15 +3,25 @@ const setTheme = (theme: "light" | "dark"): void => {
 }
 
 const getTheme = (): string => {
-    return localStorage.getItem("theme") || "light";
+    let theme;
+    if (typeof window !== 'undefined') {
+        theme = localStorage.getItem("theme")
+    }
+    return theme || "light";
 }
 
 const saveTheme = (theme: "light" | "dark"): void => {
-    localStorage.setItem("theme", theme);
+    if (typeof window !== 'undefined') {
+        localStorage.setItem("theme", theme);
+    }
 }
 
 const toggleTheme = (): void => {
-    const current_theme = localStorage.getItem("theme") || "light";
+    let current_theme;
+
+    if (typeof window !== 'undefined') {
+        current_theme = localStorage.getItem("theme") || "light";
+    }
     saveTheme(current_theme == "light" ? "dark" : "light");
     // @ts-ignore
     setTheme(getTheme());

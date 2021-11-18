@@ -1,5 +1,6 @@
-/*colour palette*/
 :root {
+    color-scheme: dark light;
+
     --cream-color: #F1EEDF;
     --light-blue-colour: #567099;
     --dark-blue-color: #313B4A;
@@ -9,6 +10,21 @@
     --dark-gray-color: #212529;
     --gray-color: #343a40;
     --white-ish-color: #e3e3e3;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    height: 100vh;
+    /*position: relative;*/
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    transition: background 0.25s ease-in-out;
+    text-align: center;
 }
 
 body, body[data-theme="light"] {
@@ -23,17 +39,6 @@ body[data-theme="dark"] {
     --color-text-secondary: var(--white-ish-color);
     --color-bg-primary: var(--dark-gray-color);
     --color-bg-secondary: var(--gray-color);
-}
-
-html, body {
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    height: 100vh;
-    /*position: relative;*/
 }
 
 body::-webkit-scrollbar {
