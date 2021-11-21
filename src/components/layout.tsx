@@ -1,5 +1,5 @@
 import Footer from "./footer";
-import {toggleTheme, getTheme} from "../utils/theme";
+import {getTheme, toggleTheme} from "../utils/theme";
 
 const Layout = ({children}: { children: any }) => {
 

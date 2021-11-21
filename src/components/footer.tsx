@@ -1,5 +1,4 @@
 import styles from "../styles/Footer.module.css";
-import {useEffect, useState} from "react";
 
 const Footer = ({toggleTheme, currentTheme}: {toggleTheme: any, currentTheme: any}) => {
 
