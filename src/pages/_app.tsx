@@ -38,7 +38,9 @@ const MyApp = ({Component, pageProps}: AppProps) => {
 
     return (
         loading ? (
-            <div>loading</div>
+            <div>
+                <h1>loading...</h1>
+            </div>
         ) : (
             <Layout>
                 <Component {...pageProps} />
