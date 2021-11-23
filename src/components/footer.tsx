@@ -4,10 +4,12 @@ const Footer = ({darkMode, setDarkMode}: {darkMode: any, setDarkMode: any}) => {
 
     const handleThemeChange = () => {
         console.log("handling theme change");
+        setDarkMode(darkMode == "dark" ? "light" : "dark")
     }
 
     return (
         <footer className={styles.footer}>
+            <h2>Theme: {darkMode}</h2>
             <a target="_blank" href="https://www.tomheaton.dev" rel="noopener noreferrer">
                 Tom Heaton
             </a>
