@@ -5,6 +5,7 @@ import type {AppProps} from 'next/app';
 import Layout from '../components/layout';
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
+import useDarkMode from "../utils/useDarkMode";
 
 const MyApp = ({Component, pageProps}: AppProps) => {
 
@@ -36,13 +37,16 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         }
     }, [router.events]);
 
+
+    const [darkMode, setDarkMode] = useDarkMode();
+
     return (
         loading ? (
             <div>
                 <h1>loading...</h1>
             </div>
         ) : (
-            <Layout>
+            <Layout darkMode={darkMode} setDarkMode={setDarkMode}>
                 <Component {...pageProps} />
             </Layout>
         )
