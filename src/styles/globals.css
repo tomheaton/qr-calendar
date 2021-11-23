@@ -1,9 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
-    color-scheme: dark light;
+    /*color-scheme: dark light;*/
 
     --cream-color: #F1EEDF;
     --light-blue-colour: #567099;
