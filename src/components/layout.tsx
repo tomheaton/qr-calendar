@@ -1,13 +1,12 @@
 import Footer from "./footer";
-import {getTheme, toggleTheme} from "../utils/theme";
 
-const Layout = ({children, darkMode, setDarkMode}: { children: any, darkMode: any, setDarkMode: any }) => {
+const Layout = ({children}: { children: any }) => {
 
     return (
         <>
             {/*<Navbar />*/}
             <main>{children}</main>
-            <Footer darkMode={darkMode} setDarkMode={setDarkMode}/>
+            <Footer />
         </>
     )
 }
