@@ -9,7 +9,7 @@ const Event: NextPage = () => {
     const router = useRouter();
     const {dateTime, hours, minutes, service, operator, location} = router.query as { dateTime: string, hours: string, minutes: string, service: string, operator: string, location: string | null};
 
-    let duration: number = parseInt(hours) + (parseInt(minutes)/60);
+    let duration: number = parseInt(hours) + (parseInt(minutes) / 60);
 
     const event: CalendarEvent = {
         title: service,

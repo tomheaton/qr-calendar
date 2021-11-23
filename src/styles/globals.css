@@ -1,11 +1,15 @@
-/*colour palette*/
 :root {
+    /*color-scheme: dark light;*/
+
     --cream-color: #F1EEDF;
     --light-blue-colour: #567099;
     --dark-blue-color: #313B4A;
     --alt-blue-color: #365169;
     --red-color: #C74044;
     --lighter-blue-color: #0086f3;
+    --dark-gray-color: #212529;
+    --gray-color: #343a40;
+    --white-ish-color: #e3e3e3;
 }
 
 html, body {
@@ -17,6 +21,24 @@ html, body {
     scrollbar-width: none;
     height: 100vh;
     /*position: relative;*/
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    transition: background 0.25s ease-in-out;
+    text-align: center;
+}
+
+body, body[data-theme="light"] {
+    --color-text-primary: var(--dark-gray-color);
+    --color-text-secondary: var(--dark-gray-color);
+    --color-bg-primary: white;
+    --color-bg-secondary: white;
+}
+
+body[data-theme="dark"] {
+    --color-text-primary: var(--white-ish-color);
+    --color-text-secondary: var(--white-ish-color);
+    --color-bg-primary: var(--dark-gray-color);
+    --color-bg-secondary: var(--gray-color);
 }
 
 body::-webkit-scrollbar {

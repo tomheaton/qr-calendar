@@ -25,3 +25,7 @@
 .footer button:hover {
     cursor: pointer;
 }
+
+.theme-button {
+    background: transparent;
+}
