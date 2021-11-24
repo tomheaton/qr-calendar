@@ -1,16 +1,16 @@
 import styles from "../styles/Footer.module.css";
-import useDarkMode from "../utils/useDarkMode";
+import useTheme from "../utils/useTheme";
 import {useState} from "react";
 
 const Footer = () => {
 
-    const [darkMode, setDarkMode] = useDarkMode();
+    const [theme, setTheme] = useTheme();
     const [icon, setIcon] = useState<string>("bi-sun-fill");
 
     const handleThemeChange = () => {
-        setDarkMode(darkMode == "dark" ? "light" : "dark");
-        setIcon(darkMode == "dark" ? "bi-moon-fill" : "bi-sun-fill");
-        console.log("handling theme change: ", darkMode);
+        setTheme(theme == "dark" ? "light" : "dark");
+        setIcon(theme == "dark" ? "bi-moon-fill" : "bi-sun-fill");
+        console.log("handling theme change: ", theme);
     }
 
     return (
