@@ -10,7 +10,6 @@ const Footer = () => {
     const handleThemeChange = () => {
         setTheme(theme == "dark" ? "light" : "dark");
         setIcon(theme == "dark" ? "bi-moon-fill" : "bi-sun-fill");
-        console.log("handling theme change: ", theme);
     }
 
     return (

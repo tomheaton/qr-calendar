@@ -16,9 +16,9 @@ const useTheme = (): [string, Dispatch<SetStateAction<string>>] => {
 
         if (typeof window !== "undefined") {
             localStorage.setItem("theme", theme);
-            //console.log(``);
         }
-    }, [colorTheme, theme]);
+
+    }, [theme]);
 
     return [colorTheme, setTheme];
 }
