@@ -78,6 +78,7 @@ const Create: NextPage = () => {
                     <div className={"grid"}>
                         <div className={styles.card}>
                             <Datetime onChange={handleDateTimeChange} isValidDate={valid} initialValue={new Date()} value={date}/>
+                            {/*<input min={Date.now()} defaultValue={Date.now()} type={"datetime-local"} />*/}
                             <div className={styles.duration}>
                                 <div className={styles.durationInput}>
                                     {/*<input type={"number"} placeholder={"1"} min={"0"} max={"24"} step={"1"} onChange={e => setHours(e.target.value)} value={hours}/>*/}
