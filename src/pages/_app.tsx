@@ -9,12 +9,9 @@ import {useRouter} from "next/router";
 const MyApp = ({Component, pageProps}: AppProps) => {
 
     const router = useRouter()
+
     // @ts-ignore
     const [loading, setLoading] = useState<boolean>(false);
-
-    useEffect(() => {
-        console.log("follow the white rabbit...");
-    }, []);
 
     useEffect(() => {
         const handleStart = () => { setLoading(true); };
