@@ -18,7 +18,6 @@ const Create: NextPage = () => {
     const [service, setService] = useState<string>("");
     const [operator, setOperator] = useState<string>("");
     const [date, setDate] = useState<Date>(new Date());
-    // const [date2, setDate2] = useState<any>(new Date());
     const [location, setLocation] = useState<string>("");
 
     let valid = (current: Moment) => current.isAfter(moment().subtract(1, 'day'));
@@ -28,16 +27,10 @@ const Create: NextPage = () => {
             let d: Date = a.toDate();
             setDate(d);
             setDateTime(d.toISOString());
-        }
-        catch (e: any) {
+        } catch (e: any) {
             return;
         }
     }
-
-/*    const handleDateTimeChange2 = (a: any) => {
-        console.log("date2: ", date2, "type = ", typeof(a))
-        setDate2(a)
-    }*/
 
     const generate = async () => {
         await setLink(
@@ -60,7 +53,6 @@ const Create: NextPage = () => {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <h1 className={"title"}>{done ? "Share your" : "Create an"} Event</h1>
-            {/*<p>Date2: {date2.toString()}</p>*/}
             <br/>
             {done ? (
                 <>
@@ -88,7 +80,6 @@ const Create: NextPage = () => {
                             {/*<input min={Date.now()} defaultValue={Date.now()} value={date2} type={"datetime-local"} onChange={handleDateTimeChange2}/>*/}
                             <div className={styles.duration}>
                                 <div className={styles.durationInput}>
-                                    {/*<input type={"number"} placeholder={"1"} min={"0"} max={"24"} step={"1"} onChange={e => setHours(e.target.value)} value={hours}/>*/}
                                     <select value={hours} onChange={(e) => {setHours((parseInt(e.target.value)).toString())}}>
                                         {Array.from(Array(25), (_, i) => i).map((x) => {
                                             return (<option value={x} key={x}>{x}</option>);
@@ -97,7 +88,6 @@ const Create: NextPage = () => {
                                     <p style={{paddingRight: "20px"}}>hours</p>
                                 </div>
                                 <div className={styles.durationInput} >
-                                    {/*<input type={"number"} placeholder={"1"} min={"0"} max={"59"} step={"1"} onChange={e => setMinutes(e.target.value)} value={minutes}/>*/}
                                     <select value={minutes} onChange={(e) => {setMinutes(e.target.value)}}>
                                         {Array.from(Array(12), (_, i) => (i)*5).map((x) => {
                                             return (<option value={x} key={x}>{x}</option>);
