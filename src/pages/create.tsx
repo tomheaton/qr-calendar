@@ -18,6 +18,7 @@ const Create: NextPage = () => {
     const [service, setService] = useState<string>("");
     const [operator, setOperator] = useState<string>("");
     const [date, setDate] = useState<Date>(new Date());
+    // const [date2, setDate2] = useState<any>(new Date());
     const [location, setLocation] = useState<string>("");
 
     let valid = (current: Moment) => current.isAfter(moment().subtract(1, 'day'));
@@ -32,6 +33,11 @@ const Create: NextPage = () => {
             return;
         }
     }
+
+/*    const handleDateTimeChange2 = (a: any) => {
+        console.log("date2: ", date2, "type = ", typeof(a))
+        setDate2(a)
+    }*/
 
     const generate = async () => {
         await setLink(
@@ -54,6 +60,7 @@ const Create: NextPage = () => {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <h1 className={"title"}>{done ? "Share your" : "Create an"} Event</h1>
+            {/*<p>Date2: {date2.toString()}</p>*/}
             <br/>
             {done ? (
                 <>
@@ -78,7 +85,7 @@ const Create: NextPage = () => {
                     <div className={"grid"}>
                         <div className={styles.card}>
                             <Datetime onChange={handleDateTimeChange} isValidDate={valid} initialValue={new Date()} value={date}/>
-                            {/*<input min={Date.now()} defaultValue={Date.now()} type={"datetime-local"} />*/}
+                            {/*<input min={Date.now()} defaultValue={Date.now()} value={date2} type={"datetime-local"} onChange={handleDateTimeChange2}/>*/}
                             <div className={styles.duration}>
                                 <div className={styles.durationInput}>
                                     {/*<input type={"number"} placeholder={"1"} min={"0"} max={"24"} step={"1"} onChange={e => setHours(e.target.value)} value={hours}/>*/}
