@@ -37,8 +37,8 @@ const Create: NextPage = () => {
         await setLink(
             `${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`
             + `?dateTime=${encodeURIComponent(dateTime)}`
-            + `&hours=${allDay ? encodeURIComponent("-1") : encodeURIComponent("hours")}`
-            + `&minutes=${allDay ? encodeURIComponent("-1") : encodeURIComponent("minutes")}`
+            + `&hours=${allDay ? encodeURIComponent("-1") : encodeURIComponent(hours)}`
+            + `&minutes=${allDay ? encodeURIComponent("-1") : encodeURIComponent(minutes)}`
             + `&service=${encodeURIComponent(service)}`
             + `&operator=${encodeURIComponent(operator)}`
             + `${showLocation && location.length > 0 ? `&location=${encodeURIComponent(location)}` : ""}`);
