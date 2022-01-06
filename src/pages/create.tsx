@@ -1,4 +1,4 @@
-import {NextPage} from "next";
+import type {NextPage} from "next";
 import styles from "../styles/Create.module.css";
 import {useState} from "react";
 import QRCode from "react-qr-code";

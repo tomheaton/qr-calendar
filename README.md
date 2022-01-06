@@ -19,7 +19,7 @@ npm install
 yarn install
 ```
 
-Third, create a `.env.local` file and add the following:
+Third, create a `.env` file and add the following:
 
 ```dotenv
 NEXT_PUBLIC_CALENDAR_URL=*url*
@@ -51,3 +51,4 @@ This is the todo list:
 - [x] mobile optimization
 - [x] clean up css
 - [x] finish project
+- [ ] add "all day" option

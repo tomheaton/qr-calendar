@@ -3,7 +3,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import {useRouter} from "next/router";
 
-const Home: NextPage = () => {
+const Index: NextPage = () => {
 
     const router = useRouter();
 
@@ -34,4 +34,4 @@ const Home: NextPage = () => {
     );
 }
 
-export default Home;
+export default Index;
