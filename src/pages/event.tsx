@@ -40,7 +40,7 @@ const Event: NextPage = () => {
     const head = (
         <Head>
             <title>Event | QR Calendar</title>
-            <meta name="description" content="Simple webapp to create calendar events and share then via QR Codes."/>
+            <meta name="description" content="Create calendar events and share then via QR Codes."/>
             <link rel="icon" href="/favicon.ico"/>
         </Head>
     );
@@ -79,16 +79,10 @@ const Event: NextPage = () => {
                 <div className={styles.card}>
                     <p>Time: {new Date(dateTime).toTimeString()}</p>
                     <p>Date: {new Date(dateTime).toDateString()}</p>
-                    {
-                        allDay ? (
-                            <p>All Day</p>
-                        ) : (
-                            <p>
-                                Duration: {hours} hour{hour > 1 ? "s" : ""}
-                                {minute > 0 ? ` ${minutes} minutes` : ""}
-                            </p>
-                        )
-                    }
+                    <p>
+                        Duration: {allDay ? "All Day" : (
+                        `${hours} hour${hour > 1 ? "s" : ""}${minute > 0 ? ` ${minutes} minutes` : ""}`)}
+                    </p>
                     <p>Service: {service}</p>
                     <p>Operator: {operator}</p>
                     {

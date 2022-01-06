@@ -45,11 +45,7 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-*::selection {
-    background: var(--lighter-blue-color);
-}
-
-*::-moz-selection {
+*::selection, *::-moz-selection {
     background: var(--lighter-blue-color);
 }
 
@@ -60,6 +56,10 @@ body::-webkit-scrollbar {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+.dev * {
+    border: red solid 1px;
 }
 
 .button-9 {
@@ -82,13 +82,14 @@ a {
     position: relative;
     text-align: center;
     text-transform: none;
-    transform: translateZ(0);
+    /*transform: translateZ(0);*/
     transition: all .2s,box-shadow .08s ease-in;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
     width: 100%;
 }
+
 .button-9:disabled {
     cursor: not-allowed;
     background-color: rgba(88, 115, 255, 0.56);
@@ -170,4 +171,9 @@ select {
     background-color: #fff;
     padding: 4px;
     border-width: 2px;
+}
+
+input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
 }

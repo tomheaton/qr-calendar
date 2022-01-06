@@ -13,20 +13,15 @@ const Create: NextPage = () => {
     const [showLocation, setShowLocation] = useState<boolean>(false);
 
     const [dateTime, setDateTime] = useState<string>("");
-    const [hours, setHours] = useState<string>("1");
+    const [hours, setHours] = useState<string>("0");
     const [minutes, setMinutes] = useState<string>("0");
     const [service, setService] = useState<string>("");
     const [operator, setOperator] = useState<string>("");
     const [date, setDate] = useState<Date>(new Date());
     const [location, setLocation] = useState<string>("");
-    const [allDay, setAllDay] = useState<string>("false")
+    const [allDay, setAllDay] = useState<boolean>(false)
 
     let valid = (current: Moment) => current.isAfter(moment().subtract(1, 'day'));
-
-    const handleAllDay = () => {
-        setHours("-1")
-        setMinutes("-1")
-    }
 
     const handleDateTimeChange = (a: any) => {
         try {
@@ -40,14 +35,13 @@ const Create: NextPage = () => {
 
     const generate = async () => {
         await setLink(
-            // `https://qr-calendar.${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`
             `${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`
-            +`?dateTime=${encodeURIComponent(dateTime)}`
-            +`&hours=${encodeURIComponent(hours)}`
-            +`&minutes=${encodeURIComponent(minutes)}`
-            +`&service=${encodeURIComponent(service)}`
-            +`&operator=${encodeURIComponent(operator)}`
-            +`${showLocation && location.length > 0 ? `&location=${encodeURIComponent(location)}` : ""}`);
+            + `?dateTime=${encodeURIComponent(dateTime)}`
+            + `&hours=${allDay ? encodeURIComponent("-1") : encodeURIComponent("hours")}`
+            + `&minutes=${allDay ? encodeURIComponent("-1") : encodeURIComponent("minutes")}`
+            + `&service=${encodeURIComponent(service)}`
+            + `&operator=${encodeURIComponent(operator)}`
+            + `${showLocation && location.length > 0 ? `&location=${encodeURIComponent(location)}` : ""}`);
         await setDone(true);
     }
 
@@ -55,7 +49,7 @@ const Create: NextPage = () => {
         <div className={"container"}>
             <Head>
                 <title>Create | QR Calendar</title>
-                <meta name="description" content="Simple webapp to create calendar events and share then via QR Codes."/>
+                <meta name="description" content="Create calendar events and share then via QR Codes."/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <h1 className={"title"}>{done ? "Share your" : "Create an"} Event</h1>
@@ -97,7 +91,7 @@ const Create: NextPage = () => {
                                             );
                                         })}
                                     </select>
-                                    <p style={{paddingRight: "20px"}}>hours</p>
+                                    <p style={{paddingRight: "10px"}}>hours</p>
                                 </div>
                                 <div className={styles.durationInput} >
                                     <select value={minutes} onChange={(e) => {setMinutes(e.target.value)}}>
@@ -109,12 +103,13 @@ const Create: NextPage = () => {
                                     </select>
                                     <p>minutes</p>
                                 </div>
+                                {/*TODO: improve styling.*/}
+                                {/*<div className={styles.durationInput} style={{paddingLeft: "10px"}}>
+                                    <input type={"checkbox"} defaultChecked={false} checked={allDay}
+                                           onChange={e => {setAllDay(e.target.checked)}} />
+                                    <p style={{fontSize: "16px", width: "100%"}}>All day</p>
+                                </div>*/}
                             </div>
-                            {/*<div>
-                                <input style={{width: "4rem"}} type={"checkbox"} defaultValue={"false"} value={allDay}
-                                       onChange={e => {setAllDay(e.target.value)}} />
-                                <p>All day</p>
-                            </div>*/}
                             <input type={"text"} placeholder={"service"} value={service}
                                    onChange={e => setService(e.target.value)} />
                             <input type={"text"} placeholder={"operator"} value={operator}
