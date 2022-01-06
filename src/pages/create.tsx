@@ -19,8 +19,14 @@ const Create: NextPage = () => {
     const [operator, setOperator] = useState<string>("");
     const [date, setDate] = useState<Date>(new Date());
     const [location, setLocation] = useState<string>("");
+    const [allDay, setAllDay] = useState<string>("false")
 
     let valid = (current: Moment) => current.isAfter(moment().subtract(1, 'day'));
+
+    const handleAllDay = () => {
+        setHours("-1")
+        setMinutes("-1")
+    }
 
     const handleDateTimeChange = (a: any) => {
         try {
@@ -34,14 +40,14 @@ const Create: NextPage = () => {
 
     const generate = async () => {
         await setLink(
-            `https://qr-calendar.${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`
+            // `https://qr-calendar.${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`
+            `${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`
             +`?dateTime=${encodeURIComponent(dateTime)}`
             +`&hours=${encodeURIComponent(hours)}`
             +`&minutes=${encodeURIComponent(minutes)}`
             +`&service=${encodeURIComponent(service)}`
             +`&operator=${encodeURIComponent(operator)}`
-            +`${showLocation && location.length > 0 ? `&location=${encodeURIComponent(location)}` : ""}`
-        );
+            +`${showLocation && location.length > 0 ? `&location=${encodeURIComponent(location)}` : ""}`);
         await setDone(true);
     }
 
@@ -76,13 +82,19 @@ const Create: NextPage = () => {
                 <>
                     <div className={"grid"}>
                         <div className={styles.card}>
-                            <Datetime onChange={handleDateTimeChange} isValidDate={valid} initialValue={new Date()} value={date}/>
-                            {/*<input min={Date.now()} defaultValue={Date.now()} value={date2} type={"datetime-local"} onChange={handleDateTimeChange2}/>*/}
+                            {/*TODO: form?*/}
+                            <Datetime isValidDate={valid} initialValue={new Date()} value={date}
+                                      onChange={handleDateTimeChange} />
+                            {/*<input min={Date.now()} defaultValue={Date.now()} value={date2} type={"datetime-local"}
+                                   onChange={handleDateTimeChange2} />*/}
                             <div className={styles.duration}>
                                 <div className={styles.durationInput}>
-                                    <select value={hours} onChange={(e) => {setHours((parseInt(e.target.value)).toString())}}>
+                                    <select value={hours}
+                                            onChange={(e) => {setHours((parseInt(e.target.value)).toString())}}>
                                         {Array.from(Array(25), (_, i) => i).map((x) => {
-                                            return (<option value={x} key={x}>{x}</option>);
+                                            return (
+                                                <option value={x} key={x}>{x}</option>
+                                            );
                                         })}
                                     </select>
                                     <p style={{paddingRight: "20px"}}>hours</p>
@@ -90,19 +102,32 @@ const Create: NextPage = () => {
                                 <div className={styles.durationInput} >
                                     <select value={minutes} onChange={(e) => {setMinutes(e.target.value)}}>
                                         {Array.from(Array(12), (_, i) => (i)*5).map((x) => {
-                                            return (<option value={x} key={x}>{x}</option>);
+                                            return (
+                                                <option value={x} key={x}>{x}</option>
+                                            );
                                         })}
                                     </select>
                                     <p>minutes</p>
                                 </div>
                             </div>
-                            <input type={"text"} placeholder={"service"} onChange={e => setService(e.target.value)} value={service}/>
-                            <input type={"text"} placeholder={"operator"} onChange={e => setOperator(e.target.value)} value={operator}/>
+                            {/*<div>
+                                <input style={{width: "4rem"}} type={"checkbox"} defaultValue={"false"} value={allDay}
+                                       onChange={e => {setAllDay(e.target.value)}} />
+                                <p>All day</p>
+                            </div>*/}
+                            <input type={"text"} placeholder={"service"} value={service}
+                                   onChange={e => setService(e.target.value)} />
+                            <input type={"text"} placeholder={"operator"} value={operator}
+                                   onChange={e => setOperator(e.target.value)} />
                             {
                                 showLocation ? (
-                                    <input type={"text"} placeholder={"location"} onChange={e => setLocation(e.target.value)} value={location}/>
+                                    <input type={"text"} placeholder={"location"} value={location}
+                                           onChange={e => setLocation(e.target.value)} />
                                 ) : (
-                                    <button className={"button-9"} onClick={() => {setShowLocation(true)}}>add location</button>
+                                    <button className={"button-9"}
+                                            onClick={() => {setShowLocation(true)}}>
+                                        add location
+                                    </button>
                                 )
                             }
                             <br/><br/>
@@ -115,7 +140,8 @@ const Create: NextPage = () => {
                                     <button disabled={true} className={"button-9"}>
                                         Create
                                     </button>
-                                    <br/><br/>
+                                    <br />
+                                    <br />
                                     <p className={"text"}>Please fill out all fields!</p>
                                 </>
                             )}

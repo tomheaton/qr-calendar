@@ -5,27 +5,32 @@ import {CalendarEvent, google, ics, outlook, yahoo} from "calendar-link";
 import Head from "next/head";
 
 type Data = {
-    dateTime: string
+    dateTime: string,
     hours: string,
     minutes: string,
     service: string,
     operator: string,
-    location: string | null
+    location?: string
 }
 
 const Event: NextPage = () => {
 
     const router = useRouter();
+
     const { dateTime, hours, minutes, service, operator, location } = router.query as Data;
 
-    let duration: number = parseInt(hours) + (parseInt(minutes) / 60);
+    const hour: number = parseInt(hours)
+    const minute: number = parseInt(minutes)
+    const allDay: boolean = hour == -1 && minute == -1
+    const duration: number = hour + (minute / 60)
 
     const event: CalendarEvent = {
         title: service,
         description: `Operator: ${operator}`,
         start: dateTime,
-        duration: [duration, "hours"],
-        location: location ? location : `${process.env.NEXT_PUBLIC_CALENDAR_LOCATION}`
+        ...(allDay && { allDay: true }),
+        ...(!allDay && { duration: [duration, "hours"] }),
+        ...(location && { location: location })
     };
 
     const returnHome = () => {
@@ -74,15 +79,23 @@ const Event: NextPage = () => {
                 <div className={styles.card}>
                     <p>Time: {new Date(dateTime).toTimeString()}</p>
                     <p>Date: {new Date(dateTime).toDateString()}</p>
-                    <p>
-                        Duration: {hours} hour{parseInt(hours) > 1 ? "s" : ""}
-                        {parseInt(minutes) > 0 ? ` ${minutes} minutes` : ""}
-                    </p>
+                    {
+                        allDay ? (
+                            <p>All Day</p>
+                        ) : (
+                            <p>
+                                Duration: {hours} hour{hour > 1 ? "s" : ""}
+                                {minute > 0 ? ` ${minutes} minutes` : ""}
+                            </p>
+                        )
+                    }
                     <p>Service: {service}</p>
                     <p>Operator: {operator}</p>
-                    {location && (
-                        <p>Location: {location}</p>
-                    )}
+                    {
+                        location && (
+                            <p>Location: {location}</p>
+                        )
+                    }
                 </div>
             </div>
             <br/>
