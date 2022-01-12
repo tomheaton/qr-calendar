@@ -47,6 +47,10 @@ const Create: NextPage = () => {
         }
     }
 
+    const handleDateTimeChangeNew = (x: any) => {
+        console.log(`x: ${x}`);
+    }
+
     const generate = async () => {
         await setLink(
             `${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`
@@ -95,6 +99,9 @@ const Create: NextPage = () => {
                                       onChange={handleDateTimeChange} />
                             {/*<input min={Date.now()} defaultValue={Date.now()} value={date2} type={"datetime-local"}
                                    onChange={handleDateTimeChange2} />*/}
+                            <input min={Date.now()} defaultValue={Date.now()} type={"datetime-local"}
+                                   className={styles.dateTime}
+                                   onChange={(e) => handleDateTimeChangeNew(e.target.value)} />
                             <div className={styles.duration}>
                                 <div className={styles.durationInput}>
                                     <select value={hours}
