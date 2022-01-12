@@ -1,5 +1,5 @@
 :root {
-    /*color-scheme: dark light;*/
+    /*color-scheme: light dark;*/
 
     --cream-color: #F1EEDF;
     --light-blue-colour: #567099;
@@ -168,7 +168,7 @@ input:hover, input:focus, select:hover, select:focus {
 }
 
 select {
-    background-color: #fff;
+    /*background-color: #fff;*/
     padding: 4px;
     border-width: 2px;
 }
