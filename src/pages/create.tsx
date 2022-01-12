@@ -141,7 +141,7 @@ const Create: NextPage = () => {
                                 ) : (
                                     <button className={"btn"}
                                             onClick={() => {setShowLocation(true)}}>
-                                        add location
+                                        Add Location
                                     </button>
                                 )
                             }
