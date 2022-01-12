@@ -65,7 +65,7 @@ const Event: NextPage = () => {
     return (
         <div className={"container"}>
             {head}
-            <h1 className={"title"}>Your Event</h1>
+            <h1 className={"title"}>Your Event 📅</h1>
             <br/>
             <div className={"grid"}>
                 <div className={styles.card}>

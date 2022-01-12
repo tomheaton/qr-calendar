@@ -21,6 +21,7 @@ const Create: NextPage = () => {
     const [date, setDate] = useState<Date>(new Date());
     const [location, setLocation] = useState<string>("");
     const [allDay, setAllDay] = useState<boolean>(false)
+    const [newDateTime, setNewDateTime] = useState<string>(new Date(Date.now()).toISOString());
 
     useEffect(() => {
         const _data = localStorage.getItem("data");
@@ -48,13 +49,18 @@ const Create: NextPage = () => {
     }
 
     const handleDateTimeChangeNew = (x: any) => {
+        setNewDateTime(x)
+        let a = x.split("T")
+        let [d, t] = a
         console.log(`x: ${x}`);
+        console.log(`d: ${d}, t: ${t}`);
+        console.log(newDateTime);
     }
 
     const generate = async () => {
         await setLink(
             `${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`
-            + `?dateTime=${encodeURIComponent(dateTime)}`
+            + `?dateTime=${encodeURIComponent(newDateTime)}`
             + `&hours=${allDay ? encodeURIComponent("-1") : encodeURIComponent(hours)}`
             + `&minutes=${allDay ? encodeURIComponent("-1") : encodeURIComponent(minutes)}`
             + `&service=${encodeURIComponent(service)}`
@@ -97,12 +103,9 @@ const Create: NextPage = () => {
                             {/*TODO: form?*/}
                             <Datetime isValidDate={valid} initialValue={new Date()} value={date}
                                       onChange={handleDateTimeChange} />
-                            {/*<input min={Date.now()} defaultValue={Date.now()} value={date2} type={"datetime-local"}
-                                   onChange={handleDateTimeChange2} />*/}
-                            <input min={Date.now()} defaultValue={Date.now()} type={"datetime-local"}
+                            <input min={Date.now()} defaultValue={new Date(Date.now()).toISOString()} type={"datetime-local"}
                                    className={styles.dateTime}
                                    onChange={(e) => handleDateTimeChangeNew(e.target.value)} />
-                            <input type={"time"} />
                             <div className={styles.inline}>
                                 <div style={{width: "50%", paddingRight: "5px"}}>
                                     <input type={"date"} />
