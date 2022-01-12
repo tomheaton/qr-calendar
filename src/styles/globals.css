@@ -168,7 +168,7 @@ input:hover, input:focus, select:hover, select:focus {
 }
 
 select {
-    background-color: #fff;
+    /*background-color: #fff;*/
     padding: 4px;
     border-width: 2px;
 }
