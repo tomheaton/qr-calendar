@@ -28,7 +28,7 @@ const Create: NextPage = () => {
     }, []);
 
     const handleSave = () => {
-        localStorage.setItem("data", JSON.stringify({service, operator, location}));
+        localStorage.setItem("data", JSON.stringify({ service, operator, location }));
     }
 
     return (
