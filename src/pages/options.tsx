@@ -13,20 +13,22 @@ const Create: NextPage = () => {
         router.push("/");
     }
 
+    const [service, setService] = useState<string>("");
     const [operator, setOperator] = useState<string>("");
     const [location, setLocation] = useState<string>("");
 
     useEffect(() => {
         const _data = localStorage.getItem("data");
         if (_data) {
-            const data: OptionsData = JSON.parse(_data)
-            setOperator(data.operator)
-            setLocation(data.location)
+            const data: OptionsData = JSON.parse(_data);
+            setService(data.service);
+            setOperator(data.operator);
+            setLocation(data.location);
         }
     }, []);
 
     const handleSave = () => {
-        localStorage.setItem("data", JSON.stringify({operator, location}));
+        localStorage.setItem("data", JSON.stringify({service, operator, location}));
     }
 
     return (
@@ -40,8 +42,13 @@ const Create: NextPage = () => {
             <br />
             <div className={"grid"}>
                 <div className={styles.card}>
+                    {service && (<label>Service</label>)}
+                    <input type={"text"} placeholder={"service"} value={service}
+                           onChange={(e) => setService(e.target.value)}/>
+                    {service && (<label>Operator</label>)}
                     <input type={"text"} placeholder={"operator"} value={operator}
                            onChange={(e) => setOperator(e.target.value)}/>
+                    {service && (<label>Location</label>)}
                     <input type={"text"} placeholder={"location"} value={location}
                            onChange={(e) => setLocation(e.target.value)}/>
                     <button className={"button-9"} onClick={handleSave}>Save</button>

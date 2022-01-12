@@ -26,8 +26,12 @@ const Create: NextPage = () => {
         const _data = localStorage.getItem("data");
         if (_data) {
             const data: OptionsData = JSON.parse(_data)
+            setService(data.service)
             setOperator(data.operator)
-            setLocation(data.location)
+            if (data.location != "") {
+                setLocation(data.location)
+                setShowLocation(true);
+            }
         }
     }, []);
 

@@ -8,6 +8,7 @@ type EventData = {
 }
 
 type OptionsData = {
+    service: string,
     operator: string,
     location: string
 }
