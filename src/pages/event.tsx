@@ -3,21 +3,13 @@ import {useRouter} from "next/router";
 import styles from "../styles/Event.module.css";
 import {CalendarEvent, google, ics, outlook, yahoo} from "calendar-link";
 import Head from "next/head";
-
-type Data = {
-    dateTime: string,
-    hours: string,
-    minutes: string,
-    service: string,
-    operator: string,
-    location?: string
-}
+import type {EventData} from "../types/types";
 
 const Event: NextPage = () => {
 
     const router = useRouter();
 
-    const { dateTime, hours, minutes, service, operator, location } = router.query as Data;
+    const { dateTime, hours, minutes, service, operator, location } = router.query as EventData;
 
     const hour: number = parseInt(hours)
     const minute: number = parseInt(minutes)

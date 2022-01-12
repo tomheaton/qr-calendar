@@ -1,10 +1,11 @@
 import type {NextPage} from "next";
 import styles from "../styles/Create.module.css";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import QRCode from "react-qr-code";
 import Datetime from "react-datetime";
 import moment, {Moment} from 'moment';
 import Head from "next/head";
+import type {OptionsData} from "../types/types";
 
 const Create: NextPage = () => {
 
@@ -20,6 +21,15 @@ const Create: NextPage = () => {
     const [date, setDate] = useState<Date>(new Date());
     const [location, setLocation] = useState<string>("");
     const [allDay, setAllDay] = useState<boolean>(false)
+
+    useEffect(() => {
+        const _data = localStorage.getItem("data");
+        if (_data) {
+            const data: OptionsData = JSON.parse(_data)
+            setOperator(data.operator)
+            setLocation(data.location)
+        }
+    }, []);
 
     let valid = (current: Moment) => current.isAfter(moment().subtract(1, 'day'));
 

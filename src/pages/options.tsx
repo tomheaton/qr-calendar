@@ -3,11 +3,7 @@ import {useEffect, useState} from "react";
 import Head from "next/head";
 import {useRouter} from "next/router";
 import styles from "../styles/Create.module.css";
-
-type Data = {
-    operator: string,
-    location: string
-}
+import type {OptionsData} from "../types/types";
 
 const Create: NextPage = () => {
 
@@ -23,7 +19,7 @@ const Create: NextPage = () => {
     useEffect(() => {
         const _data = localStorage.getItem("data");
         if (_data) {
-            const data: Data = JSON.parse(_data)
+            const data: OptionsData = JSON.parse(_data)
             setOperator(data.operator)
             setLocation(data.location)
         }
