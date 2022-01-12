@@ -124,14 +124,19 @@ const Create: NextPage = () => {
                                     <p style={{fontSize: "16px", width: "100%"}}>All day</p>
                                 </div>*/}
                             </div>
+                            {service && (<label>Service</label>)}
                             <input type={"text"} placeholder={"service"} value={service}
                                    onChange={e => setService(e.target.value)} />
+                            {operator && (<label>Operator</label>)}
                             <input type={"text"} placeholder={"operator"} value={operator}
                                    onChange={e => setOperator(e.target.value)} />
                             {
                                 showLocation ? (
-                                    <input type={"text"} placeholder={"location"} value={location}
-                                           onChange={e => setLocation(e.target.value)} />
+                                    <>
+                                        {location && (<label>Location</label>)}
+                                        <input type={"text"} placeholder={"location"} value={location}
+                                               onChange={e => setLocation(e.target.value)} />
+                                    </>
                                 ) : (
                                     <button className={"button-9"}
                                             onClick={() => {setShowLocation(true)}}>

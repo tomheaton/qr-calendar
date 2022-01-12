@@ -45,10 +45,10 @@ const Create: NextPage = () => {
                     {service && (<label>Service</label>)}
                     <input type={"text"} placeholder={"service"} value={service}
                            onChange={(e) => setService(e.target.value)}/>
-                    {service && (<label>Operator</label>)}
+                    {operator && (<label>Operator</label>)}
                     <input type={"text"} placeholder={"operator"} value={operator}
                            onChange={(e) => setOperator(e.target.value)}/>
-                    {service && (<label>Location</label>)}
+                    {location && (<label>Location</label>)}
                     <input type={"text"} placeholder={"location"} value={location}
                            onChange={(e) => setLocation(e.target.value)}/>
                     <button className={"button-9"} onClick={handleSave}>Save</button>
