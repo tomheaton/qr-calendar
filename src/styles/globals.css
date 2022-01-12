@@ -162,6 +162,7 @@ a {
 input, select {
     border-style: solid;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 input:hover, input:focus, select:hover, select:focus {
