@@ -2,10 +2,9 @@ import type {NextPage} from "next";
 import styles from "../styles/Create.module.css";
 import {useEffect, useState} from "react";
 import QRCode from "react-qr-code";
-import Datetime from "react-datetime";
-import moment, {Moment} from 'moment';
 import Head from "next/head";
 import type {OptionsData} from "../types/types";
+import dayjs from 'dayjs';
 
 const Create: NextPage = () => {
 
@@ -13,15 +12,16 @@ const Create: NextPage = () => {
     const [link, setLink] = useState<string>("");
     const [showLocation, setShowLocation] = useState<boolean>(false);
 
-    const [dateTime, setDateTime] = useState<string>("");
+    // TODO: combine these into a dayjs time type and set date and time.
+    const [d, setD] = useState<string>(dayjs().format("YYYY-MM-DD"));
+    const [t, setT] = useState<string>(dayjs().format("HH:mm"));
     const [hours, setHours] = useState<string>("0");
     const [minutes, setMinutes] = useState<string>("0");
+    // TODO: finish implementing allDay option.
+    const [allDay, setAllDay] = useState<boolean>(false)
     const [service, setService] = useState<string>("");
     const [operator, setOperator] = useState<string>("");
-    const [date, setDate] = useState<Date>(new Date());
     const [location, setLocation] = useState<string>("");
-    const [allDay, setAllDay] = useState<boolean>(false)
-    const [newDateTime, setNewDateTime] = useState<string>(new Date(Date.now()).toISOString());
 
     useEffect(() => {
         const _data = localStorage.getItem("data");
@@ -29,38 +29,18 @@ const Create: NextPage = () => {
             const data: OptionsData = JSON.parse(_data)
             setService(data.service)
             setOperator(data.operator)
-            if (data.location != "") {
+            if (data.location.length > 0) {
                 setLocation(data.location)
                 setShowLocation(true);
             }
         }
     }, []);
 
-    let valid = (current: Moment) => current.isAfter(moment().subtract(1, 'day'));
-
-    const handleDateTimeChange = (a: any) => {
-        try {
-            let d: Date = a.toDate();
-            setDate(d);
-            setDateTime(d.toISOString());
-        } catch (e: any) {
-            return;
-        }
-    }
-
-    const handleDateTimeChangeNew = (x: any) => {
-        setNewDateTime(x)
-        let a = x.split("T")
-        let [d, t] = a
-        console.log(`x: ${x}`);
-        console.log(`d: ${d}, t: ${t}`);
-        console.log(newDateTime);
-    }
-
     const generate = async () => {
+        let _dateTime = new Date(`${d}T${t}`).toISOString();
         await setLink(
             `${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`
-            + `?dateTime=${encodeURIComponent(newDateTime)}`
+            + `?dateTime=${encodeURIComponent(_dateTime)}`
             + `&hours=${allDay ? encodeURIComponent("-1") : encodeURIComponent(hours)}`
             + `&minutes=${allDay ? encodeURIComponent("-1") : encodeURIComponent(minutes)}`
             + `&service=${encodeURIComponent(service)}`
@@ -101,19 +81,20 @@ const Create: NextPage = () => {
                     <div className={"grid"}>
                         <div className={styles.card}>
                             {/*TODO: form?*/}
-                            <Datetime isValidDate={valid} initialValue={new Date()} value={date}
-                                      onChange={handleDateTimeChange} />
-                            <input min={Date.now()} defaultValue={new Date(Date.now()).toISOString()} type={"datetime-local"}
-                                   className={styles.dateTime}
-                                   onChange={(e) => handleDateTimeChangeNew(e.target.value)} />
                             <div className={styles.inline}>
                                 <div style={{width: "50%", paddingRight: "5px"}}>
-                                    <input type={"date"} />
+                                    <input type={"date"} value={d}
+                                           min={dayjs().format("YYYY-MM-DD")}
+                                           onKeyDown={(e) => {e.preventDefault();e.stopPropagation()}}
+                                           onChange={(e) => setD(e.target.value)} />
                                 </div>
                                 <div style={{width: "50%", paddingLeft: "5px"}}>
-                                    <input type={"time"} />
+                                    <input type={"time"} value={t} pattern="[0-9]{2}:[0-9]{2}"
+                                           // onKeyDown={(e) => {e.preventDefault();e.stopPropagation()}}
+                                           onChange={(e) => setT(e.target.value)} />
                                 </div>
                             </div>
+                            {/*TODO: fix styling on mobile.*/}
                             <div className={styles.duration}>
                                 <div className={styles.durationInput} style={{width: "50%", paddingRight: "5px"}}>
                                     <select value={hours}
@@ -143,6 +124,7 @@ const Create: NextPage = () => {
                                     <p style={{fontSize: "16px", width: "100%"}}>All day</p>
                                 </div>*/}
                             </div>
+                            <br/>
                             {service && (<label>Service</label>)}
                             <input type={"text"} placeholder={"service"} value={service}
                                    onChange={e => setService(e.target.value)} />
@@ -163,8 +145,9 @@ const Create: NextPage = () => {
                                     </button>
                                 )
                             }
-                            <br/><br/>
-                            {(dateTime && (parseInt(hours) > 0 || parseInt(minutes) > 0) && service && operator) ? (
+                            <br />
+                            <br />
+                            {((parseInt(hours) > 0 || parseInt(minutes) > 0) && service && operator) ? (
                                 <button className={"btn"} onClick={generate}>
                                     Create
                                 </button>
