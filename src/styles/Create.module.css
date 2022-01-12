@@ -106,14 +106,12 @@
         width: 80%;
     }
     .duration, .inline {
-        border: green solid 1px;
         width: 100%;
         flex-direction: column;
     }
     .durationInput, .dateTimeInput {
         min-width: 100%;
         width: 100%;
-        border: blue solid 1px;
     }
 }
 
