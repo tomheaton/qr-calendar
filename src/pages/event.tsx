@@ -4,6 +4,7 @@ import styles from "../styles/Event.module.css";
 import {CalendarEvent, google, ics, outlook, yahoo} from "calendar-link";
 import Head from "next/head";
 import type {EventData} from "../types/types";
+import dayjs from "dayjs";
 
 const Event: NextPage = () => {
 
