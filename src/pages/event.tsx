@@ -70,12 +70,13 @@ const Event: NextPage = () => {
             <br/>
             <div className={"grid"}>
                 <div className={styles.card}>
-                    <p>Time: {new Date(dateTime).toTimeString()}</p>
-                    <p>Date: {new Date(dateTime).toDateString()}</p>
+                    <p>Time: {dayjs(dateTime).format("h:mm A UTC")}</p>
+                    <p>Date: {dayjs(dateTime).format("dddd, D MMMM YYYY")}</p>
                     <p>
                         Duration: {allDay ? "All Day" : (
-                        `${hours} hour${hour > 1 ? "s" : ""}${minute > 0 ? ` ${minutes} minutes` : ""}`)}
+                        `${hours} hour${hour > 1 ? "s" : ""}${minute > 0 ? `, ${minutes} minutes` : ""}`)}
                     </p>
+                    <br />
                     <p>Service: {service}</p>
                     <p>Operator: {operator}</p>
                     {
