@@ -1,9 +1,20 @@
-.duration, .inline {
+.duration {
     width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    /*overflow: hidden;*/
+}
+
+.inline {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     align-items: center;
-    overflow: hidden;
+    justify-content: space-between;
 }
 
 .main {
@@ -63,14 +74,27 @@
 
 .duration input, .duration select {
     width: 4rem;
-    margin-right: 10px;
 }
 
 .durationInput {
     align-items: center;
-    width: 50%;
+    width: 45%;
     display: flex;
     flex-direction: row;
+}
+
+.durationInput p {
+    text-align: center;
+    width: 100%;
+}
+
+.durationInput select {
+    width: 50%;
+    min-width: 50%;
+}
+
+.dateTimeInput {
+    width: 45%;
 }
 
 @media (max-width: 600px) {
@@ -81,8 +105,15 @@
     .card {
         width: 80%;
     }
-    .duration {
+    .duration, .inline {
+        border: green solid 1px;
+        width: 100%;
         flex-direction: column;
+    }
+    .durationInput, .dateTimeInput {
+        min-width: 100%;
+        width: 100%;
+        border: blue solid 1px;
     }
 }
 

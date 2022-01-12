@@ -13,8 +13,8 @@ const Create: NextPage = () => {
     const [showLocation, setShowLocation] = useState<boolean>(false);
 
     // TODO: combine these into a dayjs time type and set date and time.
-    const [d, setD] = useState<string>(dayjs().format("YYYY-MM-DD"));
-    const [t, setT] = useState<string>(dayjs().format("HH:mm"));
+    const [date, setDate] = useState<string>(dayjs().format("YYYY-MM-DD"));
+    const [time, setTime] = useState<string>(dayjs().format("HH:mm"));
     const [hours, setHours] = useState<string>("0");
     const [minutes, setMinutes] = useState<string>("0");
     // TODO: finish implementing allDay option.
@@ -37,7 +37,7 @@ const Create: NextPage = () => {
     }, []);
 
     const generate = async () => {
-        let _dateTime = new Date(`${d}T${t}`).toISOString();
+        let _dateTime = new Date(`${date}T${time}`).toISOString();
         await setLink(
             `${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`
             + `?dateTime=${encodeURIComponent(_dateTime)}`
@@ -82,21 +82,21 @@ const Create: NextPage = () => {
                         <div className={styles.card}>
                             {/*TODO: form?*/}
                             <div className={styles.inline}>
-                                <div style={{width: "50%", paddingRight: "5px"}}>
-                                    <input type={"date"} value={d}
+                                <div className={styles.dateTimeInput}>
+                                    <input type={"date"} value={date}
                                            min={dayjs().format("YYYY-MM-DD")}
                                            onKeyDown={(e) => {e.preventDefault();e.stopPropagation()}}
-                                           onChange={(e) => setD(e.target.value)} />
+                                           onChange={(e) => setDate(e.target.value)} />
                                 </div>
-                                <div style={{width: "50%", paddingLeft: "5px"}}>
-                                    <input type={"time"} value={t} pattern="[0-9]{2}:[0-9]{2}"
+                                <div className={styles.dateTimeInput}>
+                                    <input type={"time"} value={time}
+                                           pattern="[0-9]{2}:[0-9]{2}"
                                            // onKeyDown={(e) => {e.preventDefault();e.stopPropagation()}}
-                                           onChange={(e) => setT(e.target.value)} />
+                                           onChange={(e) => setTime(e.target.value)} />
                                 </div>
                             </div>
-                            {/*TODO: fix styling on mobile.*/}
                             <div className={styles.duration}>
-                                <div className={styles.durationInput} style={{width: "50%", paddingRight: "5px"}}>
+                                <div className={styles.durationInput}>
                                     <select value={hours}
                                             onChange={(e) => {setHours((parseInt(e.target.value)).toString())}}>
                                         {Array.from(Array(25), (_, i) => i).map((x) => {
@@ -107,8 +107,9 @@ const Create: NextPage = () => {
                                     </select>
                                     <p>hours</p>
                                 </div>
-                                <div className={styles.durationInput} style={{width: "50%", paddingLeft: "5px"}}>
-                                    <select value={minutes} onChange={(e) => {setMinutes(e.target.value)}}>
+                                <div className={styles.durationInput}>
+                                    <select value={minutes}
+                                            onChange={(e) => {setMinutes(e.target.value)}}>
                                         {Array.from(Array(12), (_, i) => (i)*5).map((x) => {
                                             return (
                                                 <option value={x} key={x}>{x}</option>

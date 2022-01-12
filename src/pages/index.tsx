@@ -1,6 +1,6 @@
 import type {NextPage} from 'next';
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Index.module.css';
 import {useRouter} from "next/router";
 
 const Index: NextPage = () => {
@@ -13,7 +13,7 @@ const Index: NextPage = () => {
                 <title>QR Calendar</title>
                 <meta name="description" content="Create calendar events and share them via QR Codes."/>
                 <link rel="icon" href="/favicon.ico"/>
-                {/*<meta name="viewport" content="width=device-width" />*/}
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
             </Head>
             <main className={styles.main}>
                 <h1 className={"title"}>
