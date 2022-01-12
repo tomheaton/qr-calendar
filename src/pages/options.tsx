@@ -1,8 +1,13 @@
 import type {NextPage} from "next";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Head from "next/head";
 import {useRouter} from "next/router";
 import styles from "../styles/Create.module.css";
+
+type Data = {
+    operator: string,
+    location: string
+}
 
 const Create: NextPage = () => {
 
@@ -15,8 +20,17 @@ const Create: NextPage = () => {
     const [operator, setOperator] = useState<string>("");
     const [location, setLocation] = useState<string>("");
 
+    useEffect(() => {
+        const _data = localStorage.getItem("data");
+        if (_data) {
+            const data: Data = JSON.parse(_data)
+            setOperator(data.operator)
+            setLocation(data.location)
+        }
+    }, []);
+
     const handleSave = () => {
-        console.log(`Operator: ${operator}\nLocation: ${location}`);
+        localStorage.setItem("data", JSON.stringify({operator, location}));
     }
 
     return (
