@@ -51,8 +51,8 @@ const Create: NextPage = () => {
                     {location && (<label>Location</label>)}
                     <input type={"text"} placeholder={"location"} value={location}
                            onChange={(e) => setLocation(e.target.value)}/>
-                    <button className={"button-9"} onClick={handleSave}>Save</button>
-                    <button className={"button-9"} onClick={returnHome}>Return Home</button>
+                    <button className={"btn"} onClick={handleSave}>Save</button>
+                    <button className={"btn"} onClick={returnHome}>Return Home</button>
                 </div>
             </div>
         </div>

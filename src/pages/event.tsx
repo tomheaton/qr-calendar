@@ -55,7 +55,7 @@ const Event: NextPage = () => {
                 <div className={"grid"}>
                     <div className={styles.cardQr}>
                         <p className={"description"}>Invalid URL Params ⚠️️</p>
-                        <button className={"button-9"} onClick={returnHome}>Return Home</button>
+                        <button className={"btn"} onClick={returnHome}>Return Home</button>
                     </div>
                 </div>
             </div>

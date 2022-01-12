@@ -78,7 +78,7 @@ const Create: NextPage = () => {
                         <div className={styles.card2}>
                             <QRCode id={"QRCode"} value={link}/>
                             <p className={"text"}>Scan the QR Code to share!</p>
-                            <button className={"button-9"} onClick={() => {setDone(false)}}>
+                            <button className={"btn"} onClick={() => {setDone(false)}}>
                                 Edit
                             </button>
                             <br/>
@@ -145,7 +145,7 @@ const Create: NextPage = () => {
                                                onChange={e => setLocation(e.target.value)} />
                                     </>
                                 ) : (
-                                    <button className={"button-9"}
+                                    <button className={"btn"}
                                             onClick={() => {setShowLocation(true)}}>
                                         add location
                                     </button>
@@ -153,12 +153,12 @@ const Create: NextPage = () => {
                             }
                             <br/><br/>
                             {(dateTime && (parseInt(hours) > 0 || parseInt(minutes) > 0) && service && operator) ? (
-                                <button className={"button-9"} onClick={generate}>
+                                <button className={"btn"} onClick={generate}>
                                     Create
                                 </button>
                             ) : (
                                 <>
-                                    <button disabled={true} className={"button-9"}>
+                                    <button disabled={true} className={"btn"}>
                                         Create
                                     </button>
                                     <br />

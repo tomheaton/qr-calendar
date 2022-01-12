@@ -25,7 +25,7 @@ const Index: NextPage = () => {
                     button below!
                 </p>
                 <div className={styles.buttonContainer}>
-                    <button className={"button-9"} style={{width: "80%"}} onClick={() => {router.push("/create")}}>
+                    <button className={"btn"} style={{width: "80%"}} onClick={() => {router.push("/create")}}>
                         Create
                     </button>
                 </div>
