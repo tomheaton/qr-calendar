@@ -28,11 +28,3 @@
     padding: 12px;
     cursor: pointer;
 }
-
-.themeButton[data-theme="light"] {
-    color: #212529;
-}
-
-.themeButton[data-theme="dark"] {
-    color: #e3e3e3;
-}
