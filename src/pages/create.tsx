@@ -102,8 +102,17 @@ const Create: NextPage = () => {
                             <input min={Date.now()} defaultValue={Date.now()} type={"datetime-local"}
                                    className={styles.dateTime}
                                    onChange={(e) => handleDateTimeChangeNew(e.target.value)} />
+                            <input type={"time"} />
+                            <div className={styles.inline}>
+                                <div style={{width: "50%", paddingRight: "5px"}}>
+                                    <input type={"date"} />
+                                </div>
+                                <div style={{width: "50%", paddingLeft: "5px"}}>
+                                    <input type={"time"} />
+                                </div>
+                            </div>
                             <div className={styles.duration}>
-                                <div className={styles.durationInput}>
+                                <div className={styles.durationInput} style={{width: "50%", paddingRight: "5px"}}>
                                     <select value={hours}
                                             onChange={(e) => {setHours((parseInt(e.target.value)).toString())}}>
                                         {Array.from(Array(25), (_, i) => i).map((x) => {
@@ -112,9 +121,9 @@ const Create: NextPage = () => {
                                             );
                                         })}
                                     </select>
-                                    <p style={{paddingRight: "10px"}}>hours</p>
+                                    <p>hours</p>
                                 </div>
-                                <div className={styles.durationInput} >
+                                <div className={styles.durationInput} style={{width: "50%", paddingLeft: "5px"}}>
                                     <select value={minutes} onChange={(e) => {setMinutes(e.target.value)}}>
                                         {Array.from(Array(12), (_, i) => (i)*5).map((x) => {
                                             return (
