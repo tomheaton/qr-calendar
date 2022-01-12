@@ -12,21 +12,7 @@ const Footer = () => {
     }
 
     return (
-        // <footer className={styles.footer}>
-        <footer className={`dev ${styles.footer}`}>
-            {/*<div style={{width: "50%"}}>
-                <a target="_blank" href="https://www.tomheaton.dev" rel="noopener noreferrer">
-                    Tom Heaton
-                </a>
-            </div>
-            <div onClick={handleToggleTheme} className={styles.themeButton}>
-                <i className={`bi ${icon}`} aria-label="Theme Toggle"/>
-            </div>
-            <div style={{width: "50%"}}>
-                <a target="_blank" href="https://www.github.com/tomheaton/qr-calendar" rel="noopener noreferrer">
-                    View Source
-                </a>
-            </div>*/}
+        <footer className={styles.footer}>
             <div>
                 <a target="_blank" href="https://www.tomheaton.dev" rel="noopener noreferrer">
                     Tom Heaton
