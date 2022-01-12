@@ -15,7 +15,7 @@ const Create: NextPage = () => {
     // TODO: combine these into a dayjs time type and set date and time.
     const [date, setDate] = useState<string>(dayjs().format("YYYY-MM-DD"));
     const [time, setTime] = useState<string>(dayjs().format("HH:mm"));
-    const [hours, setHours] = useState<string>("0");
+    const [hours, setHours] = useState<string>("1");
     const [minutes, setMinutes] = useState<string>("0");
     // TODO: finish implementing allDay option.
     const [allDay, setAllDay] = useState<boolean>(false)
