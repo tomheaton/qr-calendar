@@ -2,7 +2,7 @@
   "theme_color": "#405cf5",
   "background_color": "#212529",
   "display": "standalone",
-  "start_url": "https://qr-calendar.com",
+  "start_url": "/",
   "scope": "/",
   "name": "QR Calendar",
   "short_name": "QR Calendar",
