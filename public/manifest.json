@@ -1,20 +1,48 @@
 {
+  "theme_color": "#405cf5",
+  "background_color": "#212529",
+  "display": "standalone",
+  "start_url": "https://qr-calendar.com",
+  "scope": "/",
   "name": "QR Calendar",
   "short_name": "QR Calendar",
-  "start_url": "https://qr-calendar.vercel.app",
-  "display": "standalone",
-  "theme_color": "#66b193",
-  "background_color": "#212529",
+  "description": "Create calendar events and share them via QR Codes.",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
+      "src": "/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/android-chrome-512x512.png",
+      "src": "/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Create an event.",
+      "short_name": "Create",
+      "description": "Create a new calendar event.",
+      "url": "/create",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Edit options.",
+      "short_name": "Options",
+      "description": "Edit options for calendar events.",
+      "url": "/options",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
     }
   ]
 }

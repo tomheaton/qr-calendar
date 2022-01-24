@@ -1,8 +1,8 @@
 import styles from "../styles/Footer.module.css";
-import {useState} from "react";
+import React, {useState} from "react";
 import {getTheme, toggleTheme} from "../utils/theme";
 
-const Footer = () => {
+const Footer: React.FC = () => {
 
     const [icon, setIcon] = useState<string>("bi-moon-fill");
 
