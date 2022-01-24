@@ -1,6 +1,6 @@
 # QR Calendar :calendar:
 
-### Check out a live version [here](https://qr-calendar.vercel.app) :point_left:
+### Check out a live version [here](https://qr-calendar.com) :point_left:
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
