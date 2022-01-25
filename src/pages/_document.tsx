@@ -15,8 +15,8 @@ class MyDocument extends Document {
                     }} />
 
                     <link rel="icon" href="/favicon.ico"/>
-                    <link rel="canonical" href="https://qr-calender.vercel.app"/>
-                    <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+                    <link rel="canonical" href="https://qr-calender.com"/>
+                    <link rel="apple-touch-icon" href="/calendar.png"/>
                     <link rel="manifest" href="/manifest.json"/>
 
                     <meta charSet="utf-8" />
@@ -26,7 +26,14 @@ class MyDocument extends Document {
                     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#fff"/>
                     <meta name="author" content="Tom Heaton"/>
                     <meta name="description" content="QR Calendar - Create and Share events to calendars using QR codes"/>
-                    <meta name="keywords" content="Software, Developer, Code, Programming"/>
+                    <meta name="keywords" content="QR Code, Calendar, QR Calendar, Share, Event"/>
+
+                    <meta property="og:title" content="QR Calendar"/>
+                    <meta property="og:site_name" content="QR Calendar"/>
+                    <meta property="og:url" content="https://qr-calendar.com"/>
+                    <meta property="og:description" content="Create calendar events and share them via QR Codes."/>
+                    <meta property="og:type" content="website"/>
+                    <meta property="og:image" content="https://qr-calendar.com/calendar.png"/>
 
                     {/*<title>QR Calendar</title>*/}
                 </Head>
