@@ -30,19 +30,20 @@ const Create: NextPage = () => {
     }
 
     return (
-        <div className={"h-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
+        <div className={"h-screen w-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
             <Head>
                 <title>Options | QR Calendar</title>
                 <meta name="description" content="Create calendar events and share them via QR Codes."/>
                 <link rel="icon" href={"/favicon.ico"}/>
             </Head>
-            <main className={"h-full flex flex-col justify-center items-center"}>
+            <main className={"h-full w-full flex flex-col justify-center items-center"}>
                 <h1 className={"text-6xl font-bold text-center"}>
                     Options 🛠️
                 </h1>
                 <br />
-                <div className={styles.card}>
-                    <label htmlFor={"service"} className={"block"}>
+                {/*<div className={styles.card}>*/}
+                <div className={"card w-5/6 md:w-1/4"}>
+                    <label htmlFor={"service"}>
                         Service
                     </label>
                     <input type={"text"}
@@ -77,10 +78,11 @@ const Create: NextPage = () => {
                     />
                     <br />
                     <br />
-                    <div className={"w-full flex justify-between"}>
+                    <div className={"flex flex-col justify-between"}>
                         <button className={"button"} onClick={handleSave}>
                             Save
                         </button>
+                        <br/>
                         <button className={"button"} onClick={() => {router.push("/")}}>
                             Return Home
                         </button>

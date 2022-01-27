@@ -62,7 +62,7 @@ const Create: NextPage = () => {
             {done ? (
                 <>
                     <div className={"grid"}>
-                        <div className={styles.card2}>
+                        <div className={"card w-full"}>
                             <QRCode id={"QRCode"} value={link} level={"L"}/>
                             <p className={"text"}>Scan the QR Code to share!</p>
                             <button className={"btn"} onClick={() => {setDone(false)}}>
