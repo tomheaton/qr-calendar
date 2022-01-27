@@ -1,18 +1,15 @@
-import type {NextPage} from "next";
+import {NextPage} from "next";
 import {useEffect, useState} from "react";
 import Head from "next/head";
 import {useRouter} from "next/router";
 import styles from "@styles/Create.module.css";
 // @ts-ignore
-import type {OptionsData} from "@types/types"; // TODO: fix this.
+import {OptionsData} from "@types/types";
+import Footer from "@components/footer"; // TODO: fix this.
 
 const Create: NextPage = () => {
 
     const router = useRouter();
-
-    const returnHome = () => {
-        router.push("/");
-    }
 
     const [service, setService] = useState<string>("");
     const [operator, setOperator] = useState<string>("");
@@ -33,29 +30,64 @@ const Create: NextPage = () => {
     }
 
     return (
-        <div className={"container"}>
+        <div className={"h-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
             <Head>
                 <title>Options | QR Calendar</title>
                 <meta name="description" content="Create calendar events and share them via QR Codes."/>
-                <link rel="icon" href="/favicon.ico"/>
+                <link rel="icon" href={"/favicon.ico"}/>
             </Head>
-            <h1 className={"title"}>Options 🛠️</h1>
-            <br />
-            <div className={"grid"}>
+            <main className={"h-full flex flex-col justify-center items-center"}>
+                <h1 className={"text-6xl font-bold text-center"}>
+                    Options 🛠️
+                </h1>
+                <br />
                 <div className={styles.card}>
-                    {service && (<label>Service</label>)}
-                    <input type={"text"} placeholder={"service"} value={service}
-                           onChange={(e) => setService(e.target.value)}/>
-                    {operator && (<label>Operator</label>)}
-                    <input type={"text"} placeholder={"operator"} value={operator}
-                           onChange={(e) => setOperator(e.target.value)}/>
-                    {location && (<label>Location</label>)}
-                    <input type={"text"} placeholder={"location"} value={location}
-                           onChange={(e) => setLocation(e.target.value)}/>
-                    <button className={"btn"} onClick={handleSave}>Save</button>
-                    <button className={"btn"} onClick={returnHome}>Return Home</button>
+                    <label htmlFor={"service"} className={"block"}>
+                        Service
+                    </label>
+                    <input type={"text"}
+                           name={"service"}
+                           id={"service"}
+                           placeholder={"service"}
+                           value={service}
+                           required={true}
+                           onChange={(e) => setService(e.target.value)}
+                    />
+                    <label htmlFor={"operator"}>
+                        Operator
+                    </label>
+                    <input type={"text"}
+                           name={"operator"}
+                           id={"operator"}
+                           placeholder={"operator"}
+                           value={operator}
+                           required={true}
+                           onChange={(e) => setOperator(e.target.value)}
+                    />
+                    <label htmlFor={"location"}>
+                        Location
+                    </label>
+                    <input type={"text"}
+                           name={"location"}
+                           id={"location"}
+                           placeholder={"location"}
+                           value={location}
+                           required={false}
+                           onChange={(e) => setLocation(e.target.value)}
+                    />
+                    <br />
+                    <br />
+                    <div className={"w-full flex justify-between"}>
+                        <button className={"button"} onClick={handleSave}>
+                            Save
+                        </button>
+                        <button className={"button"} onClick={() => {router.push("/")}}>
+                            Return Home
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </main>
+            <Footer />
         </div>
     );
 }

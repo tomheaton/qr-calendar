@@ -1,7 +1,6 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@styles/globals.css';
 import {AppProps} from 'next/app';
-import Layout from '../components/layout';
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 
@@ -33,15 +32,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
     }, [router.events]);
 
     return (
-        loading ? (
-            <div>
-                <h1>loading...</h1>
-            </div>
-        ) : (
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
-        )
+        loading ? (<h1>loading...</h1>) : (<Component {...pageProps} />)
     );
 }
 

@@ -80,11 +80,7 @@ const Event: NextPage = () => {
                     <br />
                     <p>Service: {service}</p>
                     <p>Operator: {operator}</p>
-                    {
-                        location && (
-                            <p>Location: {location}</p>
-                        )
-                    }
+                    {location && (<p>Location: {location}</p>)}
                 </div>
             </div>
             <br/>
