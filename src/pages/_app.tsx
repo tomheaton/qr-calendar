@@ -1,6 +1,6 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import '../styles/globals.css';
-import type {AppProps} from 'next/app';
+import '@styles/globals.css';
+import {AppProps} from 'next/app';
 import Layout from '../components/layout';
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";

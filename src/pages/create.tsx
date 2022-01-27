@@ -1,9 +1,10 @@
-import type {NextPage} from "next";
-import styles from "../styles/Create.module.css";
+import {NextPage} from "next";
+import styles from "@styles/Create.module.css";
 import {useEffect, useState} from "react";
 import QRCode from "react-qr-code";
 import Head from "next/head";
-import type {OptionsData} from "../types/types";
+// @ts-ignore
+import {OptionsData} from "@types/types"; // TODO: fix this.
 import dayjs from 'dayjs';
 
 const Create: NextPage = () => {

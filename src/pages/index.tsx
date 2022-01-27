@@ -1,6 +1,6 @@
-import type {NextPage} from 'next';
+import {NextPage} from 'next';
 import Head from 'next/head';
-import styles from '../styles/Index.module.css';
+import styles from '@styles/Index.module.css';
 import {useRouter} from "next/router";
 
 const Index: NextPage = () => {

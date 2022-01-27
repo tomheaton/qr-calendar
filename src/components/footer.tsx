@@ -1,6 +1,6 @@
-import styles from "../styles/Footer.module.css";
+import styles from "@styles/Footer.module.css";
 import React, {useState} from "react";
-import {getTheme, toggleTheme} from "../utils/theme";
+import {getTheme, toggleTheme} from "@utils/theme";
 
 const Footer: React.FC = () => {
 

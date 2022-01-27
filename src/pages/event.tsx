@@ -1,9 +1,10 @@
-import type {NextPage} from "next";
+import {NextPage} from "next";
 import {useRouter} from "next/router";
-import styles from "../styles/Event.module.css";
+import styles from "@styles/Event.module.css";
 import {CalendarEvent, google, ics, outlook, yahoo} from "calendar-link";
 import Head from "next/head";
-import type {EventData} from "../types/types";
+// @ts-ignore
+import {EventData} from "@types/types"; // TODO: fix this.
 import dayjs from "dayjs";
 
 const Event: NextPage = () => {

@@ -2,8 +2,9 @@ import type {NextPage} from "next";
 import {useEffect, useState} from "react";
 import Head from "next/head";
 import {useRouter} from "next/router";
-import styles from "../styles/Create.module.css";
-import type {OptionsData} from "../types/types";
+import styles from "@styles/Create.module.css";
+// @ts-ignore
+import type {OptionsData} from "@types/types"; // TODO: fix this.
 
 const Create: NextPage = () => {
 
