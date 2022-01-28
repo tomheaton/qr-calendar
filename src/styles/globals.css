@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-    /*color-scheme: light dark;*/
+    color-scheme: light dark;
 
     --cream-color: #F1EEDF;
     --light-blue-colour: #567099;
