@@ -51,4 +51,5 @@ This is the todo list:
 - [x] clean up css
 - [x] finish project
 - [ ] add "all day" option
-- [ ] tailwindcss ?
+- [x] tailwindcss ?
+- [ ] fix inner input box styling
