@@ -29,7 +29,7 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 100%;
+    width: 60%;
 }
 
 .button:focus, .button:hover {
@@ -62,7 +62,9 @@
     width: 100%;
 }
 
-.card:hover, .card:focus, .card:active {
+.card:hover,
+.card:focus,
+.card:active {
     /*color: #0070f3;*/
     border-color: #0070f3;
 }
