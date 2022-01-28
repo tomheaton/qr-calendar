@@ -13,6 +13,8 @@ const Create: NextPage = () => {
     const [service, setService] = useState<string>("");
     const [operator, setOperator] = useState<string>("");
     const [location, setLocation] = useState<string>("");
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {
         const _data = localStorage.getItem("data");
@@ -27,7 +29,15 @@ const Create: NextPage = () => {
     const handleSubmit = async (e: SyntheticEvent) => {
         e.preventDefault();
 
+        if (isLoading) {
+            return;
+        }
+
+        setIsLoading(true);
+        setShowMessage(false)
         await localStorage.setItem("data", JSON.stringify({ service, operator, location }));
+        setIsLoading(false);
+        setShowMessage(true)
     }
 
     return (
@@ -42,6 +52,7 @@ const Create: NextPage = () => {
                     Options 🛠️
                 </h1>
                 <br />
+                <p>Set default values for this site.</p>
                 <form className={"card"} onSubmit={handleSubmit} autoComplete={"off"}>
                     <label htmlFor={"service"}>
                         Service
@@ -79,9 +90,14 @@ const Create: NextPage = () => {
                     <br />
                     <br />
                     <div className={"flex flex-col justify-between"}>
-                        <button className={"button"} type={"submit"}>
-                            Save
+                        <button className={"button"} type={"submit"} disabled={isLoading}>
+                            {isLoading ? "loading..." : "Save"}
                         </button>
+                        {showMessage && (
+                            <p className={"text-center mt-2"}>
+                                Saved to local storage.
+                            </p>
+                        )}
                         <br/>
                         <button className={"button"} onClick={() => {router.push("/")}}>
                             Return Home
