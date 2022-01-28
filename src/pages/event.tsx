@@ -35,7 +35,7 @@ const Event: NextPage = () => {
         <Head>
             <title>Event | QR Calendar</title>
             <meta name="description" content="Create calendar events and share them via QR Codes."/>
-            <link rel="icon" href="/favicon.ico"/>
+            <link rel="icon" href={"/favicon.ico"}/>
         </Head>
     );
 

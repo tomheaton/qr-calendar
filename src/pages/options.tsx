@@ -1,8 +1,7 @@
 import {NextPage} from "next";
-import {useEffect, useState} from "react";
+import {SyntheticEvent, useEffect, useState} from "react";
 import Head from "next/head";
 import {useRouter} from "next/router";
-import styles from "@styles/Create.module.css";
 // @ts-ignore
 import {OptionsData} from "@types/types";
 import Footer from "@components/footer"; // TODO: fix this.
@@ -25,33 +24,34 @@ const Create: NextPage = () => {
         }
     }, []);
 
-    const handleSave = () => {
-        localStorage.setItem("data", JSON.stringify({ service, operator, location }));
+    const handleSubmit = async (e: SyntheticEvent) => {
+        e.preventDefault();
+
+        await localStorage.setItem("data", JSON.stringify({ service, operator, location }));
     }
 
     return (
         <div className={"h-screen w-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
             <Head>
                 <title>Options | QR Calendar</title>
-                <meta name="description" content="Create calendar events and share them via QR Codes."/>
-                <link rel="icon" href={"/favicon.ico"}/>
+                <meta name={"description"} content={"Create calendar events and share them via QR Codes."}/>
+                <link rel={"icon"} href={"/favicon.ico"}/>
             </Head>
             <main className={"h-full w-full flex flex-col justify-center items-center"}>
                 <h1 className={"text-6xl font-bold text-center"}>
                     Options 🛠️
                 </h1>
                 <br />
-                {/*<div className={styles.card}>*/}
-                <div className={"card w-5/6 md:w-1/4"}>
+                <form className={"card"} onSubmit={handleSubmit} autoComplete={"off"}>
                     <label htmlFor={"service"}>
                         Service
                     </label>
                     <input type={"text"}
                            name={"service"}
                            id={"service"}
-                           placeholder={"service"}
+                           placeholder={"Haircut"}
                            value={service}
-                           required={true}
+                           required={false}
                            onChange={(e) => setService(e.target.value)}
                     />
                     <label htmlFor={"operator"}>
@@ -60,9 +60,9 @@ const Create: NextPage = () => {
                     <input type={"text"}
                            name={"operator"}
                            id={"operator"}
-                           placeholder={"operator"}
+                           placeholder={"Alannah"}
                            value={operator}
-                           required={true}
+                           required={false}
                            onChange={(e) => setOperator(e.target.value)}
                     />
                     <label htmlFor={"location"}>
@@ -71,7 +71,7 @@ const Create: NextPage = () => {
                     <input type={"text"}
                            name={"location"}
                            id={"location"}
-                           placeholder={"location"}
+                           placeholder={"Lana's Hair Salon"}
                            value={location}
                            required={false}
                            onChange={(e) => setLocation(e.target.value)}
@@ -79,7 +79,7 @@ const Create: NextPage = () => {
                     <br />
                     <br />
                     <div className={"flex flex-col justify-between"}>
-                        <button className={"button"} onClick={handleSave}>
+                        <button className={"button"} type={"submit"}>
                             Save
                         </button>
                         <br/>
@@ -87,7 +87,7 @@ const Create: NextPage = () => {
                             Return Home
                         </button>
                     </div>
-                </div>
+                </form>
             </main>
             <Footer />
         </div>

@@ -11,8 +11,8 @@ const Index: NextPage = () => {
         <div className={"h-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
             <Head>
                 <title>QR Calendar</title>
-                <meta name="description" content="Create calendar events and share them via QR Codes."/>
-                <link rel="icon" href={"/favicon.ico"}/>
+                <meta name={"description"} content={"Create calendar events and share them via QR Codes."}/>
+                <link rel={"icon"} href={"/favicon.ico"}/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
             </Head>
             <main className={"h-full flex flex-col justify-center items-center"}>

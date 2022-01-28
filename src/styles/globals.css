@@ -69,7 +69,7 @@ a {
 }
 
 .button {
-    @apply bg-[#405cf5] py-2 px-4 rounded text-xl;
+    @apply bg-[#405cf5] py-2 px-4 rounded-lg text-xl;
 }
 
 .btn {
@@ -145,13 +145,21 @@ input[type="checkbox"] {
 }
 
 input {
+/*    font-size: 1.2rem;
+    margin: 4px 0;
+    line-height: 1.5;
+    width: 100%;*/
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     /*box-sizing: border-box;*/
 }
 
+p {
+    @apply text-xl;
+}
+
 .card {
-    @apply mt-10 p-5 text-left border-2 border-[#eaeaea] rounded-xl;
+    @apply mt-10 p-5 text-left border-2 border-[#eaeaea] rounded-xl w-5/6 md:w-1/4;
     transition: color 0.15s ease, border-color 0.15s ease;
 }
 

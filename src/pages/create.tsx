@@ -1,17 +1,19 @@
 import {NextPage} from "next";
 import styles from "@styles/Create.module.css";
-import {useEffect, useState} from "react";
+import {SyntheticEvent, useEffect, useState} from "react";
 import QRCode from "react-qr-code";
 import Head from "next/head";
 // @ts-ignore
 import {OptionsData} from "@types/types"; // TODO: fix this.
 import dayjs from 'dayjs';
+import Footer from "@components/footer";
 
 const Create: NextPage = () => {
 
     const [done, setDone] = useState<boolean>(false);
     const [link, setLink] = useState<string>("");
     const [showLocation, setShowLocation] = useState<boolean>(false);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     // TODO: combine these into a dayjs time type and set date and time.
     const [date, setDate] = useState<string>(dayjs().format("YYYY-MM-DD"));
@@ -24,10 +26,12 @@ const Create: NextPage = () => {
     const [operator, setOperator] = useState<string>("");
     const [location, setLocation] = useState<string>("");
 
+    const isDisabled: boolean = !((parseInt(hours) > 0 || parseInt(minutes) > 0) && service && operator);
+
     useEffect(() => {
-        const _data = localStorage.getItem("data");
-        if (_data) {
-            const data: OptionsData = JSON.parse(_data)
+        const rawData = localStorage.getItem("data");
+        if (rawData) {
+            const data: OptionsData = JSON.parse(rawData)
             setService(data.service)
             setOperator(data.operator)
             if (data.location.length > 0) {
@@ -37,7 +41,9 @@ const Create: NextPage = () => {
         }
     }, []);
 
-    const generate = async () => {
+    const handleSubmit = async (e: SyntheticEvent) => {
+        e.preventDefault();
+
         let _dateTime = new Date(`${date}T${time}`).toISOString();
         await setLink(
             `${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`
@@ -51,122 +57,153 @@ const Create: NextPage = () => {
     }
 
     return (
-        <div className={"container"}>
+        <div className={"h-screen w-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
             <Head>
                 <title>Create | QR Calendar</title>
-                <meta name="description" content="Create calendar events and share them via QR Codes."/>
-                <link rel="icon" href="/favicon.ico"/>
+                <meta name={"description"} content={"Create calendar events and share them via QR Codes."}/>
+                <link rel={"icon"} href={"/favicon.ico"}/>
             </Head>
-            <h1 className={"title"}>{done ? "Share your" : "Create an"} Event</h1>
-            <br/>
-            {done ? (
-                <>
-                    <div className={"grid"}>
-                        <div className={"card w-full"}>
-                            <QRCode id={"QRCode"} value={link} level={"L"}/>
-                            <p className={"text"}>Scan the QR Code to share!</p>
-                            <button className={"btn"} onClick={() => {setDone(false)}}>
-                                Edit
-                            </button>
-                            <br/>
-                            <p className={"textSmall"}>
-                                Or click{" "}
-                                <a className={styles.quickLink} href={link}>here</a>
-                                {" "}to add manually.
-                            </p>
-                        </div>
+            <main className={"h-full w-full flex flex-col justify-center items-center"}>
+                <h1 className={"text-6xl font-bold"}>
+                    {done ? "Share your" : "Create an"} Event
+                </h1>
+                <br/>
+                {done ? (
+                    <div className={"card text-center flex flex-col justify-center items-center"}>
+                        <QRCode id={"QRCode"} value={link} level={"L"} />
+                        <p className={"my-2"}>
+                            Scan the QR Code to share!
+                        </p>
+                        <button className={"button w-3/4"} onClick={() => {setDone(false)}}>
+                            Edit
+                        </button>
+                        <br/>
+                        <p className={"text-center my-2"}>
+                            Or click{" "}
+                            <a className={"font-bold text-[#0070f3]"} href={link}>
+                                here
+                            </a>
+                            {" "}to add manually.
+                        </p>
                     </div>
-                </>
-            ) : (
-                <>
-                    <div className={"grid"}>
-                        <div className={styles.card}>
-                            {/*TODO: form?*/}
-                            <div className={styles.inline}>
-                                <div className={styles.dateTimeInput}>
-                                    <input type={"date"} value={date}
-                                           min={dayjs().format("YYYY-MM-DD")}
-                                           onKeyDown={(e) => {e.preventDefault();e.stopPropagation()}}
-                                           onChange={(e) => setDate(e.target.value)} />
-                                </div>
-                                <div className={styles.dateTimeInput}>
-                                    <input type={"time"} value={time}
-                                           pattern="[0-9]{2}:[0-9]{2}"
-                                           // onKeyDown={(e) => {e.preventDefault();e.stopPropagation()}}
-                                           onChange={(e) => setTime(e.target.value)} />
-                                </div>
+                ) : (
+                    <form className={"card"} onSubmit={handleSubmit}>
+                        <div className={"w-full flex flex-row flex-wrap items-center justify-between"}>
+                            <div className={styles.dateTimeInput}>
+                                <input type={"date"}
+                                       name={"date"}
+                                       id={"date"}
+                                       value={date}
+                                       min={dayjs().format("YYYY-MM-DD")}
+                                       onKeyDown={(e) => {e.preventDefault();e.stopPropagation()}}
+                                       onChange={(e) => setDate(e.target.value)}
+                                />
                             </div>
-                            <div className={styles.duration}>
-                                <div className={styles.durationInput}>
-                                    <select value={hours}
-                                            onChange={(e) => {setHours((parseInt(e.target.value)).toString())}}>
-                                        {Array.from(Array(25), (_, i) => i).map((x) => {
-                                            return (
-                                                <option value={x} key={x}>{x}</option>
-                                            );
-                                        })}
-                                    </select>
-                                    <p>hours</p>
-                                </div>
-                                <div className={styles.durationInput}>
-                                    <select value={minutes}
-                                            onChange={(e) => {setMinutes(e.target.value)}}>
-                                        {Array.from(Array(12), (_, i) => (i)*5).map((x) => {
-                                            return (
-                                                <option value={x} key={x}>{x}</option>
-                                            );
-                                        })}
-                                    </select>
-                                    <p>minutes</p>
-                                </div>
-                                {/*TODO: improve styling.*/}
-                                {/*<div className={styles.durationInput} style={{paddingLeft: "10px"}}>
+                            <div className={styles.dateTimeInput}>
+                                <input type={"time"}
+                                       name={"time"}
+                                       id={"time"}
+                                       value={time}
+                                       pattern={"[0-9]{2}:[0-9]{2}"}
+                                    // onKeyDown={(e) => {e.preventDefault();e.stopPropagation()}}
+                                       onChange={(e) => setTime(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                        <div className={styles.duration}>
+                            <div className={styles.durationInput}>
+                                <select value={hours}
+                                        name={"hours"}
+                                        id={"hours"}
+                                        onChange={(e) => {setHours((parseInt(e.target.value)).toString())}}>
+                                    {Array.from(Array(25), (_, i) => i).map((x) => {
+                                        return (<option value={x} key={x}>{x}</option>);
+                                    })}
+                                </select>
+                                <p className={"w-full"}>
+                                    hours
+                                </p>
+                            </div>
+                            <div className={styles.durationInput}>
+                                <select value={minutes}
+                                        name={"minutes"}
+                                        id={"minutes"}
+                                        onChange={(e) => {setMinutes(e.target.value)}}>
+                                    {Array.from(Array(12), (_, i) => (i)*5).map((x) => {
+                                        return (<option value={x} key={x}>{x}</option>);
+                                    })}
+                                </select>
+                                <p className={"w-full"}>
+                                    minutes
+                                </p>
+                            </div>
+                            {/*TODO: improve styling.*/}
+                            {/*<div className={styles.durationInput} style={{paddingLeft: "10px"}}>
                                     <input type={"checkbox"} defaultChecked={false} checked={allDay}
                                            onChange={e => {setAllDay(e.target.checked)}} />
                                     <p style={{fontSize: "16px", width: "100%"}}>All day</p>
                                 </div>*/}
-                            </div>
-                            <br/>
-                            {service && (<label>Service</label>)}
-                            <input type={"text"} placeholder={"service"} value={service}
-                                   onChange={e => setService(e.target.value)} />
-                            {operator && (<label>Operator</label>)}
-                            <input type={"text"} placeholder={"operator"} value={operator}
-                                   onChange={e => setOperator(e.target.value)} />
-                            {
-                                showLocation ? (
-                                    <>
-                                        {location && (<label>Location</label>)}
-                                        <input type={"text"} placeholder={"location"} value={location}
-                                               onChange={e => setLocation(e.target.value)} />
-                                    </>
-                                ) : (
-                                    <button className={"btn"}
-                                            onClick={() => {setShowLocation(true)}}>
-                                        Add Location
-                                    </button>
-                                )
-                            }
-                            <br />
-                            <br />
-                            {((parseInt(hours) > 0 || parseInt(minutes) > 0) && service && operator) ? (
-                                <button className={"btn"} onClick={generate}>
-                                    Create
-                                </button>
-                            ) : (
-                                <>
-                                    <button disabled={true} className={"btn"}>
-                                        Create
-                                    </button>
-                                    <br />
-                                    <br />
-                                    <p className={"text"}>Please fill out all fields!</p>
-                                </>
-                            )}
                         </div>
-                    </div>
-                </>
-            )}
+                        <br />
+                        <label htmlFor={"service"}>
+                            Service
+                        </label>
+                        <input type={"text"}
+                               name={"service"}
+                               id={"service"}
+                               placeholder={"Haircut"}
+                               value={service}
+                               required={true}
+                               onChange={e => setService(e.target.value)}
+                        />
+                        <label htmlFor={"operator"}>
+                            Operator
+                        </label>
+                        <input type={"text"}
+                               name={"operator"}
+                               id={"operator"}
+                               placeholder={"Alannah"}
+                               value={operator}
+                               required={true}
+                               onChange={e => setOperator(e.target.value)}
+                        />
+                        {showLocation ? (
+                            <>
+                                <label htmlFor={"location"}>
+                                    Location
+                                </label>
+                                <input type={"text"}
+                                       name={"location"}
+                                       id={"location"}
+                                       placeholder={"Lana's Hair Salon"}
+                                       value={location}
+                                       required={false}
+                                       onChange={e => setLocation(e.target.value)}
+                                />
+                            </>
+                        ) : (
+                            <div>
+                                <br/>
+                                <button className={"button w-full"} onClick={() => {setShowLocation(true)}}>
+                                    Add Location
+                                </button>
+                            </div>
+                        )}
+                        <br />
+                        <br />
+                        <button className={`button w-full ${isDisabled ? "cursor-not-allowed" : ""}`}
+                                type={"submit"} disabled={isDisabled}>
+                            Create
+                        </button>
+                        {errorMessage || isDisabled && (
+                            <p className={"text-center mt-2"}>
+                                Please fill out all fields!
+                            </p>
+                        )}
+                    </form>
+                )}
+            </main>
+            <Footer />
         </div>
     );
 }
