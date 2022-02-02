@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
                 <br/>
                 <a className={"cursor-pointer"} onClick={() => {router.push("/options")}}>
                     Options
-                    <i className={`bi bi-gear pl-2`} aria-label="Theme Toggle"/>
+                    <i className={`bi bi-gear-fill pl-2`} aria-label="Theme Toggle"/>
                 </a>
             </div>
         </footer>
