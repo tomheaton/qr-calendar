@@ -32,7 +32,14 @@ const MyApp = ({Component, pageProps}: AppProps) => {
     }, [router.events]);
 
     return (
-        loading ? (<h1>loading...</h1>) : (<Component {...pageProps} />)
+        loading ? (
+            <>
+                <h1>QR Calendar</h1>
+                <p>loading...</p>
+            </>
+        ) : (
+            <Component {...pageProps} />
+        )
     );
 }
 
