@@ -6,7 +6,11 @@ module.exports = {
     ],
     theme: {
         // TODO: add custom colours.
-        extend: {},
+        extend: {
+
+        },
     },
-    plugins: [],
+    plugins: [
+
+    ],
 }

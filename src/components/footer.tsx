@@ -20,18 +20,18 @@ const Footer: React.FC = () => {
                     Tom Heaton &copy; {new Date().getFullYear()}
                 </a>
             </div>
-            <div onClick={handleToggleTheme} className={"w-1/2 md:w-1/3 text-xl cursor-pointer p-[12px]"}>
-                <i className={`bi ${icon}`} aria-label="Theme Toggle"/>
+            <div className={"w-1/2 md:w-1/3 text-xl cursor-pointer p-[12px]"} onClick={handleToggleTheme}>
+                <i className={`bi ${icon}`} aria-label="Theme Toggle" />
             </div>
             <div className={"w-full md:w-1/3 flex justify-evenly items-center"}>
                 <a target="_blank" href="https://www.github.com/tomheaton/qr-calendar" rel="noopener noreferrer">
                     View Source
-                    <i className={`bi bi-code-slash pl-2`} aria-label="Theme Toggle"/>
+                    <i className={`bi bi-code-slash pl-2`} aria-label="Theme Toggle" />
                 </a>
                 <br/>
                 <a className={"cursor-pointer"} onClick={() => {router.push("/options")}}>
                     Options
-                    <i className={`bi bi-gear-fill pl-2`} aria-label="Theme Toggle"/>
+                    <i className={`bi bi-gear-fill pl-2`} aria-label="Theme Toggle" />
                 </a>
             </div>
         </footer>
