@@ -3,7 +3,6 @@ import '@styles/globals.css';
 import {AppProps} from 'next/app';
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
-import {getTheme, setTheme} from "@utils/theme";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 
