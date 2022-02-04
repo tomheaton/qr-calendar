@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {getTheme, toggleTheme} from "@utils/theme";
+import React, {useEffect, useState} from "react";
+import {getTheme, setTheme, toggleTheme} from "@utils/theme";
 import {useRouter} from "next/router";
 
 const Footer: React.FC = () => {
@@ -7,6 +7,12 @@ const Footer: React.FC = () => {
     const router = useRouter();
 
     const [icon, setIcon] = useState<string>("bi-moon-fill");
+
+    useEffect(() => {
+        const theme = getTheme()
+        setTheme(theme)
+        setIcon(theme === "light" ? "bi-moon-fill" : "bi-sun-fill");
+    }, []);
 
     const handleToggleTheme = () => {
         toggleTheme();
