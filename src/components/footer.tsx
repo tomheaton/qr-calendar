@@ -11,8 +11,8 @@ const Footer: React.FC = () => {
     useEffect(() => {
         if (typeof window !== "undefined") {
             window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
-                const newTheme = e.matches ? "light" : "dark";
-                setTheme(newTheme);
+                setTheme(e.matches ? "light" : "dark");
+                setIcon(getTheme() === "light" ? "bi-moon-fill" : "bi-sun-fill");
             });
         }
 

@@ -8,9 +8,6 @@ const setTheme = (theme: string): void => {
 
 const getTheme = (): string => {
     if (typeof window !== "undefined") {
-        let l = window.matchMedia('(prefers-color-scheme: light)')
-        console.log(l)
-        console.log(window.matchMedia)
         const theme = localStorage.getItem("theme")
         if (theme) {
             return theme;
