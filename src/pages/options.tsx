@@ -38,6 +38,10 @@ const Create: NextPage = () => {
         await localStorage.setItem("data", JSON.stringify({ service, operator, location }));
         setIsLoading(false);
         setShowMessage(true)
+
+        setTimeout(() => {
+            setShowMessage(false)
+        }, 4000);
     }
 
     return (
