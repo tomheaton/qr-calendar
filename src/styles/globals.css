@@ -3,8 +3,6 @@
 @tailwind utilities;
 
 :root {
-    color-scheme: light dark;
-
     --cream-color: #F1EEDF;
     --light-blue-colour: #567099;
     --dark-blue-color: #313B4A;
@@ -37,35 +35,6 @@ body::-webkit-scrollbar {
 
 *::selection, *::-moz-selection {
     background: var(--lighter-blue-color);
-}
-
-/*body, body[data-theme="light"] {
-    --color-text-primary: var(--dark-gray-color);
-    --color-text-secondary: var(--dark-gray-color);
-    --color-bg-primary: white;
-    --color-bg-secondary: white;
-}
-body[data-theme="dark"] {
-    --color-text-primary: var(--white-ish-color);
-    --color-text-secondary: var(--white-ish-color);
-    --color-bg-primary: var(--dark-gray-color);
-    --color-bg-secondary: var(--gray-color);
-}*/
-
-/*
-* {
-    box-sizing: border-box;
-}
-a {
-    color: inherit;
-    text-decoration: none;
-}*/
-
-.dev {
-    border: blue solid 1px;
-}
-.dev * {
-    border: red solid 1px;
 }
 
 .button {

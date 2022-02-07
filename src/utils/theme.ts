@@ -1,4 +1,9 @@
 const setTheme = (theme: string): void => {
+    document.body.dataset.theme = theme;
+    let colorScheme = document.querySelector('meta[name="color-scheme"]');
+    // @ts-ignore
+    colorScheme.content = theme;
+
     if (theme === "light") {
         document.body.classList.remove("dark");
         return;

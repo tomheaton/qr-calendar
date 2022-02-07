@@ -22,8 +22,8 @@ class MyDocument extends Document {
                     <meta charSet="utf-8" />
                     {/*<meta name="viewport" content="width=device-width, initial-scale=1"/>*/}
                     <meta name="color-scheme" content="light dark"/>
-                    {/*<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff"/>*/}
-                    {/*<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#212529"/>*/}
+                    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#fff"/>
+                    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#212529"/>
                     <meta name="author" content="Tom Heaton"/>
                     <meta name="description" content="QR Calendar - Create and Share events to calendars using QR codes"/>
                     <meta name="keywords" content="QR Code, Calendar, QR Calendar, Share, Event"/>
