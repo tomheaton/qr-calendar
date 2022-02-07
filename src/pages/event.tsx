@@ -85,23 +85,23 @@ const Event: NextPage = () => {
                 <br/>
                 <div className={"flex flex-col"}>
                     <button className={"button my-2"} onClick={() => {router.push(google(event))}}>
-                        <i className="bi bi-google" aria-label="Google Calendar"/>
+                        <i className="bi bi-google" aria-label="Google Calendar" />
                         <p>Google Calendar</p>
                     </button>
                     <button className={"button my-2"} onClick={() => {router.push(ics(event))}}>
-                        <i className="bi bi-calendar-event-fill" aria-label="iCalendar"/>
+                        <i className="bi bi-calendar-event-fill" aria-label="iCalendar" />
                         <p>iCalendar</p>
                     </button>
                     <button className={"button my-2"} onClick={() => {router.push(outlook(event))}}>
-                        <i className="bi bi-microsoft" aria-label="Outlook"/>
+                        <i className="bi bi-microsoft" aria-label="Outlook" />
                         <p>Outlook</p>
                     </button>
                     <button className={"button my-2"} onClick={() => {router.push(yahoo(event))}}>
-                        <i className="bi bi-calendar-event-fill" aria-label="Yahoo"/>
+                        <i className="bi bi-calendar-event-fill" aria-label="Yahoo" />
                         <p>Yahoo</p>
                     </button>
                     {/*<button className={"button my-2"} onClick={() => {router.push(office365(event))}}>
-                        <i className="bi bi-windows" aria-label="Office 365"/>
+                        <i className="bi bi-windows" aria-label="Office 365" />
                         <p>Office 365</p>
                     </button>*/}
                 </div>
