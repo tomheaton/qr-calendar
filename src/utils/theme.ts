@@ -1,13 +1,18 @@
-const setTheme = (theme: "light" | "dark"): void => {
-    document.body.dataset.theme = theme;
+const setTheme = (theme: string): void => {
     let colorScheme = document.querySelector('meta[name="color-scheme"]');
     // @ts-ignore
     colorScheme.content = theme;
+
+    if (theme === "light") {
+        document.body.classList.remove("dark");
+        return;
+    }
+    document.body.classList.add("dark");
 }
 
 const getTheme = (): string => {
     if (typeof window !== "undefined") {
-        let theme = localStorage.getItem("theme")
+        const theme = localStorage.getItem("theme")
         if (theme) {
             return theme;
         }
@@ -15,7 +20,7 @@ const getTheme = (): string => {
     return "light";
 }
 
-const saveTheme = (theme: "light" | "dark"): void => {
+const saveTheme = (theme: string): void => {
     if (typeof window !== "undefined") {
         localStorage.setItem("theme", theme);
     }
@@ -25,7 +30,6 @@ const toggleTheme = (): void => {
     if (typeof window !== "undefined") {
         const current_theme = localStorage.getItem("theme") || "light";
         saveTheme(current_theme == "light" ? "dark" : "light");
-        // @ts-ignore
         setTheme(getTheme());
     }
     return;

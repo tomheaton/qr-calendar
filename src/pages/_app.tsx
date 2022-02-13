@@ -1,11 +1,10 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import '../styles/globals.css';
-import type {AppProps} from 'next/app';
-import Layout from '../components/layout';
+import '@styles/globals.css';
+import {AppProps} from 'next/app';
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 
-const MyApp = ({Component, pageProps}: AppProps) => {
+const MyApp = ({ Component, pageProps }: AppProps) => {
 
     const router = useRouter()
 
@@ -34,13 +33,12 @@ const MyApp = ({Component, pageProps}: AppProps) => {
 
     return (
         loading ? (
-            <div>
-                <h1>loading...</h1>
-            </div>
+            <>
+                <h1>QR Calendar</h1>
+                <p>loading...</p>
+            </>
         ) : (
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
+            <Component {...pageProps} />
         )
     );
 }

@@ -1,10 +1,25 @@
-import styles from "../styles/Footer.module.css";
-import React, {useState} from "react";
-import {getTheme, toggleTheme} from "../utils/theme";
+import React, {useEffect, useState} from "react";
+import {getTheme, setTheme, toggleTheme} from "@utils/theme";
+import {useRouter} from "next/router";
 
 const Footer: React.FC = () => {
 
+    const router = useRouter();
+
     const [icon, setIcon] = useState<string>("bi-moon-fill");
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
+                setTheme(e.matches ? "light" : "dark");
+                setIcon(getTheme() === "light" ? "bi-moon-fill" : "bi-sun-fill");
+            });
+        }
+
+        const theme = getTheme()
+        setTheme(theme)
+        setIcon(theme === "light" ? "bi-moon-fill" : "bi-sun-fill");
+    }, []);
 
     const handleToggleTheme = () => {
         toggleTheme();
@@ -12,18 +27,24 @@ const Footer: React.FC = () => {
     }
 
     return (
-        <footer className={styles.footer}>
-            <div>
+        <footer className={"w-full h-[100px] border-t-2 border-[#405cf5] flex items-center justify-evenly flex-wrap-reverse md:pt-0 pt-[20px] "}>
+            <div className={"w-1/2 md:w-1/3"}>
                 <a target="_blank" href="https://www.tomheaton.dev" rel="noopener noreferrer">
-                    Tom Heaton
+                    Tom Heaton &copy; {new Date().getFullYear()}
                 </a>
             </div>
-            <div onClick={handleToggleTheme} className={styles.themeButton}>
-                <i className={`bi ${icon}`} aria-label="Theme Toggle"/>
+            <div className={"w-1/2 md:w-1/3 text-xl cursor-pointer p-[12px]"} onClick={handleToggleTheme}>
+                <i className={`bi ${icon}`} aria-label="Theme Toggle" />
             </div>
-            <div>
+            <div className={"w-full md:w-1/3 flex justify-evenly items-center"}>
                 <a target="_blank" href="https://www.github.com/tomheaton/qr-calendar" rel="noopener noreferrer">
                     View Source
+                    <i className={`bi bi-code-slash pl-2`} aria-label="Theme Toggle" />
+                </a>
+                <br/>
+                <a className={"cursor-pointer"} onClick={() => {router.push("/options")}}>
+                    Options
+                    <i className={`bi bi-gear-fill pl-2`} aria-label="Theme Toggle" />
                 </a>
             </div>
         </footer>

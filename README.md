@@ -23,7 +23,6 @@ Third, create a `.env` file and add the following:
 
 ```dotenv
 NEXT_PUBLIC_CALENDAR_URL=*url*
-NEXT_PUBLIC_CALENDAR_NAME=*name*
 ```
 
 Then, run the development server:
@@ -51,4 +50,6 @@ This is the todo list:
 - [x] clean up css
 - [x] finish project
 - [ ] add "all day" option
-- [ ] tailwindcss ?
+- [x] tailwindcss ?
+- [ ] fix inner input box styling
+- [ ] add manual theme change

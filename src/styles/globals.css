@@ -1,6 +1,8 @@
-:root {
-    /*color-scheme: light dark;*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+:root {
     --cream-color: #F1EEDF;
     --light-blue-colour: #567099;
     --dark-blue-color: #313B4A;
@@ -21,24 +23,10 @@ html, body {
     scrollbar-width: none;
     height: 100vh;
     /*position: relative;*/
-    background: var(--color-bg-primary);
-    color: var(--color-text-primary);
+    /*background: var(--color-bg-primary);*/
+    /*color: var(--color-text-primary);*/
     transition: background 0.25s ease-in-out;
     text-align: center;
-}
-
-body, body[data-theme="light"] {
-    --color-text-primary: var(--dark-gray-color);
-    --color-text-secondary: var(--dark-gray-color);
-    --color-bg-primary: white;
-    --color-bg-secondary: white;
-}
-
-body[data-theme="dark"] {
-    --color-text-primary: var(--white-ish-color);
-    --color-text-secondary: var(--white-ish-color);
-    --color-bg-primary: var(--dark-gray-color);
-    --color-bg-secondary: var(--gray-color);
 }
 
 body::-webkit-scrollbar {
@@ -49,17 +37,8 @@ body::-webkit-scrollbar {
     background: var(--lighter-blue-color);
 }
 
-* {
-    box-sizing: border-box;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.dev * {
-    border: red solid 1px;
+.button {
+    @apply bg-[#405cf5] py-2 px-4 rounded-lg text-xl text-white dark:text-white;
 }
 
 .btn {
@@ -95,7 +74,8 @@ a {
     background-color: rgba(88, 115, 255, 0.56);
 }
 
-.btn:focus, .btn:hover {
+.btn:focus,
+.btn:hover {
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
 }
 
@@ -111,54 +91,6 @@ a {
     /*margin-bottom: 100px;*/
 }
 
-.title a {
-    color: #0070f3;
-    text-decoration: none;
-}
-
-.title a:hover, .title a:focus, .title a:active {
-    text-decoration: underline;
-}
-
-.title {
-    margin: 0;
-    line-height: 1.15;
-    font-size: 4rem;
-}
-
-.title, .description {
-    text-align: center;
-}
-
-.description {
-    line-height: 1.5;
-    font-size: 1.5rem;
-}
-
-.grid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 800px;
-    margin-top: 3rem;
-}
-
-.logo {
-    height: 1em;
-    margin-left: 0.5rem;
-}
-
-.text {
-    text-align: center;
-    font-size: 1.25rem;
-}
-
-.textSmall {
-    text-align: center;
-    font-size: 1.1rem;
-}
-
 input, select {
     border-style: solid;
     border-radius: 4px;
@@ -170,19 +102,41 @@ input:hover, input:focus, select:hover, select:focus {
     outline-color: #0070f3;
 }
 
-select {
-    /*background-color: #fff;*/
-    padding: 4px;
+input, select {
+    border-style: solid;
+    border-radius: 4px;
+    border-color: white;
     border-width: 2px;
-}
-
-input[type="checkbox"] {
-    width: 30px;
-    height: 30px;
+    @apply border-gray-300 dark:border-white p-[4px];
 }
 
 input {
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    /*box-sizing: border-box;*/
+    box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+    @apply w-[30px] h-[30px]
+}
+
+p {
+    @apply text-xl;
+}
+
+.card {
+    @apply mt-10 p-5 text-left border-2 border-[#eaeaea] rounded-xl w-5/6 md:w-1/4;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+    border-color: #0070f3;
+}
+
+.card input,
+.card select {
+    font-size: 1.2rem;
+    margin: 4px 0;
+    line-height: 1.5;
+    width: 100%;
 }
