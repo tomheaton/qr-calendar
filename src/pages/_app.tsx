@@ -4,7 +4,7 @@ import {AppProps} from 'next/app';
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }: AppProps) => {
 
     const router = useRouter()
 
@@ -21,7 +21,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
         const handleRouteChange = (url: URL) => {
             // @ts-ignore
-            window.gtag('config', process.env.GOOGLE_ANALYTICS_KEY, {
+            window.gtag('config', `${process.env.GOOGLE_ANALYTICS_KEY}`, {
                 page_path: url
             });
         }
@@ -43,4 +43,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     );
 }
 
-export default MyApp;
+export default App;
