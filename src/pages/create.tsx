@@ -44,6 +44,8 @@ const Create: NextPage = () => {
     const handleSubmit = async (e: SyntheticEvent) => {
         e.preventDefault();
 
+        // TODO: register click event
+
         let _dateTime = new Date(`${date}T${time}`).toISOString();
         await setLink(
             `${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`
