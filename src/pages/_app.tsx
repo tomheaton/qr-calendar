@@ -20,7 +20,6 @@ const App = ({ Component, pageProps }: AppProps) => {
         router.events.on('routeChangeError', handleComplete);
 
         const handleRouteChange = (url: URL) => {
-            // @ts-ignore
             window.gtag('config', `${process.env.GOOGLE_ANALYTICS_KEY}`, {
                 page_path: url
             });
