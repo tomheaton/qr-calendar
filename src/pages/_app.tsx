@@ -3,6 +3,7 @@ import '@styles/globals.css';
 import {AppProps} from 'next/app';
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
+import {pageView} from "../lib/gtag";
 
 const App = ({ Component, pageProps }: AppProps) => {
 
@@ -20,9 +21,10 @@ const App = ({ Component, pageProps }: AppProps) => {
         router.events.on('routeChangeError', handleComplete);
 
         const handleRouteChange = (url: URL) => {
-            window.gtag('config', `${process.env.GOOGLE_ANALYTICS_KEY}`, {
+            /*window.gtag('config', `${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_KEY}`, {
                 page_path: url
-            });
+            });*/
+            pageView(url);
         }
 
         router.events.on('routeChangeComplete', handleRouteChange);
