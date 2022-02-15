@@ -4,7 +4,8 @@ import Head from "next/head";
 import {useRouter} from "next/router";
 // @ts-ignore
 import {OptionsData} from "@types/types";
-import Footer from "@components/footer"; // TODO: fix this.
+import Footer from "@components/footer";
+import {event} from "../lib/gtag"; // TODO: fix this.
 
 const Create: NextPage = () => {
 
@@ -28,6 +29,13 @@ const Create: NextPage = () => {
 
     const handleSubmit = async (e: SyntheticEvent) => {
         e.preventDefault();
+
+        event({
+            action: "save_options",
+            category: "engagement",
+            label: "method",
+            value: 1
+        });
 
         if (isLoading) {
             return;

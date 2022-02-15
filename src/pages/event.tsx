@@ -27,11 +27,15 @@ const Event: NextPage = () => {
         ...(location && { location: location })
     };
 
+    const handleSaveToCalendar = (calendarType: "google" | "ics" | "outlook" | "yahoo"): void => {
+        // TODO: register calendar type event and push new route.
+    }
+
     const head = (
         <Head>
             <title>Event | QR Calendar</title>
-            <meta name={"description"} content={"Create calendar events and share them via QR Codes."}/>
-            <link rel={"icon"} href={"/favicon.ico"}/>
+            <meta name={"description"} content={"Create calendar events and share them via QR Codes."} />
+            <link rel={"icon"} href={"/favicon.ico"} />
         </Head>
     );
 

@@ -45,7 +45,6 @@ const Create: NextPage = () => {
     const handleSubmit = async (e: SyntheticEvent) => {
         e.preventDefault();
 
-        // TODO: check these values are correct
         event({
             action: "create_event",
             category: "engagement",
@@ -54,6 +53,7 @@ const Create: NextPage = () => {
         });
 
         let _dateTime = new Date(`${date}T${time}`).toISOString();
+
         await setLink(
             `${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`
             + `?dateTime=${encodeURIComponent(_dateTime)}`
@@ -62,6 +62,7 @@ const Create: NextPage = () => {
             + `&service=${encodeURIComponent(service)}`
             + `&operator=${encodeURIComponent(operator)}`
             + `${showLocation && location.length > 0 ? `&location=${encodeURIComponent(location)}` : ""}`);
+
         await setDone(true);
     }
 
