@@ -7,6 +7,7 @@ import Head from "next/head";
 import {OptionsData} from "@types/types"; // TODO: fix this.
 import dayjs from 'dayjs';
 import Footer from "@components/footer";
+import {event} from "../lib/gtag";
 
 const Create: NextPage = () => {
 
@@ -44,7 +45,13 @@ const Create: NextPage = () => {
     const handleSubmit = async (e: SyntheticEvent) => {
         e.preventDefault();
 
-        // TODO: register click event
+        // TODO: check these values are correct
+        event({
+            action: "create_event",
+            category: "engagement",
+            label: "method",
+            value: 1
+        });
 
         let _dateTime = new Date(`${date}T${time}`).toISOString();
         await setLink(
