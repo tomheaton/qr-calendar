@@ -5,7 +5,7 @@ import {useRouter} from "next/router";
 // @ts-ignore
 import {OptionsData} from "@types/types";
 import Footer from "@components/footer";
-import {event} from "../lib/gtag"; // TODO: fix this.
+import {event} from "@lib/gtag"; // TODO: fix this.
 
 const Create: NextPage = () => {
 

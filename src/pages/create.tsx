@@ -7,7 +7,7 @@ import Head from "next/head";
 import {OptionsData} from "@types/types"; // TODO: fix this.
 import dayjs from 'dayjs';
 import Footer from "@components/footer";
-import {event} from "../lib/gtag";
+import {event} from "@lib/gtag";
 
 const Create: NextPage = () => {
 
