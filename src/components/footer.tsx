@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {getTheme, setTheme, toggleTheme} from "@utils/theme";
-import {useRouter} from "next/router";
+import Link from "next/link";
 
 const Footer: React.FC = () => {
-
-    const router = useRouter();
 
     const [icon, setIcon] = useState<string>("bi-moon-fill");
 
@@ -16,8 +14,8 @@ const Footer: React.FC = () => {
             });
         }
 
-        const theme = getTheme()
-        setTheme(theme)
+        const theme = getTheme();
+        setTheme(theme);
         setIcon(theme === "light" ? "bi-moon-fill" : "bi-sun-fill");
     }, []);
 
@@ -29,7 +27,7 @@ const Footer: React.FC = () => {
     return (
         <footer className={"w-full h-[100px] border-t-2 border-[#405cf5] flex items-center justify-evenly flex-wrap-reverse md:pt-0 pt-[20px] "}>
             <div className={"w-1/2 md:w-1/3"}>
-                <a target="_blank" href="https://www.tomheaton.dev" rel="noopener noreferrer">
+                <a target="_blank" href="https://www.tomheaton.dev" rel="author noopener noreferrer">
                     Tom Heaton &copy; {new Date().getFullYear()}
                 </a>
             </div>
@@ -42,10 +40,12 @@ const Footer: React.FC = () => {
                     <i className={`bi bi-code-slash pl-2`} aria-label="Theme Toggle" />
                 </a>
                 <br/>
-                <a className={"cursor-pointer"} onClick={() => {router.push("/options")}}>
-                    Options
-                    <i className={`bi bi-gear-fill pl-2`} aria-label="Theme Toggle" />
-                </a>
+                <Link href={"/options"}>
+                    <a className={"cursor-pointer"}>
+                        Options
+                        <i className={`bi bi-gear-fill pl-2`} aria-label="Theme Toggle" />
+                    </a>
+                </Link>
             </div>
         </footer>
     );

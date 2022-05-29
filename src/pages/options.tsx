@@ -1,15 +1,12 @@
 import {NextPage} from "next";
 import {SyntheticEvent, useEffect, useState} from "react";
 import Head from "next/head";
-import {useRouter} from "next/router";
 import {OptionsData} from "@utils/types";
 import Footer from "@components/footer";
 import {event} from "@lib/gtag";
 import Link from "next/link";
 
 const Create: NextPage = () => {
-
-    const router = useRouter();
 
     const [service, setService] = useState<string>("");
     const [operator, setOperator] = useState<string>("");
@@ -18,13 +15,18 @@ const Create: NextPage = () => {
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {
-        const _data = localStorage.getItem("data");
-        if (_data) {
-            const data: OptionsData = JSON.parse(_data);
-            setService(data.service);
-            setOperator(data.operator);
-            setLocation(data.location);
+
+        const getSavedOptions = async () => {
+            const rawData = await localStorage.getItem("data");
+            if (rawData) {
+                const data: OptionsData = await JSON.parse(rawData);
+                setService(data.service);
+                setOperator(data.operator);
+                setLocation(data.location);
+            }
         }
+
+        getSavedOptions();
     }, []);
 
     const handleSubmit = async (e: SyntheticEvent) => {

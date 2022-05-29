@@ -1,12 +1,9 @@
 import {NextPage} from 'next';
 import Head from 'next/head';
-import {useRouter} from "next/router";
 import Footer from "@components/footer";
 import Link from "next/link";
 
 const Index: NextPage = () => {
-
-    const router = useRouter();
 
     return (
         <div className={"h-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>

@@ -14,10 +14,10 @@ const Event: NextPage = () => {
 
     const { dateTime, hours, minutes, service, operator, location } = router.query as EventData;
 
-    const hour: number = parseInt(hours)
-    const minute: number = parseInt(minutes)
-    const allDay: boolean = hour == -1 && minute == -1
-    const duration: number = hour + (minute / 60)
+    const hour: number = parseInt(hours);
+    const minute: number = parseInt(minutes);
+    const allDay: boolean = hour == -1 && minute == -1;
+    const duration: number = hour + (minute / 60);
 
     const event: CalendarEvent = {
         title: service,
@@ -43,15 +43,18 @@ const Event: NextPage = () => {
                 </main>
             </div>
         );
-    } else if (!dateTime || !hours || !minutes || !service || !operator) {
+    }
+
+    if (!dateTime || !hours || !minutes || !service || !operator) {
         return (
-            <div className={"h-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
-                <EventHead />
+            <div
+                className={"h-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
+                <EventHead/>
                 <main className={"h-full flex flex-col justify-center items-center"}>
                     <h1 className={"text-6xl font-bold"}>
                         Invalid URL Params ⚠️️
                     </h1>
-                    <br />
+                    <br/>
                     <Link href={"/"}>
                         <button className={"button"}>
                             Return Home
