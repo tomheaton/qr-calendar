@@ -5,6 +5,7 @@ import {useRouter} from "next/router";
 import {OptionsData} from "@utils/types";
 import Footer from "@components/footer";
 import {event} from "@lib/gtag";
+import Link from "next/link";
 
 const Create: NextPage = () => {
 
@@ -110,9 +111,11 @@ const Create: NextPage = () => {
                             </p>
                         )}
                         <br/>
-                        <button className={"button"} onClick={() => {router.push("/")}}>
-                            Return Home
-                        </button>
+                        <Link href={"/"}>
+                            <button className={"button"}>
+                                Return Home
+                            </button>
+                        </Link>
                     </div>
                 </form>
             </main>

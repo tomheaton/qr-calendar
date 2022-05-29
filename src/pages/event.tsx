@@ -5,6 +5,8 @@ import Head from "next/head";
 import {EventData} from "@utils/types";
 import dayjs from "dayjs";
 import Footer from "@components/footer";
+import Link from "next/link";
+import React from "react";
 
 const Event: NextPage = () => {
 
@@ -30,18 +32,10 @@ const Event: NextPage = () => {
         // TODO: register calendar type event and push new route.
     }
 
-    const head = (
-        <Head>
-            <title>Event | QR Calendar</title>
-            <meta name={"description"} content={"Create calendar events and share them via QR Codes."} />
-            <link rel={"icon"} href={"/favicon.ico"} />
-        </Head>
-    );
-
     if (!router.query) {
         return (
             <div className={"h-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
-                {head}
+                <EventHead />
                 <main className={"h-full flex flex-col justify-center items-center"}>
                     <h1 className={"text-6xl font-bold"}>
                         loading...
@@ -52,15 +46,17 @@ const Event: NextPage = () => {
     } else if (!dateTime || !hours || !minutes || !service || !operator) {
         return (
             <div className={"h-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
-                {head}
+                <EventHead />
                 <main className={"h-full flex flex-col justify-center items-center"}>
                     <h1 className={"text-6xl font-bold"}>
                         Invalid URL Params ⚠️️
                     </h1>
                     <br />
-                    <button className={"button"} onClick={() => {router.push("/");}}>
-                        Return Home
-                    </button>
+                    <Link href={"/"}>
+                        <button className={"button"}>
+                            Return Home
+                        </button>
+                    </Link>
                 </main>
             </div>
         );
@@ -68,7 +64,7 @@ const Event: NextPage = () => {
 
     return (
         <div className={"h-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
-            {head}
+            <EventHead />
             <main className={"h-full flex flex-col justify-center items-center"}>
                 <h1 className={"text-6xl font-bold"}>
                     Your Event 📅
@@ -115,3 +111,13 @@ const Event: NextPage = () => {
 }
 
 export default Event;
+
+const EventHead: React.FC = () => {
+    return (
+        <Head>
+            <title>Event | QR Calendar</title>
+            <meta name={"description"} content={"Create calendar events and share them via QR Codes."} />
+            <link rel={"icon"} href={"/favicon.ico"} />
+        </Head>
+    );
+}

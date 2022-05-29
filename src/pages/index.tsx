@@ -2,6 +2,7 @@ import {NextPage} from 'next';
 import Head from 'next/head';
 import {useRouter} from "next/router";
 import Footer from "@components/footer";
+import Link from "next/link";
 
 const Index: NextPage = () => {
 
@@ -20,10 +21,6 @@ const Index: NextPage = () => {
                     QR Calendar
                 </h1>
                 <br />
-                {/*<p className={"text-2xl text-center"}>
-                    To begin, click the Create button below!
-                </p>
-                <br />*/}
                 <p className={"text-2xl text-center"}>
                     To begin, click the
                     <code className={"text-2xl font-bold px-2"}>
@@ -32,9 +29,11 @@ const Index: NextPage = () => {
                     button below!
                 </p>
                 <br />
-                <button className={"button"} onClick={() => {router.push("/create")}}>
-                    Create
-                </button>
+                <Link href={"/create"}>
+                    <button className={"button"}>
+                        Create
+                    </button>
+                </Link>
             </main>
             <Footer />
         </div>
