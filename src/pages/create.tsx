@@ -3,8 +3,7 @@ import styles from "@styles/Create.module.css";
 import {SyntheticEvent, useEffect, useState} from "react";
 import QRCode from "react-qr-code";
 import Head from "next/head";
-// @ts-ignore
-import {OptionsData} from "@types/types"; // TODO: fix this.
+import {OptionsData} from "@utils/types";
 import dayjs from 'dayjs';
 import Footer from "@components/footer";
 import {event} from "@lib/gtag";

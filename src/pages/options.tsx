@@ -2,10 +2,9 @@ import {NextPage} from "next";
 import {SyntheticEvent, useEffect, useState} from "react";
 import Head from "next/head";
 import {useRouter} from "next/router";
-// @ts-ignore
-import {OptionsData} from "@types/types";
+import {OptionsData} from "@utils/types";
 import Footer from "@components/footer";
-import {event} from "@lib/gtag"; // TODO: fix this.
+import {event} from "@lib/gtag";
 
 const Create: NextPage = () => {
 
@@ -42,13 +41,13 @@ const Create: NextPage = () => {
         }
 
         setIsLoading(true);
-        setShowMessage(false)
+        setShowMessage(false);
         await localStorage.setItem("data", JSON.stringify({ service, operator, location }));
         setIsLoading(false);
-        setShowMessage(true)
+        setShowMessage(true);
 
         setTimeout(() => {
-            setShowMessage(false)
+            setShowMessage(false);
         }, 4000);
     }
 
