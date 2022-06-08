@@ -104,7 +104,10 @@ const Create: NextPage = () => {
                                        id={"date"}
                                        value={date}
                                        min={dayjs().format("YYYY-MM-DD")}
-                                       onKeyDown={(e) => {e.preventDefault();e.stopPropagation()}}
+                                       onKeyDown={(e) => {
+                                           e.preventDefault();
+                                           e.stopPropagation()
+                                       }}
                                        onChange={(e) => setDate(e.target.value)}
                                 />
                             </div>
@@ -114,7 +117,10 @@ const Create: NextPage = () => {
                                        id={"time"}
                                        value={time}
                                        pattern={"[0-9]{2}:[0-9]{2}"}
-                                    // onKeyDown={(e) => {e.preventDefault();e.stopPropagation()}}
+                                       /*onKeyDown={(e) => {
+                                           e.preventDefault();
+                                           e.stopPropagation()
+                                       }}*/
                                        onChange={(e) => setTime(e.target.value)}
                                 />
                             </div>
@@ -124,7 +130,8 @@ const Create: NextPage = () => {
                                 <select value={hours}
                                         name={"hours"}
                                         id={"hours"}
-                                        onChange={(e) => {setHours((parseInt(e.target.value)).toString())}}>
+                                        onChange={(e) => {setHours((parseInt(e.target.value)).toString())}}
+                                >
                                     {Array.from(Array(25), (_, i) => i).map((x) => {
                                         return (<option value={x} key={x}>{x}</option>);
                                     })}
@@ -137,7 +144,8 @@ const Create: NextPage = () => {
                                 <select value={minutes}
                                         name={"minutes"}
                                         id={"minutes"}
-                                        onChange={(e) => {setMinutes(e.target.value)}}>
+                                        onChange={(e) => {setMinutes(e.target.value)}}
+                                >
                                     {Array.from(Array(12), (_, i) => (i)*5).map((x) => {
                                         return (<option value={x} key={x}>{x}</option>);
                                     })}
@@ -148,10 +156,11 @@ const Create: NextPage = () => {
                             </div>
                             {/*TODO: improve styling.*/}
                             {/*<div className={styles.durationInput} style={{paddingLeft: "10px"}}>
-                                    <input type={"checkbox"} defaultChecked={false} checked={allDay}
-                                           onChange={e => {setAllDay(e.target.checked)}} />
-                                    <p style={{fontSize: "16px", width: "100%"}}>All day</p>
-                                </div>*/}
+                                <input type={"checkbox"} defaultChecked={false} checked={allDay}
+                                       onChange={e => {setAllDay(e.target.checked)}}
+                                />
+                                <p style={{fontSize: "16px", width: "100%"}}>All day</p>
+                            </div>*/}
                         </div>
                         <br />
                         <label htmlFor={"service"}>
@@ -201,7 +210,9 @@ const Create: NextPage = () => {
                         <br />
                         <br />
                         <button className={`button w-full ${isDisabled ? "cursor-not-allowed" : ""}`}
-                                type={"submit"} disabled={isDisabled}>
+                                type={"submit"}
+                                disabled={isDisabled}
+                        >
                             Create
                         </button>
                         {errorMessage || isDisabled && (
