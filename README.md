@@ -52,4 +52,4 @@ This is the todo list:
 - [ ] add "all day" option
 - [x] tailwindcss ?
 - [ ] fix inner input box styling
-- [ ] add manual theme change
+- [x] add manual theme change
