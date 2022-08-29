@@ -2,7 +2,7 @@
 
 ### Check out a live version [here](https://qr-calendar.com) :point_left:
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+:calendar: Simple webapp to create calendar events that can easily be shared using QR codes.
 
 ## Getting Started :gear:
 
