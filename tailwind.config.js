@@ -5,12 +5,7 @@ module.exports = {
         "./src/components/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
-        // TODO: add custom colours.
-        extend: {
-
-        },
+        extend: {},
     },
-    plugins: [
-
-    ],
+    plugins: [],
 }
