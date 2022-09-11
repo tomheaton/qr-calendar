@@ -1,6 +1,11 @@
 {
   "name": "qr-calendar",
   "author": "Tom Heaton",
+
+  "repository": "https://github.com/tomheaton/qr-calendar",
+  "description": "Simple webapp to create calendar events that can easily be shared using QR codes.",
+  "homepage": "https://qr-calendar.com",
+  "readme": "README.md",
   "license": "MIT",
   "version": "1.0.0",
   "private": true,
