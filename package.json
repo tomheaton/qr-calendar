@@ -1,7 +1,6 @@
 {
   "name": "qr-calendar",
   "author": "Tom Heaton",
-
   "repository": "https://github.com/tomheaton/qr-calendar",
   "description": "Simple webapp to create calendar events that can easily be shared using QR codes.",
   "homepage": "https://qr-calendar.com",
@@ -19,7 +18,7 @@
     "bootstrap-icons": "^1.8.3",
     "calendar-link": "^2.2.0",
     "dayjs": "^1.11.3",
-    "nextjs": "^0.0.3",
+    "next": "^12.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-qr-code": "^2.0.7"
@@ -29,9 +28,8 @@
     "@types/node": "^18.7.16",
     "@types/react": "^18.0.19",
     "autoprefixer": "^10.4.7",
-    "eslint": "8.22.0",
+    "eslint": "8.24.0",
     "eslint-config-next": "^12.3.0",
-    "next": "^12.3.0",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.0.24",
     "typescript": "^4.8.3"
