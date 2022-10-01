@@ -1,15 +1,14 @@
-import {NextPage} from "next";
+import type {NextPage} from "next";
 import styles from "@styles/Create.module.css";
 import {SyntheticEvent, useEffect, useState} from "react";
 import QRCode from "react-qr-code";
 import Head from "next/head";
-import {OptionsData} from "@utils/types";
+import type {OptionsData} from "@utils/types";
 import dayjs from 'dayjs';
 import Footer from "@components/footer";
 import {event} from "@lib/gtag";
 
 const Create: NextPage = () => {
-
     const [done, setDone] = useState<boolean>(false);
     const [link, setLink] = useState<string>("");
     const [showLocation, setShowLocation] = useState<boolean>(false);
@@ -66,7 +65,8 @@ const Create: NextPage = () => {
     }
 
     return (
-        <div className={"h-screen w-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
+        <div
+            className={"h-screen w-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
             <Head>
                 <title>Create | QR Calendar</title>
                 <meta name={"description"} content={"Create calendar events and share them via QR Codes."}/>
@@ -79,11 +79,13 @@ const Create: NextPage = () => {
                 <br/>
                 {done ? (
                     <div className={"card text-center flex flex-col justify-center items-center"}>
-                        <QRCode id={"QRCode"} value={link} level={"L"} />
+                        <QRCode id={"QRCode"} value={link} level={"L"}/>
                         <p className={"my-2"}>
                             Scan the QR Code to share!
                         </p>
-                        <button className={"button w-3/4"} onClick={() => {setDone(false)}}>
+                        <button className={"button w-3/4"} onClick={() => {
+                            setDone(false)
+                        }}>
                             Edit
                         </button>
                         <br/>
@@ -117,10 +119,10 @@ const Create: NextPage = () => {
                                        id={"time"}
                                        value={time}
                                        pattern={"[0-9]{2}:[0-9]{2}"}
-                                       /*onKeyDown={(e) => {
-                                           e.preventDefault();
-                                           e.stopPropagation()
-                                       }}*/
+                                    /*onKeyDown={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation()
+                                    }}*/
                                        onChange={(e) => setTime(e.target.value)}
                                 />
                             </div>
@@ -130,7 +132,9 @@ const Create: NextPage = () => {
                                 <select value={hours}
                                         name={"hours"}
                                         id={"hours"}
-                                        onChange={(e) => {setHours((parseInt(e.target.value)).toString())}}
+                                        onChange={(e) => {
+                                            setHours((parseInt(e.target.value)).toString())
+                                        }}
                                 >
                                     {Array.from(Array(25), (_, i) => i).map((x) => {
                                         return (<option value={x} key={x}>{x}</option>);
@@ -144,9 +148,11 @@ const Create: NextPage = () => {
                                 <select value={minutes}
                                         name={"minutes"}
                                         id={"minutes"}
-                                        onChange={(e) => {setMinutes(e.target.value)}}
+                                        onChange={(e) => {
+                                            setMinutes(e.target.value)
+                                        }}
                                 >
-                                    {Array.from(Array(12), (_, i) => (i)*5).map((x) => {
+                                    {Array.from(Array(12), (_, i) => (i) * 5).map((x) => {
                                         return (<option value={x} key={x}>{x}</option>);
                                     })}
                                 </select>
@@ -162,7 +168,7 @@ const Create: NextPage = () => {
                                 <p style={{fontSize: "16px", width: "100%"}}>All day</p>
                             </div>*/}
                         </div>
-                        <br />
+                        <br/>
                         <label htmlFor={"service"}>
                             Service
                         </label>
@@ -202,13 +208,15 @@ const Create: NextPage = () => {
                         ) : (
                             <div>
                                 <br/>
-                                <button className={"button w-full"} onClick={() => {setShowLocation(true)}}>
+                                <button className={"button w-full"} onClick={() => {
+                                    setShowLocation(true)
+                                }}>
                                     Add Location
                                 </button>
                             </div>
                         )}
-                        <br />
-                        <br />
+                        <br/>
+                        <br/>
                         <button className={`button w-full ${isDisabled ? "cursor-not-allowed" : ""}`}
                                 type={"submit"}
                                 disabled={isDisabled}
@@ -223,7 +231,7 @@ const Create: NextPage = () => {
                     </form>
                 )}
             </main>
-            <Footer />
+            <Footer/>
         </div>
     );
 }

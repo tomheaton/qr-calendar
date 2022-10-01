@@ -39,6 +39,7 @@
         width: 100%;
         flex-direction: column;
     }
+
     .durationInput,
     .dateTimeInput {
         min-width: 100%;

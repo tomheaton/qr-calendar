@@ -62,7 +62,7 @@ body::-webkit-scrollbar {
     text-align: center;
     text-transform: none;
     /*transform: translateZ(0);*/
-    transition: all .2s,box-shadow .08s ease-in;
+    transition: all .2s, box-shadow .08s ease-in;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;

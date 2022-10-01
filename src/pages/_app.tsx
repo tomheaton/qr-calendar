@@ -1,20 +1,23 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@styles/globals.css';
-import {AppProps} from 'next/app';
+import type {AppType} from 'next/app';
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {pageView} from "@lib/gtag";
 
-const App = ({ Component, pageProps }: AppProps) => {
-
+const App: AppType = ({Component, pageProps}) => {
     const router = useRouter()
 
     // @ts-ignore
     const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
-        const handleStart = () => { setLoading(true); };
-        const handleComplete = () => { setLoading(false); };
+        const handleStart = () => {
+            setLoading(true);
+        };
+        const handleComplete = () => {
+            setLoading(false);
+        };
 
         router.events.on('routeChangeStart', handleStart);
         router.events.on('routeChangeComplete', handleComplete);
