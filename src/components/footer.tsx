@@ -25,25 +25,26 @@ const Footer: React.FC = () => {
     }
 
     return (
-        <footer className={"w-full h-[100px] border-t-2 border-[#405cf5] flex items-center justify-evenly flex-wrap-reverse md:pt-0 pt-[20px] "}>
+        <footer
+            className={"w-full h-[100px] border-t-2 border-[#405cf5] flex items-center justify-evenly flex-wrap-reverse md:pt-0 pt-[20px] "}>
             <div className={"w-1/2 md:w-1/3"}>
                 <a target="_blank" href="https://www.tomheaton.dev" rel="author noopener noreferrer">
                     Tom Heaton &copy; {new Date().getFullYear()}
                 </a>
             </div>
             <div className={"w-1/2 md:w-1/3 text-xl cursor-pointer p-[12px]"} onClick={handleToggleTheme}>
-                <i className={`bi ${icon}`} aria-label="Theme Toggle" />
+                <i className={`bi ${icon}`} aria-label="Theme Toggle"/>
             </div>
             <div className={"w-full md:w-1/3 flex justify-evenly items-center"}>
                 <a target="_blank" href="https://www.github.com/tomheaton/qr-calendar" rel="noopener noreferrer">
                     View Source
-                    <i className={`bi bi-code-slash pl-2`} aria-label="Theme Toggle" />
+                    <i className={`bi bi-code-slash pl-2`} aria-label="Theme Toggle"/>
                 </a>
                 <br/>
                 <Link href={"/options"}>
                     <a className={"cursor-pointer"}>
                         Options
-                        <i className={`bi bi-gear-fill pl-2`} aria-label="Theme Toggle" />
+                        <i className={`bi bi-gear-fill pl-2`} aria-label="Theme Toggle"/>
                     </a>
                 </Link>
             </div>

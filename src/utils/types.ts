@@ -1,4 +1,4 @@
-type EventData = {
+export type EventData = {
     dateTime: string
     hours: string
     minutes: string
@@ -7,10 +7,8 @@ type EventData = {
     location?: string
 }
 
-type OptionsData = {
+export type OptionsData = {
     service: string
     operator: string
     location: string
 }
-
-export type {EventData, OptionsData};

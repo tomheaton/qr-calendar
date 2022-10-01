@@ -7,7 +7,6 @@ import {event} from "@lib/gtag";
 import Link from "next/link";
 
 const Create: NextPage = () => {
-
     const [service, setService] = useState<string>("");
     const [operator, setOperator] = useState<string>("");
     const [location, setLocation] = useState<string>("");
@@ -15,7 +14,6 @@ const Create: NextPage = () => {
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {
-
         const getSavedOptions = async () => {
             const rawData = await localStorage.getItem("data");
             if (rawData) {
@@ -45,7 +43,7 @@ const Create: NextPage = () => {
 
         setIsLoading(true);
         setShowMessage(false);
-        await localStorage.setItem("data", JSON.stringify({ service, operator, location }));
+        await localStorage.setItem("data", JSON.stringify({service, operator, location}));
         setIsLoading(false);
         setShowMessage(true);
 
@@ -55,7 +53,8 @@ const Create: NextPage = () => {
     }
 
     return (
-        <div className={"h-screen w-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
+        <div
+            className={"h-screen w-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
             <Head>
                 <title>Options | QR Calendar</title>
                 <meta name={"description"} content={"Create calendar events and share them via QR Codes."}/>
@@ -65,7 +64,7 @@ const Create: NextPage = () => {
                 <h1 className={"text-6xl font-bold text-center"}>
                     Options 🛠️
                 </h1>
-                <br />
+                <br/>
                 <p>Set default values for this site.</p>
                 <form className={"card"} onSubmit={handleSubmit} autoComplete={"off"}>
                     <label htmlFor={"service"}>
@@ -101,8 +100,8 @@ const Create: NextPage = () => {
                            required={false}
                            onChange={(e) => setLocation(e.target.value)}
                     />
-                    <br />
-                    <br />
+                    <br/>
+                    <br/>
                     <div className={"flex flex-col justify-between"}>
                         <button className={"button"} type={"submit"} disabled={isLoading}>
                             {isLoading ? "loading..." : "Save"}
@@ -121,7 +120,7 @@ const Create: NextPage = () => {
                     </div>
                 </form>
             </main>
-            <Footer />
+            <Footer/>
         </div>
     );
 }
