@@ -29,6 +29,7 @@ const Create: NextPage = () => {
 
     useEffect(() => {
         const rawData = localStorage.getItem("data");
+
         if (rawData) {
             const data: OptionsData = JSON.parse(rawData)
             setService(data.service)
@@ -65,13 +66,13 @@ const Create: NextPage = () => {
     }
 
     return (
-        <div
-            className={"h-screen w-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
+        <div className={"h-screen w-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
             <Head>
                 <title>Create | QR Calendar</title>
                 <meta name={"description"} content={"Create calendar events and share them via QR Codes."}/>
                 <link rel={"icon"} href={"/favicon.ico"}/>
             </Head>
+
             <main className={"h-full w-full flex flex-col justify-center items-center"}>
                 <h1 className={"text-6xl font-bold"}>
                     {done ? "Share your" : "Create an"} Event
@@ -83,9 +84,7 @@ const Create: NextPage = () => {
                         <p className={"my-2"}>
                             Scan the QR Code to share!
                         </p>
-                        <button className={"button w-3/4"} onClick={() => {
-                            setDone(false)
-                        }}>
+                        <button className={"button w-3/4"} onClick={() => setDone(false)}>
                             Edit
                         </button>
                         <br/>
@@ -132,12 +131,12 @@ const Create: NextPage = () => {
                                 <select value={hours}
                                         name={"hours"}
                                         id={"hours"}
-                                        onChange={(e) => {
-                                            setHours((parseInt(e.target.value)).toString())
-                                        }}
+                                        onChange={(e) => setHours((parseInt(e.target.value)).toString())}
                                 >
                                     {Array.from(Array(25), (_, i) => i).map((x) => {
-                                        return (<option value={x} key={x}>{x}</option>);
+                                        return (
+                                            <option value={x} key={x}>{x}</option>
+                                        );
                                     })}
                                 </select>
                                 <p className={"w-full"}>
@@ -148,12 +147,12 @@ const Create: NextPage = () => {
                                 <select value={minutes}
                                         name={"minutes"}
                                         id={"minutes"}
-                                        onChange={(e) => {
-                                            setMinutes(e.target.value)
-                                        }}
+                                        onChange={(e) => setMinutes(e.target.value)}
                                 >
                                     {Array.from(Array(12), (_, i) => (i) * 5).map((x) => {
-                                        return (<option value={x} key={x}>{x}</option>);
+                                        return (
+                                            <option value={x} key={x}>{x}</option>
+                                        );
                                     })}
                                 </select>
                                 <p className={"w-full"}>
@@ -208,9 +207,7 @@ const Create: NextPage = () => {
                         ) : (
                             <div>
                                 <br/>
-                                <button className={"button w-full"} onClick={() => {
-                                    setShowLocation(true)
-                                }}>
+                                <button className={"button w-full"} onClick={() => setShowLocation(true)}>
                                     Add Location
                                 </button>
                             </div>
@@ -231,6 +228,7 @@ const Create: NextPage = () => {
                     </form>
                 )}
             </main>
+
             <Footer/>
         </div>
     );

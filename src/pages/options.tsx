@@ -30,6 +30,10 @@ const Create: NextPage = () => {
     const handleSubmit = async (e: SyntheticEvent) => {
         e.preventDefault();
 
+        if (isLoading) {
+            return;
+        }
+
         event({
             action: "save_options",
             category: "engagement",
@@ -37,13 +41,11 @@ const Create: NextPage = () => {
             value: 1
         });
 
-        if (isLoading) {
-            return;
-        }
-
         setIsLoading(true);
         setShowMessage(false);
+
         await localStorage.setItem("data", JSON.stringify({service, operator, location}));
+
         setIsLoading(false);
         setShowMessage(true);
 
@@ -53,13 +55,13 @@ const Create: NextPage = () => {
     }
 
     return (
-        <div
-            className={"h-screen w-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
+        <div className={"h-screen w-screen bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3] flex flex-col justify-between"}>
             <Head>
                 <title>Options | QR Calendar</title>
                 <meta name={"description"} content={"Create calendar events and share them via QR Codes."}/>
                 <link rel={"icon"} href={"/favicon.ico"}/>
             </Head>
+
             <main className={"h-full w-full flex flex-col justify-center items-center"}>
                 <h1 className={"text-6xl font-bold text-center"}>
                     Options 🛠️
@@ -120,6 +122,7 @@ const Create: NextPage = () => {
                     </div>
                 </form>
             </main>
+
             <Footer/>
         </div>
     );

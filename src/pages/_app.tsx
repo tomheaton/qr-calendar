@@ -15,6 +15,7 @@ const App: AppType = ({Component, pageProps}) => {
         const handleStart = () => {
             setLoading(true);
         };
+
         const handleComplete = () => {
             setLoading(false);
         };
@@ -44,7 +45,7 @@ const App: AppType = ({Component, pageProps}) => {
                 <p>loading...</p>
             </>
         ) : (
-            <Component {...pageProps} />
+            <Component {...pageProps}/>
         )
     );
 }
