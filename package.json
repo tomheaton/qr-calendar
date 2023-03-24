@@ -17,25 +17,25 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "bootstrap-icons": "^1.8.3",
-    "calendar-link": "^2.2.0",
-    "dayjs": "^1.11.3",
-    "next": "^12.3.1",
+    "bootstrap-icons": "^1.10.3",
+    "calendar-link": "^2.4.0",
+    "dayjs": "^1.11.7",
+    "next": "^13.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-qr-code": "^2.0.7"
+    "react-qr-code": "^2.0.11"
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.12",
-    "@types/node": "^18.7.16",
-    "@types/react": "^18.0.19",
-    "autoprefixer": "^10.4.7",
-    "eslint": "8.25.0",
-    "eslint-config-next": "^12.3.0",
-    "postcss": "^8.4.14",
+    "@types/node": "^18.15.7",
+    "@types/react": "^18.0.29",
+    "autoprefixer": "^10.4.14",
+    "eslint": "8.36.0",
+    "eslint-config-next": "^13.2.4",
+    "postcss": "^8.4.21",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "^0.2.5",
-    "tailwindcss": "^3.0.24",
-    "typescript": "^4.8.3"
+    "tailwindcss": "^3.2.7",
+    "typescript": "^5.0.2"
   }
 }

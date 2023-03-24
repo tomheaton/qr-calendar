@@ -1,6 +1,6 @@
+import Footer from "@/components/footer";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Footer from "@components/footer";
 import Link from "next/link";
 
 const Index: NextPage = () => {
@@ -17,7 +17,7 @@ const Index: NextPage = () => {
           content={"Create calendar events and share them via QR Codes."}
         />
         <link rel={"icon"} href={"/favicon.ico"} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name={"viewport"} content={"width=device-width, initial-scale=1"} />
       </Head>
 
       <main className={"flex h-full flex-col items-center justify-center"}>

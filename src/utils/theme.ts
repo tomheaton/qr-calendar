@@ -32,5 +32,4 @@ export const toggleTheme = () => {
     saveTheme(current_theme == "light" ? "dark" : "light");
     setTheme(getTheme());
   }
-  return;
 };

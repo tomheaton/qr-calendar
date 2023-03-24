@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { getTheme, setTheme, toggleTheme } from "@utils/theme";
+import { getTheme, setTheme, toggleTheme } from "@/utils/theme";
 import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 const Footer: React.FC = () => {
   const [icon, setIcon] = useState<string>("bi-moon-fill");
@@ -31,28 +31,26 @@ const Footer: React.FC = () => {
       }
     >
       <div className={"w-1/2 md:w-1/3"}>
-        <a target="_blank" href="https://www.tomheaton.dev" rel="author noopener noreferrer">
+        <a target={"_blank"} href={"https://tomheaton.dev"} rel={"author noopener noreferrer"}>
           Tom Heaton &copy; {new Date().getFullYear()}
         </a>
       </div>
       <div className={"w-1/2 cursor-pointer p-[12px] text-xl md:w-1/3"} onClick={handleToggleTheme}>
-        <i className={`bi ${icon}`} aria-label="Theme Toggle" />
+        <i className={`bi ${icon}`} aria-label={"Theme Toggle"} />
       </div>
       <div className={"flex w-full items-center justify-evenly md:w-1/3"}>
         <a
-          target="_blank"
-          href="https://www.github.com/tomheaton/qr-calendar"
-          rel="noopener noreferrer"
+          target={"_blank"}
+          href={"https://github.com/tomheaton/qr-calendar"}
+          rel={"noopener noreferrer"}
         >
           View Source
-          <i className={`bi bi-code-slash pl-2`} aria-label="Theme Toggle" />
+          <i className={`bi bi-code-slash pl-2`} aria-label={"View Source"} />
         </a>
         <br />
-        <Link href={"/options"}>
-          <a className={"cursor-pointer"}>
-            Options
-            <i className={`bi bi-gear-fill pl-2`} aria-label="Theme Toggle" />
-          </a>
+        <Link href={"/options"} className={"cursor-pointer"}>
+          Options
+          <i className={`bi bi-gear-fill pl-2`} aria-label={"Options"} />
         </Link>
       </div>
     </footer>

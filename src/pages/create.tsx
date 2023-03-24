@@ -1,43 +1,40 @@
-import type { NextPage } from "next";
-import styles from "@styles/Create.module.css";
-import { SyntheticEvent, useEffect, useState } from "react";
-import QRCode from "react-qr-code";
-import Head from "next/head";
-import type { OptionsData } from "@utils/types";
+import Footer from "@/components/footer";
+import { event } from "@/lib/gtag";
+import styles from "@/styles/Create.module.css";
+import type { OptionsData } from "@/utils/types";
 import dayjs from "dayjs";
-import Footer from "@components/footer";
-import { event } from "@lib/gtag";
+import type { NextPage } from "next";
+import Head from "next/head";
+import { useEffect, useState, type SyntheticEvent } from "react";
+import QRCode from "react-qr-code";
 
 const Create: NextPage = () => {
   const [done, setDone] = useState<boolean>(false);
   const [link, setLink] = useState<string>("");
   const [showLocation, setShowLocation] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
+  const [errorMessage] = useState<string | null>(null);
   // TODO: combine these into a dayjs time type and set date and time.
   const [date, setDate] = useState<string>(dayjs().format("YYYY-MM-DD"));
   const [time, setTime] = useState<string>(dayjs().format("HH:mm"));
   const [hours, setHours] = useState<string>("1");
   const [minutes, setMinutes] = useState<string>("0");
   // TODO: finish implementing allDay option.
-  const [allDay, setAllDay] = useState<boolean>(false);
+  const [allDay] = useState<boolean>(false);
   const [service, setService] = useState<string>("");
   const [operator, setOperator] = useState<string>("");
   const [location, setLocation] = useState<string>("");
 
-  const isDisabled: boolean = !(
-    (parseInt(hours) > 0 || parseInt(minutes) > 0) &&
-    service &&
-    operator
-  );
+  const isDisabled = !((parseInt(hours) > 0 || parseInt(minutes) > 0) && service && operator);
 
   useEffect(() => {
     const rawData = localStorage.getItem("data");
 
     if (rawData) {
       const data: OptionsData = JSON.parse(rawData);
+
       setService(data.service);
       setOperator(data.operator);
+
       if (data.location.length > 0) {
         setLocation(data.location);
         setShowLocation(true);
@@ -55,19 +52,20 @@ const Create: NextPage = () => {
       value: 1,
     });
 
-    let _dateTime = new Date(`${date}T${time}`).toISOString();
+    let dateTime = new Date(`${date}T${time}`).toISOString();
 
-    await setLink(
-      `${process.env.NEXT_PUBLIC_CALENDAR_URL}/event` +
-        `?dateTime=${encodeURIComponent(_dateTime)}` +
-        `&hours=${allDay ? encodeURIComponent("-1") : encodeURIComponent(hours)}` +
-        `&minutes=${allDay ? encodeURIComponent("-1") : encodeURIComponent(minutes)}` +
-        `&service=${encodeURIComponent(service)}` +
-        `&operator=${encodeURIComponent(operator)}` +
-        `${showLocation && location.length > 0 ? `&location=${encodeURIComponent(location)}` : ""}`,
-    );
+    const url = new URL(`${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`);
+    url.searchParams.append("dateTime", dateTime);
+    url.searchParams.append("hours", allDay ? "-1" : hours);
+    url.searchParams.append("minutes", allDay ? "-1" : minutes);
+    url.searchParams.append("service", service);
+    url.searchParams.append("operator", operator);
+    if (showLocation && location.length > 0) {
+      url.searchParams.append("location", location);
+    }
 
-    await setDone(true);
+    setLink(url.toString());
+    setDone(true);
   };
 
   return (

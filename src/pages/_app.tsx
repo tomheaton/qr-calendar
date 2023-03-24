@@ -1,5 +1,5 @@
-import { pageView } from "@lib/gtag";
-import "@styles/globals.css";
+import { pageView } from "@/lib/gtag";
+import "@/styles/globals.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import type { AppType } from "next/app";
 import { useRouter } from "next/router";

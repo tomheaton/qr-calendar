@@ -1,10 +1,10 @@
-import { NextPage } from "next";
-import { SyntheticEvent, useEffect, useState } from "react";
+import Footer from "@/components/footer";
+import { event } from "@/lib/gtag";
+import type { OptionsData } from "@/utils/types";
+import type { NextPage } from "next";
 import Head from "next/head";
-import { OptionsData } from "@utils/types";
-import Footer from "@components/footer";
-import { event } from "@lib/gtag";
 import Link from "next/link";
+import { useEffect, useState, type SyntheticEvent } from "react";
 
 const Create: NextPage = () => {
   const [service, setService] = useState<string>("");
@@ -15,9 +15,11 @@ const Create: NextPage = () => {
 
   useEffect(() => {
     const getSavedOptions = async () => {
-      const rawData = await localStorage.getItem("data");
+      const rawData = localStorage.getItem("data");
+
       if (rawData) {
         const data: OptionsData = await JSON.parse(rawData);
+
         setService(data.service);
         setOperator(data.operator);
         setLocation(data.location);
@@ -30,9 +32,7 @@ const Create: NextPage = () => {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
-    if (isLoading) {
-      return;
-    }
+    if (isLoading) return;
 
     event({
       action: "save_options",
@@ -44,7 +44,7 @@ const Create: NextPage = () => {
     setIsLoading(true);
     setShowMessage(false);
 
-    await localStorage.setItem("data", JSON.stringify({ service, operator, location }));
+    localStorage.setItem("data", JSON.stringify({ service, operator, location }));
 
     setIsLoading(false);
     setShowMessage(true);
@@ -112,8 +112,8 @@ const Create: NextPage = () => {
             </button>
             {showMessage && <p className={"mt-2 text-center"}>Saved to local storage.</p>}
             <br />
-            <Link href={"/"}>
-              <button className={"button"}>Return Home</button>
+            <Link href={"/"} className={"button text-center"}>
+              Return Home
             </Link>
           </div>
         </form>
