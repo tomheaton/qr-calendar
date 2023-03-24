@@ -18,13 +18,13 @@ Second, install all the node dependencies:
 yarn
 ```
 
-Third, create a `.env` file and add the following:
+Third, copy the `env.example` to create a `.env` file and thenupdate the values:
 
-```dotenv
-NEXT_PUBLIC_CALENDAR_URL=*url*
+```bash
+cp env.example .env
 ```
 
-Then, run the development server:
+Next, run the development server:
 
 ```bash
 yarn dev
@@ -32,21 +32,9 @@ yarn dev
 
 And finally, open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Todo :pencil:
+## TODO :pencil:
 
 This is the todo list:
 
-- [x] start project
-- [x] add `layout.tsx`
-- [x] move to `src` directory structure
-- [x] add `_document.tsx`
-- [x] fix whitespace issue
-- [x] add css
-- [x] add more logic checks etc.
-- [x] mobile optimization
-- [x] clean up css
-- [x] finish project
 - [ ] add "all day" option
-- [x] tailwindcss ?
 - [ ] fix inner input box styling
-- [x] add manual theme change
