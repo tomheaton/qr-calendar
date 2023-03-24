@@ -1,5 +1,5 @@
 export const setTheme = (theme: string) => {
-  let colorScheme = document.querySelector('meta[name="color-scheme"]');
+  const colorScheme = document.querySelector('meta[name="color-scheme"]');
   // @ts-ignore
   colorScheme.content = theme;
 

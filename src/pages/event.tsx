@@ -109,9 +109,9 @@ const Event: NextPage = () => {
             <p>Yahoo</p>
           </button>
           {/*<button className={"button my-2"} onClick={() => router.push(office365(event))}>
-                        <i className={"bi bi-windows" aria-label={"Office 365"} />
-                        <p>Office 365</p>
-                    </button>*/}
+            <i className={"bi bi-windows" aria-label={"Office 365"} />
+            <p>Office 365</p>
+          </button>*/}
         </div>
       </main>
 

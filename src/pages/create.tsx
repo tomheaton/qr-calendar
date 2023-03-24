@@ -52,7 +52,7 @@ const Create: NextPage = () => {
       value: 1,
     });
 
-    let dateTime = new Date(`${date}T${time}`).toISOString();
+    const dateTime = new Date(`${date}T${time}`).toISOString();
 
     const url = new URL(`${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`);
     url.searchParams.append("dateTime", dateTime);
