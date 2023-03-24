@@ -1,4 +1,4 @@
-export const setTheme = (theme: string): void => {
+export const setTheme = (theme: string) => {
   let colorScheme = document.querySelector('meta[name="color-scheme"]');
   // @ts-ignore
   colorScheme.content = theme;
@@ -10,7 +10,7 @@ export const setTheme = (theme: string): void => {
   document.body.classList.add("dark");
 };
 
-export const getTheme = (): string => {
+export const getTheme = () => {
   if (typeof window !== "undefined") {
     const theme = localStorage.getItem("theme");
     if (theme) {
@@ -20,13 +20,13 @@ export const getTheme = (): string => {
   return "light";
 };
 
-export const saveTheme = (theme: string): void => {
+export const saveTheme = (theme: string) => {
   if (typeof window !== "undefined") {
     localStorage.setItem("theme", theme);
   }
 };
 
-export const toggleTheme = (): void => {
+export const toggleTheme = () => {
   if (typeof window !== "undefined") {
     const current_theme = localStorage.getItem("theme") || "light";
     saveTheme(current_theme == "light" ? "dark" : "light");
