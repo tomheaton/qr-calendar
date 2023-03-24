@@ -12,7 +12,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check": "prettier --check .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "bootstrap-icons": "^1.8.3",

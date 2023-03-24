@@ -1,6 +1,6 @@
 # QR Calendar :calendar:
 
-### Check out a live version [here](https://qr-calendar.com) :point_left:
+## Check out a live version [here](https://qr-calendar.com) :point_left:
 
 :calendar: Simple webapp to create calendar events that can easily be shared using QR codes.
 
@@ -13,10 +13,9 @@ git clone https://github.com/tomheaton/qr-calendar.git
 ```
 
 Second, install all the node dependencies:
+
 ```bash
-npm install
-# or
-yarn install
+yarn
 ```
 
 Third, create a `.env` file and add the following:
@@ -28,8 +27,6 @@ NEXT_PUBLIC_CALENDAR_URL=*url*
 Then, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
@@ -39,7 +36,7 @@ And finally, open [http://localhost:3000](http://localhost:3000) with your brows
 
 This is the todo list:
 
-- [x] start project 
+- [x] start project
 - [x] add `layout.tsx`
 - [x] move to `src` directory structure
 - [x] add `_document.tsx`

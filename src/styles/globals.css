@@ -3,142 +3,151 @@
 @tailwind utilities;
 
 :root {
-    --cream-color: #F1EEDF;
-    --light-blue-colour: #567099;
-    --dark-blue-color: #313B4A;
-    --alt-blue-color: #365169;
-    --red-color: #C74044;
-    --lighter-blue-color: #0086f3;
-    --dark-gray-color: #212529;
-    --gray-color: #343a40;
-    --white-ish-color: #e3e3e3;
+  --cream-color: #f1eedf;
+  --light-blue-colour: #567099;
+  --dark-blue-color: #313b4a;
+  --alt-blue-color: #365169;
+  --red-color: #c74044;
+  --lighter-blue-color: #0086f3;
+  --dark-gray-color: #212529;
+  --gray-color: #343a40;
+  --white-ish-color: #e3e3e3;
 }
 
-html, body {
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    height: 100vh;
-    /*position: relative;*/
-    /*background: var(--color-bg-primary);*/
-    /*color: var(--color-text-primary);*/
-    transition: background 0.25s ease-in-out;
-    text-align: center;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  height: 100vh;
+  /*position: relative;*/
+  /*background: var(--color-bg-primary);*/
+  /*color: var(--color-text-primary);*/
+  transition: background 0.25s ease-in-out;
+  text-align: center;
 }
 
 body::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-*::selection, *::-moz-selection {
-    background: var(--lighter-blue-color);
+*::selection,
+*::-moz-selection {
+  background: var(--lighter-blue-color);
 }
 
 .button {
-    @apply bg-[#405cf5] py-2 px-4 rounded-lg text-xl text-white dark:text-white;
+  @apply rounded-lg bg-[#405cf5] py-2 px-4 text-xl text-white dark:text-white;
 }
 
 .btn {
-    background-color: #405cf5;
-    /*background-color: #0070f3;*/
-    border-radius: 6px;
-    border-width: 0;
-    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .1) 0 2px 5px 0, rgba(0, 0, 0, .07) 0 1px 1px 0;
-    box-sizing: border-box;
-    color: #fff;
-    /*font-weight: bold;*/
-    font-size: 1.2rem;
-    cursor: pointer;
-    height: 44px;
-    line-height: 1.15;
-    margin: 12px 0 0;
-    outline: none;
-    overflow: hidden;
-    padding: 0 25px;
-    position: relative;
-    text-align: center;
-    text-transform: none;
-    /*transform: translateZ(0);*/
-    transition: all .2s, box-shadow .08s ease-in;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    width: 100%;
+  background-color: #405cf5;
+  /*background-color: #0070f3;*/
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset, rgba(50, 50, 93, 0.1) 0 2px 5px 0,
+    rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  /*font-weight: bold;*/
+  font-size: 1.2rem;
+  cursor: pointer;
+  height: 44px;
+  line-height: 1.15;
+  margin: 12px 0 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  /*transform: translateZ(0);*/
+  transition: all 0.2s, box-shadow 0.08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
 }
 
 .btn:disabled {
-    cursor: not-allowed;
-    background-color: rgba(88, 115, 255, 0.56);
+  cursor: not-allowed;
+  background-color: rgba(88, 115, 255, 0.56);
 }
 
 .btn:focus,
 .btn:hover {
-    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset, rgba(50, 50, 93, 0.2) 0 6px 15px 0,
+    rgba(0, 0, 0, 0.1) 0 2px 2px 0, rgba(50, 151, 211, 0.3) 0 0 0 4px;
 }
 
 .container {
-    flex: 1;
-    height: 100vh;
-    padding: 0 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    /*margin-bottom: 100px;*/
+  flex: 1;
+  height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /*margin-bottom: 100px;*/
 }
 
-input, select {
-    border-style: solid;
-    border-radius: 4px;
-    cursor: pointer;
+input,
+select {
+  border-style: solid;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-input:hover, input:focus, select:hover, select:focus {
-    border-color: #0070f3;
-    outline-color: #0070f3;
+input:hover,
+input:focus,
+select:hover,
+select:focus {
+  border-color: #0070f3;
+  outline-color: #0070f3;
 }
 
-input, select {
-    border-style: solid;
-    border-radius: 4px;
-    border-color: white;
-    border-width: 2px;
-    /*TODO: find where light mode hover:border-color is changed and move to here.*/
-    @apply border-gray-300 dark:border-white p-[4px] dark:hover:border-[#0070f3];
+input,
+select {
+  border-style: solid;
+  border-radius: 4px;
+  border-color: white;
+  border-width: 2px;
+  /*TODO: find where light mode hover:border-color is changed and move to here.*/
+  @apply border-gray-300 p-[4px] dark:border-white dark:hover:border-[#0070f3];
 }
 
 input {
-    box-sizing: border-box;
-    @apply px-2;
+  box-sizing: border-box;
+  @apply px-2;
 }
 
 input[type="checkbox"] {
-    @apply w-[30px] h-[30px]
+  @apply h-[30px] w-[30px];
 }
 
 p {
-    @apply text-xl;
+  @apply text-xl;
 }
 
 .card {
-    @apply mt-10 p-5 text-left border-2 border-[#eaeaea] rounded-xl w-5/6 md:w-1/4;
-    transition: color 0.15s ease, border-color 0.15s ease;
+  @apply mt-10 w-5/6 rounded-xl border-2 border-[#eaeaea] p-5 text-left md:w-1/4;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-    border-color: #0070f3;
+  border-color: #0070f3;
 }
 
 .card input,
 .card select {
-    font-size: 1.2rem;
-    margin: 4px 0;
-    line-height: 1.5;
-    width: 100%;
+  font-size: 1.2rem;
+  margin: 4px 0;
+  line-height: 1.5;
+  width: 100%;
 }
