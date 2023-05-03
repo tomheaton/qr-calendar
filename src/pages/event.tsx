@@ -27,9 +27,8 @@ const Event: NextPage = () => {
     ...(location && { location: location }),
   };
 
-  const handleSaveToCalendar = (calendarType: "google" | "ics" | "outlook" | "yahoo") => {
-    // TODO: register calendar type event and push new route.
-  };
+  // TODO: register calendar type event and push new route.
+  // const handleSaveToCalendar = (calendarType: "google" | "ics" | "outlook" | "yahoo") => {};
 
   if (!router.query) {
     return (

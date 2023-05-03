@@ -23,7 +23,8 @@
     "next": "^13.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-qr-code": "^2.0.11"
+    "react-qr-code": "^2.0.11",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.12",

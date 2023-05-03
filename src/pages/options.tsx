@@ -1,6 +1,6 @@
 import Footer from "@/components/footer";
 import { event } from "@/lib/gtag";
-import type { OptionsData } from "@/utils/types";
+import { optionsDataSchema } from "@/utils/types";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -14,19 +14,22 @@ const Create: NextPage = () => {
   const [showMessage, setShowMessage] = useState<boolean>(false);
 
   useEffect(() => {
-    const getSavedOptions = async () => {
+    // Get saved options
+    (async () => {
       const rawData = localStorage.getItem("data");
 
       if (rawData) {
-        const data: OptionsData = await JSON.parse(rawData);
+        const data = await JSON.parse(rawData);
 
-        setService(data.service);
-        setOperator(data.operator);
-        setLocation(data.location);
+        const options = optionsDataSchema.safeParse(data);
+
+        if (!options.success) return;
+
+        if (options.data.service) setService(options.data.service);
+        if (options.data.operator) setOperator(options.data.operator);
+        if (options.data.location) setLocation(options.data.location);
       }
-    };
-
-    getSavedOptions();
+    })();
   }, []);
 
   const handleSubmit = async (e: SyntheticEvent) => {

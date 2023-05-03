@@ -1,7 +1,7 @@
 import Footer from "@/components/footer";
 import { event } from "@/lib/gtag";
 import styles from "@/styles/Create.module.css";
-import type { OptionsData } from "@/utils/types";
+import { optionsDataSchema } from "@/utils/types";
 import dayjs from "dayjs";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -27,19 +27,25 @@ const Create: NextPage = () => {
   const isDisabled = !((parseInt(hours) > 0 || parseInt(minutes) > 0) && service && operator);
 
   useEffect(() => {
-    const rawData = localStorage.getItem("data");
+    // Get saved options
+    (async () => {
+      const rawData = localStorage.getItem("data");
 
-    if (rawData) {
-      const data: OptionsData = JSON.parse(rawData);
+      if (rawData) {
+        const data = await JSON.parse(rawData);
 
-      setService(data.service);
-      setOperator(data.operator);
+        const options = optionsDataSchema.safeParse(data);
 
-      if (data.location.length > 0) {
-        setLocation(data.location);
-        setShowLocation(true);
+        if (!options.success) return;
+
+        if (options.data.service) setService(options.data.service);
+        if (options.data.operator) setOperator(options.data.operator);
+        if (options.data.location) {
+          setLocation(options.data.location);
+          setShowLocation(true);
+        }
       }
-    }
+    })();
   }, []);
 
   const handleSubmit = async (e: SyntheticEvent) => {
