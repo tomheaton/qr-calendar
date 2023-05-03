@@ -58,7 +58,7 @@ const Create: NextPage = () => {
   };
 
   return (
-    <div className="flex h-screen w-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3]">
+    <div className="flex h-screen w-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-white-ish">
       <Head>
         <title>Options | QR Calendar</title>
         <meta name="description" content="Create calendar events and share them via QR Codes." />
@@ -66,7 +66,7 @@ const Create: NextPage = () => {
       </Head>
 
       <main className="flex h-full w-full flex-col items-center justify-center">
-        <h1 className="text-center text-6xl font-bold">Options 🛠️</h1>
+        <h1 className="text-6xl font-bold tracking-tight">Options 🛠️</h1>
         <br />
         <p>Set default values for this site.</p>
         <form className="card" onSubmit={handleSubmit} autoComplete="off">
@@ -108,8 +108,8 @@ const Create: NextPage = () => {
             </button>
             {showMessage && <p className="mt-2 text-center">Saved to local storage.</p>}
             <br />
-            <Link href="/" className="button text-center">
-              Return Home
+            <Link href="/" className="button">
+              Back
             </Link>
           </div>
         </form>

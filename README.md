@@ -18,7 +18,7 @@ Second, install all the node dependencies:
 yarn
 ```
 
-Third, copy the `env.example` to create a `.env` file and thenupdate the values:
+Third, copy the `env.example` to create a `.env` file and then update the values:
 
 ```bash
 cp env.example .env
@@ -38,3 +38,4 @@ This is the todo list:
 
 - [ ] add "all day" option
 - [ ] fix inner input box styling
+- [ ] nextjs app dir

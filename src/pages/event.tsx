@@ -32,14 +32,10 @@ const Event: NextPage = () => {
 
   if (!router.query) {
     return (
-      <div
-        className={
-          "flex h-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3]"
-        }
-      >
+      <div className="flex h-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-white-ish">
         <EventHead />
         <main className="flex h-full flex-col items-center justify-center">
-          <h1 className="text-6xl font-bold">loading...</h1>
+          <h1 className="text-6xl font-bold tracking-tight">loading...</h1>
         </main>
       </div>
     );
@@ -47,15 +43,11 @@ const Event: NextPage = () => {
 
   if (!dateTime || !hours || !minutes || !service || !operator) {
     return (
-      <div
-        className={
-          "flex h-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3]"
-        }
-      >
+      <div className="flex h-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-white-ish">
         <EventHead />
 
         <main className="flex h-full flex-col items-center justify-center">
-          <h1 className="text-6xl font-bold">Invalid URL Params ⚠️️</h1>
+          <h1 className="text-6xl font-bold tracking-tight">Invalid URL Params ⚠️️</h1>
           <br />
           <Link href="/" className="button text-center">
             Return Home
@@ -66,11 +58,11 @@ const Event: NextPage = () => {
   }
 
   return (
-    <div className="flex h-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3]">
+    <div className="flex h-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-white-ish">
       <EventHead />
 
       <main className="flex h-full flex-col items-center justify-center">
-        <h1 className="text-6xl font-bold">Your Event 📅</h1>
+        <h1 className="text-6xl font-bold tracking-tight">Your Event 📅</h1>
         <div className="card">
           <p>Time: {dayjs(dateTime).format("h:mm A UTC")}</p>
           <p>Date: {dayjs(dateTime).format("dddd, D MMMM YYYY")}</p>

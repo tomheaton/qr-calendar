@@ -40,59 +40,7 @@ body::-webkit-scrollbar {
 }
 
 .button {
-  @apply rounded-lg bg-[#405cf5] px-4 py-2 text-xl text-white dark:text-white;
-}
-
-.btn {
-  background-color: #405cf5;
-  /*background-color: #0070f3;*/
-  border-radius: 6px;
-  border-width: 0;
-  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset, rgba(50, 50, 93, 0.1) 0 2px 5px 0,
-    rgba(0, 0, 0, 0.07) 0 1px 1px 0;
-  box-sizing: border-box;
-  color: #fff;
-  /*font-weight: bold;*/
-  font-size: 1.2rem;
-  cursor: pointer;
-  height: 44px;
-  line-height: 1.15;
-  margin: 12px 0 0;
-  outline: none;
-  overflow: hidden;
-  padding: 0 25px;
-  position: relative;
-  text-align: center;
-  text-transform: none;
-  /*transform: translateZ(0);*/
-  transition: all 0.2s, box-shadow 0.08s ease-in;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 100%;
-}
-
-.btn:disabled {
-  cursor: not-allowed;
-  background-color: rgba(88, 115, 255, 0.56);
-}
-
-.btn:focus,
-.btn:hover {
-  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset, rgba(50, 50, 93, 0.2) 0 6px 15px 0,
-    rgba(0, 0, 0, 0.1) 0 2px 2px 0, rgba(50, 151, 211, 0.3) 0 0 0 4px;
-}
-
-.container {
-  flex: 1;
-  height: 100vh;
-  padding: 0 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  /*margin-bottom: 100px;*/
+  @apply rounded-xl bg-my-blue px-4 py-2 text-center text-xl font-bold text-white transition-all hover:scale-105 active:scale-95 dark:text-white;
 }
 
 input,
@@ -113,11 +61,11 @@ select:focus {
 input,
 select {
   border-style: solid;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   border-color: white;
   border-width: 2px;
   /*TODO: find where light mode hover:border-color is changed and move to here.*/
-  @apply border-gray-300 p-[4px] dark:border-white dark:hover:border-[#0070f3];
+  @apply rounded-xl border-gray-300 p-1 dark:border-white dark:hover:border-[#0070f3];
 }
 
 input {
@@ -134,7 +82,7 @@ p {
 }
 
 .card {
-  @apply mt-10 w-5/6 rounded-xl border-2 border-[#eaeaea] p-5 text-left md:w-1/4;
+  @apply mt-10 w-5/6 rounded-xl border-2 border-[#eaeaea] p-4 text-left md:w-1/4;
   transition: color 0.15s ease, border-color 0.15s ease;
 }
 

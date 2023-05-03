@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Index: NextPage = () => {
   return (
-    <div className="flex h-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3]">
+    <div className="flex h-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-white-ish">
       <Head>
         <title>QR Calendar</title>
         <meta name="description" content="Create calendar events and share them via QR Codes." />
@@ -14,14 +14,12 @@ const Index: NextPage = () => {
       </Head>
 
       <main className="flex h-full flex-col items-center justify-center">
-        <h1 className="text-center text-6xl font-bold">QR Calendar</h1>
+        <h1 className="text-6xl font-bold">QR Calendar</h1>
         <br />
-        <p className="text-center text-2xl">
-          To begin, click the <code className="text-2xl font-bold">Create</code> button below!
-        </p>
+        <p className="text-center text-2xl">Create calendar events and share them via QR Codes.</p>
         <br />
         <Link href="/create">
-          <button className="button">Create</button>
+          <button className="button">Create An Event</button>
         </Link>
       </main>
 

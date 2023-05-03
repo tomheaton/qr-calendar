@@ -61,11 +61,13 @@ const Create: NextPage = () => {
     const dateTime = new Date(`${date}T${time}`).toISOString();
 
     const url = new URL(`${process.env.NEXT_PUBLIC_CALENDAR_URL}/event`);
+
     url.searchParams.append("dateTime", dateTime);
     url.searchParams.append("hours", allDay ? "-1" : hours);
     url.searchParams.append("minutes", allDay ? "-1" : minutes);
     url.searchParams.append("service", service);
     url.searchParams.append("operator", operator);
+
     if (showLocation && location.length > 0) {
       url.searchParams.append("location", location);
     }
@@ -75,7 +77,7 @@ const Create: NextPage = () => {
   };
 
   return (
-    <div className="flex h-screen w-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3]">
+    <div className="flex h-screen w-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-white-ish">
       <Head>
         <title>Create | QR Calendar</title>
         <meta name="description" content="Create calendar events and share them via QR Codes." />
@@ -83,7 +85,9 @@ const Create: NextPage = () => {
       </Head>
 
       <main className="flex h-full w-full flex-col items-center justify-center">
-        <h1 className="text-6xl font-bold">{done ? "Share your" : "Create an Event"}</h1>
+        <h1 className="text-6xl font-bold tracking-tight">
+          {done ? "Share your" : "Create An Event"}
+        </h1>
         <br />
         {done ? (
           <div className="card flex flex-col items-center justify-center text-center">
