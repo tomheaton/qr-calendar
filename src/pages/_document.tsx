@@ -3,7 +3,7 @@ import Document, { Head, Html, Main, NextScript } from "next/document";
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang={"en"}>
+      <Html lang="en">
         <Head>
           <script
             async
@@ -21,10 +21,10 @@ class MyDocument extends Document {
             }}
           />
 
-          <link rel="icon" href={"/favicon.ico"} />
-          <link rel="canonical" href={"https://qr-calender.com"} />
-          <link rel="apple-touch-icon" href={"/calendar.png"} />
-          <link rel="manifest" href={"/manifest.json"} />
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="canonical" href="https://qr-calender.com" />
+          <link rel="apple-touch-icon" href="/calendar.png" />
+          <link rel="manifest" href="/manifest.json" />
 
           <meta charSet="utf-8" />
           {/*<meta name="viewport" content="width=device-width, initial-scale=1"/>*/}
@@ -40,13 +40,13 @@ class MyDocument extends Document {
 
           <meta property="og:title" content="QR Calendar" />
           <meta property="og:site_name" content="QR Calendar" />
-          <meta property="og:url" content={"https://qr-calendar.com"} />
+          <meta property="og:url" content="https://qr-calendar.com" />
           <meta
             property="og:description"
             content="Create calendar events and share them via QR Codes."
           />
           <meta property="og:type" content="website" />
-          <meta property="og:image" content={"https://qr-calendar.com/calendar.png"} />
+          <meta property="og:image" content="https://qr-calendar.com/calendar.png" />
 
           {/*<title>QR Calendar</title>*/}
         </Head>

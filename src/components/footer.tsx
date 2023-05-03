@@ -30,27 +30,27 @@ const Footer: React.FC = () => {
         "flex h-[100px] w-full flex-wrap-reverse items-center justify-evenly border-t-2 border-[#405cf5] pt-[20px] md:pt-0"
       }
     >
-      <div className={"w-1/2 md:w-1/3"}>
-        <a target={"_blank"} href={"https://tomheaton.dev"} rel={"author noopener noreferrer"}>
+      <div className="w-1/2 md:w-1/3">
+        <a target="_blank" href="https://tomheaton.dev" rel="author noopener noreferrer">
           Tom Heaton &copy; {new Date().getFullYear()}
         </a>
       </div>
-      <div className={"w-1/2 cursor-pointer p-[12px] text-xl md:w-1/3"} onClick={handleToggleTheme}>
-        <i className={`bi ${icon}`} aria-label={"Theme Toggle"} />
+      <div className="w-1/2 cursor-pointer p-[12px] text-xl md:w-1/3" onClick={handleToggleTheme}>
+        <i className={`bi ${icon}`} aria-label="Theme Toggle" />
       </div>
-      <div className={"flex w-full items-center justify-evenly md:w-1/3"}>
+      <div className="flex w-full items-center justify-evenly md:w-1/3">
         <a
-          target={"_blank"}
-          href={"https://github.com/tomheaton/qr-calendar"}
-          rel={"noopener noreferrer"}
+          target="_blank"
+          href="https://github.com/tomheaton/qr-calendar"
+          rel="noopener noreferrer"
         >
           View Source
-          <i className={`bi bi-code-slash pl-2`} aria-label={"View Source"} />
+          <i className={`bi bi-code-slash pl-2`} aria-label="View Source" />
         </a>
         <br />
-        <Link href={"/options"} className={"cursor-pointer"}>
+        <Link href="/options" className="cursor-pointer">
           Options
-          <i className={`bi bi-gear-fill pl-2`} aria-label={"Options"} />
+          <i className={`bi bi-gear-fill pl-2`} aria-label="Options" />
         </Link>
       </div>
     </footer>

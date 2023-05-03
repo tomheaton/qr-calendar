@@ -75,47 +75,40 @@ const Create: NextPage = () => {
   };
 
   return (
-    <div
-      className={
-        "flex h-screen w-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3]"
-      }
-    >
+    <div className="flex h-screen w-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3]">
       <Head>
         <title>Create | QR Calendar</title>
-        <meta
-          name={"description"}
-          content={"Create calendar events and share them via QR Codes."}
-        />
-        <link rel={"icon"} href={"/favicon.ico"} />
+        <meta name="description" content="Create calendar events and share them via QR Codes." />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={"flex h-full w-full flex-col items-center justify-center"}>
-        <h1 className={"text-6xl font-bold"}>{done ? "Share your" : "Create an"} Event</h1>
+      <main className="flex h-full w-full flex-col items-center justify-center">
+        <h1 className="text-6xl font-bold">{done ? "Share your" : "Create an Event"}</h1>
         <br />
         {done ? (
-          <div className={"card flex flex-col items-center justify-center text-center"}>
-            <QRCode id={"QRCode"} value={link} level={"L"} />
-            <p className={"my-2"}>Scan the QR Code to share!</p>
-            <button className={"button w-3/4"} onClick={() => setDone(false)}>
+          <div className="card flex flex-col items-center justify-center text-center">
+            <QRCode id="QRCode" value={link} level="L" />
+            <p className="my-2">Scan the QR Code to share!</p>
+            <button className="button w-3/4" onClick={() => setDone(false)}>
               Edit
             </button>
             <br />
-            <p className={"my-2 text-center"}>
+            <p className="my-2 text-center">
               Or click{" "}
-              <a className={"font-bold text-[#0070f3]"} href={link}>
+              <a className="font-bold text-[#0070f3]" href={link}>
                 here
               </a>{" "}
               to add manually.
             </p>
           </div>
         ) : (
-          <form className={"card"} onSubmit={handleSubmit}>
-            <div className={"flex w-full flex-row flex-wrap items-center justify-between"}>
+          <form className="card" onSubmit={handleSubmit}>
+            <div className="flex w-full flex-row flex-wrap items-center justify-between">
               <div className={styles.dateTimeInput}>
                 <input
-                  type={"date"}
-                  name={"date"}
-                  id={"date"}
+                  type="date"
+                  name="date"
+                  id="date"
                   value={date}
                   min={dayjs().format("YYYY-MM-DD")}
                   onKeyDown={(e) => {
@@ -127,11 +120,11 @@ const Create: NextPage = () => {
               </div>
               <div className={styles.dateTimeInput}>
                 <input
-                  type={"time"}
-                  name={"time"}
-                  id={"time"}
+                  type="time"
+                  name="time"
+                  id="time"
                   value={time}
-                  pattern={"[0-9]{2}:[0-9]{2}"}
+                  pattern="[0-9]{2}:[0-9]{2}"
                   /*onKeyDown={(e) => {
                                         e.preventDefault();
                                         e.stopPropagation()
@@ -144,8 +137,8 @@ const Create: NextPage = () => {
               <div className={styles.durationInput}>
                 <select
                   value={hours}
-                  name={"hours"}
-                  id={"hours"}
+                  name="hours"
+                  id="hours"
                   onChange={(e) => setHours(parseInt(e.target.value).toString())}
                 >
                   {Array.from(Array(25), (_, i) => i).map((x) => {
@@ -156,13 +149,13 @@ const Create: NextPage = () => {
                     );
                   })}
                 </select>
-                <p className={"w-full"}>hours</p>
+                <p className="w-full">hours</p>
               </div>
               <div className={styles.durationInput}>
                 <select
                   value={minutes}
-                  name={"minutes"}
-                  id={"minutes"}
+                  name="minutes"
+                  id="minutes"
                   onChange={(e) => setMinutes(e.target.value)}
                 >
                   {Array.from(Array(12), (_, i) => i * 5).map((x) => {
@@ -173,45 +166,45 @@ const Create: NextPage = () => {
                     );
                   })}
                 </select>
-                <p className={"w-full"}>minutes</p>
+                <p className="w-full">minutes</p>
               </div>
               {/*TODO: improve styling.*/}
-              {/*<div className={styles.durationInput} style={{paddingLeft: "10px"}}>
-                                <input type={"checkbox"} defaultChecked={false} checked={allDay}
+              {/*<div className={styles.durationInput} style={{paddingLeft: "10px"}>
+                                <input type="checkbox" defaultChecked={false} checked={allDay}
                                        onChange={e => {setAllDay(e.target.checked)}}
                                 />
-                                <p style={{fontSize: "16px", width: "100%"}}>All day</p>
+                                <p style={{fontSize: "16px", width: "100%"}>All day</p>
                             </div>*/}
             </div>
             <br />
-            <label htmlFor={"service"}>Service</label>
+            <label htmlFor="service">Service</label>
             <input
-              type={"text"}
-              name={"service"}
-              id={"service"}
-              placeholder={"Haircut"}
+              type="text"
+              name="service"
+              id="service"
+              placeholder="Haircut"
               value={service}
               required={true}
               onChange={(e) => setService(e.target.value)}
             />
-            <label htmlFor={"operator"}>Operator</label>
+            <label htmlFor="operator">Operator</label>
             <input
-              type={"text"}
-              name={"operator"}
-              id={"operator"}
-              placeholder={"Alannah"}
+              type="text"
+              name="operator"
+              id="operator"
+              placeholder="Alannah"
               value={operator}
               required={true}
               onChange={(e) => setOperator(e.target.value)}
             />
             {showLocation ? (
               <>
-                <label htmlFor={"location"}>Location</label>
+                <label htmlFor="location">Location</label>
                 <input
-                  type={"text"}
-                  name={"location"}
-                  id={"location"}
-                  placeholder={"Lana's Hair Salon"}
+                  type="text"
+                  name="location"
+                  id="location"
+                  placeholder="Lana's Hair Salon"
                   value={location}
                   required={false}
                   onChange={(e) => setLocation(e.target.value)}
@@ -220,7 +213,7 @@ const Create: NextPage = () => {
             ) : (
               <div>
                 <br />
-                <button className={"button w-full"} onClick={() => setShowLocation(true)}>
+                <button className="button w-full" onClick={() => setShowLocation(true)}>
                   Add Location
                 </button>
               </div>
@@ -229,13 +222,13 @@ const Create: NextPage = () => {
             <br />
             <button
               className={`button w-full ${isDisabled ? "cursor-not-allowed" : ""}`}
-              type={"submit"}
+              type="submit"
               disabled={isDisabled}
             >
               Create
             </button>
             {errorMessage ||
-              (isDisabled && <p className={"mt-2 text-center"}>Please fill out all fields!</p>)}
+              (isDisabled && <p className="mt-2 text-center">Please fill out all fields!</p>)}
           </form>
         )}
       </main>

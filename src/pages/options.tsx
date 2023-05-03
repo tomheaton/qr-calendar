@@ -58,64 +58,57 @@ const Create: NextPage = () => {
   };
 
   return (
-    <div
-      className={
-        "flex h-screen w-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3]"
-      }
-    >
+    <div className="flex h-screen w-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-[#e3e3e3]">
       <Head>
         <title>Options | QR Calendar</title>
-        <meta
-          name={"description"}
-          content={"Create calendar events and share them via QR Codes."}
-        />
-        <link rel={"icon"} href={"/favicon.ico"} />
+        <meta name="description" content="Create calendar events and share them via QR Codes." />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={"flex h-full w-full flex-col items-center justify-center"}>
-        <h1 className={"text-center text-6xl font-bold"}>Options 🛠️</h1>
+      <main className="flex h-full w-full flex-col items-center justify-center">
+        <h1 className="text-center text-6xl font-bold">Options 🛠️</h1>
         <br />
         <p>Set default values for this site.</p>
-        <form className={"card"} onSubmit={handleSubmit} autoComplete={"off"}>
-          <label htmlFor={"service"}>Service</label>
+        <form className="card" onSubmit={handleSubmit} autoComplete="off">
+          <label htmlFor="service">Service</label>
           <input
-            type={"text"}
-            name={"service"}
-            id={"service"}
-            placeholder={"Haircut"}
+            type="text"
+            name="service"
+            id="service"
+            placeholder="Haircut"
             value={service}
             required={false}
             onChange={(e) => setService(e.target.value)}
           />
-          <label htmlFor={"operator"}>Operator</label>
+          <label htmlFor="operator">Operator</label>
           <input
-            type={"text"}
-            name={"operator"}
-            id={"operator"}
-            placeholder={"Alannah"}
+            type="text"
+            name="operator"
+            id="operator"
+            placeholder="Alannah"
             value={operator}
             required={false}
             onChange={(e) => setOperator(e.target.value)}
           />
-          <label htmlFor={"location"}>Location</label>
+          <label htmlFor="location">Location</label>
           <input
-            type={"text"}
-            name={"location"}
-            id={"location"}
-            placeholder={"Lana's Hair Salon"}
+            type="text"
+            name="location"
+            id="location"
+            placeholder="Lana's Hair Salon"
             value={location}
             required={false}
             onChange={(e) => setLocation(e.target.value)}
           />
           <br />
           <br />
-          <div className={"flex flex-col justify-between"}>
-            <button className={"button"} type={"submit"} disabled={isLoading}>
+          <div className="flex flex-col justify-between">
+            <button className="button" type="submit" disabled={isLoading}>
               {isLoading ? "loading..." : "Save"}
             </button>
-            {showMessage && <p className={"mt-2 text-center"}>Saved to local storage.</p>}
+            {showMessage && <p className="mt-2 text-center">Saved to local storage.</p>}
             <br />
-            <Link href={"/"} className={"button text-center"}>
+            <Link href="/" className="button text-center">
               Return Home
             </Link>
           </div>
