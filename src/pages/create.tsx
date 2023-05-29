@@ -91,7 +91,7 @@ const Create: NextPage = () => {
         <br />
         {done ? (
           <div className="card flex flex-col items-center justify-center text-center">
-            <QRCode id="QRCode" value={link} level="L" />
+            <QRCode id="QRCode" value={link} level="L" className="m-2" />
             <p className="my-2">Scan the QR Code to share!</p>
             <button className="button w-3/4" onClick={() => setDone(false)}>
               Edit
@@ -225,7 +225,9 @@ const Create: NextPage = () => {
             <br />
             <br />
             <button
-              className={`button w-full ${isDisabled ? "cursor-not-allowed" : ""}`}
+              className={`button w-full ${
+                isDisabled ? "cursor-not-allowed opacity-80 hover:scale-100" : ""
+              }`}
               type="submit"
               disabled={isDisabled}
             >

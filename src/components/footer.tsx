@@ -25,7 +25,8 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="flex h-24 w-full flex-wrap-reverse items-center justify-evenly border-t-2 border-my-blue pt-4 md:pt-0">
+    <footer className="flex h-24 w-full flex-wrap-reverse items-center justify-evenly pt-4 md:pt-0">
+      {/* <footer className="flex h-24 w-full flex-wrap-reverse items-center justify-evenly border-t-2 border-my-blue pt-4 md:pt-0"> */}
       <div className="w-1/2 md:w-1/3">
         <a
           target="_blank"
