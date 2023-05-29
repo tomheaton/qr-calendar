@@ -86,7 +86,7 @@ const Create: NextPage = () => {
 
       <main className="flex h-full w-full flex-col items-center justify-center">
         <h1 className="text-6xl font-bold tracking-tight">
-          {done ? "Share your" : "Create An Event"}
+          {done ? "Share Your" : "Create An"} Event
         </h1>
         <br />
         {done ? (
