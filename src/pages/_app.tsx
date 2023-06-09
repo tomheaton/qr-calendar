@@ -26,8 +26,8 @@ const App: AppType = ({ Component, pageProps }) => {
 
     const handleRouteChange = (url: URL) => {
       /*window.gtag('config', `${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_KEY}`, {
-                page_path: url
-            });*/
+        page_path: url
+      });*/
       pageView(url);
     };
 
