@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 const App: AppType = ({ Component, pageProps }) => {
   const router = useRouter();
 
-  // @ts-ignore
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {

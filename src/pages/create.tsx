@@ -9,21 +9,30 @@ import { useEffect, useState, type SyntheticEvent } from "react";
 import QRCode from "react-qr-code";
 
 const Create: NextPage = () => {
-  const [done, setDone] = useState<boolean>(false);
   const [link, setLink] = useState<string>("");
+  const [isDone, setIsDone] = useState<boolean>(false);
   const [showLocation, setShowLocation] = useState<boolean>(false);
+
   // TODO: combine these into a dayjs time type and set date and time.
   const [date, setDate] = useState<string>(dayjs().format("YYYY-MM-DD"));
   const [time, setTime] = useState<string>(dayjs().format("HH:mm"));
   const [hours, setHours] = useState<string>("1");
   const [minutes, setMinutes] = useState<string>("0");
+
   // TODO: finish implementing allDay option.
   const [allDay] = useState<boolean>(false);
-  const [service, setService] = useState<string>("");
-  const [operator, setOperator] = useState<string>("");
-  const [location, setLocation] = useState<string>("");
 
-  const isDisabled = !((parseInt(hours) > 0 || parseInt(minutes) > 0) && service && operator);
+  const [options, setOptions] = useState<{ service: string; operator: string; location?: string }>({
+    service: "",
+    operator: "",
+    location: "",
+  });
+
+  const isDisabled = !(
+    (parseInt(hours) > 0 || parseInt(minutes) > 0) &&
+    options.service &&
+    options.operator
+  );
 
   useEffect(() => {
     // Get saved options
@@ -33,18 +42,16 @@ const Create: NextPage = () => {
       if (rawData) {
         const data = await JSON.parse(rawData);
 
-        const options = optionsDataSchema.safeParse(data);
+        const savedOptions = optionsDataSchema.safeParse(data);
 
-        if (!options.success) return;
+        if (!savedOptions.success) return;
 
-        if (options.data.service) setService(options.data.service);
-        if (options.data.operator) setOperator(options.data.operator);
-        if (options.data.location) {
-          setLocation(options.data.location);
-          setShowLocation(true);
-        }
+        setOptions({ ...options, ...savedOptions.data });
+
+        if (savedOptions.data.location) setShowLocation(true);
       }
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = async (e: SyntheticEvent) => {
@@ -64,15 +71,15 @@ const Create: NextPage = () => {
     url.searchParams.append("dateTime", dateTime);
     url.searchParams.append("hours", allDay ? "-1" : hours);
     url.searchParams.append("minutes", allDay ? "-1" : minutes);
-    url.searchParams.append("service", service);
-    url.searchParams.append("operator", operator);
+    url.searchParams.append("service", options.service);
+    url.searchParams.append("operator", options.operator);
 
-    if (showLocation && location.length > 0) {
-      url.searchParams.append("location", location);
+    if (showLocation && options.location && options.location.length > 0) {
+      url.searchParams.append("location", options.location);
     }
 
     setLink(url.toString());
-    setDone(true);
+    setIsDone(true);
   };
 
   return (
@@ -85,14 +92,14 @@ const Create: NextPage = () => {
       <div className="flex h-screen w-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-white-ish">
         <main className="flex h-full w-full flex-col items-center justify-center">
           <h1 className="text-6xl font-bold tracking-tight">
-            {done ? "Share Your" : "Create An"} Event
+            {isDone ? "Share Your" : "Create An"} Event
           </h1>
           <br />
-          {done ? (
+          {isDone ? (
             <div className="card flex flex-col items-center justify-center text-center">
               <QRCode id="QRCode" value={link} level="L" className="m-2" />
               <p className="my-2">Scan the QR Code to share!</p>
-              <button className="button w-3/4" onClick={() => setDone(false)}>
+              <button className="button w-3/4" onClick={() => setIsDone(false)}>
                 Edit
               </button>
               <br />
@@ -172,12 +179,15 @@ const Create: NextPage = () => {
                   <p className="w-full">minutes</p>
                 </div>
                 {/*TODO: improve styling.*/}
-                {/*<div className={styles.durationInput} style={{paddingLeft: "10px"}>
-                <input type="checkbox" defaultChecked={false} checked={allDay}
-                        onChange={e => {setAllDay(e.target.checked)}}
-                />
-                <p style={{fontSize: "16px", width: "100%"}>All day</p>
-            </div>*/}
+                {/* <div className={styles.durationInput} style={{ paddingLeft: "10px" }}>
+                  <input
+                    type="checkbox"
+                    defaultChecked={false}
+                    checked={allDay}
+                    onChange={(e) => setAllDay(e.target.checked)}
+                  />
+                  <p style={{ fontSize: "16px", width: "100%" }}>All day</p>
+                </div> */}
               </div>
               <br />
               <label htmlFor="service">Service</label>
@@ -186,9 +196,9 @@ const Create: NextPage = () => {
                 name="service"
                 id="service"
                 placeholder="Haircut"
-                value={service}
                 required
-                onChange={(e) => setService(e.target.value)}
+                value={options.service}
+                onChange={(e) => setOptions({ ...options, service: e.target.value })}
               />
               <label htmlFor="operator">Operator</label>
               <input
@@ -196,9 +206,9 @@ const Create: NextPage = () => {
                 name="operator"
                 id="operator"
                 placeholder="Alannah"
-                value={operator}
                 required
-                onChange={(e) => setOperator(e.target.value)}
+                value={options.operator}
+                onChange={(e) => setOptions({ ...options, operator: e.target.value })}
               />
               {showLocation ? (
                 <>
@@ -209,8 +219,8 @@ const Create: NextPage = () => {
                       name="location"
                       id="location"
                       placeholder="Lana's Hair Salon"
-                      value={location}
-                      onChange={(e) => setLocation(e.target.value)}
+                      value={options.location}
+                      onChange={(e) => setOptions({ ...options, location: e.target.value })}
                     />
                     {/* TODO: fix size */}
                     <button className="button px-2 py-1" onClick={() => setShowLocation(false)}>
