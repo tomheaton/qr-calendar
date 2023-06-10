@@ -39,13 +39,6 @@ body::-webkit-scrollbar {
   background: var(--lighter-blue-color);
 }
 
-input,
-select {
-  border-style: solid;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
 input:hover,
 input:focus,
 select:hover,
@@ -78,7 +71,7 @@ select:focus {
     /*TODO: find where light mode hover:border-color is changed and move to here.*/
     /* @apply border-white border-2 rounded-xl border-gray-300 p-1 dark:border-white dark:hover:border-[#0070f3]; */
     /* TODO: fix border colour */
-    @apply rounded-xl border-2 border-gray-300 p-1 dark:border-white dark:hover:border-[#0070f3];
+    @apply rounded-xl border-2 border-gray-300 p-1 dark:border-white dark:hover:border-[#0070f3] cursor-pointer;
   }
 
   input {
