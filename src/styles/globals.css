@@ -39,10 +39,6 @@ body::-webkit-scrollbar {
   background: var(--lighter-blue-color);
 }
 
-.button {
-  @apply rounded-xl bg-my-blue px-4 py-2 text-center text-xl font-bold text-white transition-all hover:scale-105 active:scale-95 dark:text-white;
-}
-
 input,
 select {
   border-style: solid;
@@ -58,34 +54,6 @@ select:focus {
   outline-color: #0070f3;
 }
 
-input,
-select {
-  border-style: solid;
-  /* border-radius: 4px; */
-  border-color: white;
-  border-width: 2px;
-  /*TODO: find where light mode hover:border-color is changed and move to here.*/
-  @apply rounded-xl border-gray-300 p-1 dark:border-white dark:hover:border-[#0070f3];
-}
-
-input {
-  box-sizing: border-box;
-  @apply px-2;
-}
-
-input[type="checkbox"] {
-  @apply h-[30px] w-[30px];
-}
-
-p {
-  @apply text-xl;
-}
-
-.card {
-  @apply mt-10 w-5/6 rounded-xl border-2 border-[#eaeaea] p-4 text-left md:w-1/4;
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
-
 .card:hover,
 .card:focus,
 .card:active {
@@ -98,4 +66,35 @@ p {
   margin: 4px 0;
   line-height: 1.5;
   width: 100%;
+}
+
+@layer components {
+  .button {
+    @apply rounded-xl bg-my-blue px-4 py-2 text-center text-xl font-bold text-white transition-all hover:scale-105 active:scale-95 dark:text-white;
+  }
+
+  input,
+  select {
+    /*TODO: find where light mode hover:border-color is changed and move to here.*/
+    /* @apply border-white border-2 rounded-xl border-gray-300 p-1 dark:border-white dark:hover:border-[#0070f3]; */
+    /* TODO: fix border colour */
+    @apply rounded-xl border-2 border-gray-300 p-1 dark:border-white dark:hover:border-[#0070f3];
+  }
+
+  input {
+    @apply box-border px-2;
+  }
+
+  input[type="checkbox"] {
+    @apply h-[30px] w-[30px];
+  }
+
+  p {
+    @apply text-xl;
+  }
+
+  .card {
+    @apply mt-10 w-5/6 rounded-xl border-2 border-[#eaeaea] p-4 text-left transition-all md:w-1/4;
+    /* transition: color 0.15s ease, border-color 0.15s ease; */
+  }
 }
