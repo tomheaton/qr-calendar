@@ -205,7 +205,7 @@ const Create: NextPage = () => {
                 type="text"
                 name="operator"
                 id="operator"
-                placeholder="Alannah"
+                placeholder="Lana"
                 required
                 value={options.operator}
                 onChange={(e) => setOptions({ ...options, operator: e.target.value })}
