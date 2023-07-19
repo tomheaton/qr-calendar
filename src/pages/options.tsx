@@ -1,5 +1,5 @@
 import Footer from "@/components/footer";
-import { event } from "@/lib/gtag";
+import { event } from "@/utils/gtag";
 import { optionsDataSchema, type OptionsData } from "@/utils/types";
 import type { NextPage } from "next";
 import Head from "next/head";

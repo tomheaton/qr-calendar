@@ -1,5 +1,5 @@
 import Footer from "@/components/footer";
-import { event } from "@/lib/gtag";
+import { event } from "@/utils/gtag";
 import styles from "@/styles/Create.module.css";
 import { optionsDataSchema } from "@/utils/types";
 import dayjs from "dayjs";
