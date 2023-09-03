@@ -20,23 +20,23 @@
     "bootstrap-icons": "^1.10.5",
     "calendar-link": "^2.5.1",
     "dayjs": "^1.11.9",
-    "next": "^13.4.12",
+    "next": "^13.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-qr-code": "^2.0.11",
-    "zod": "^3.21.4"
+    "react-qr-code": "^2.0.12",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
-    "@types/gtag.js": "^0.0.12",
-    "@types/node": "^20.4.5",
-    "@types/react": "^18.2.17",
-    "autoprefixer": "^10.4.14",
-    "eslint": "8.46.0",
-    "eslint-config-next": "^13.4.12",
-    "postcss": "^8.4.27",
-    "prettier": "^3.0.0",
-    "prettier-plugin-tailwindcss": "^0.4.1",
+    "@types/gtag.js": "^0.0.13",
+    "@types/node": "^20.5.9",
+    "@types/react": "^18.2.21",
+    "autoprefixer": "^10.4.15",
+    "eslint": "8.48.0",
+    "eslint-config-next": "^13.4.19",
+    "postcss": "^8.4.29",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.4",
     "tailwindcss": "^3.3.3",
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   }
 }
