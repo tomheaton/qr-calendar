@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import Footer from "./Footer";
+import Footer from "@components/footer";
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
