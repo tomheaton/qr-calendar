@@ -1,4 +1,3 @@
-import Footer from "@/components/footer";
 import { event } from "@/utils/gtag";
 import { optionsDataSchema, type OptionsData } from "@/utils/types";
 import type { NextPage } from "next";
@@ -7,14 +6,14 @@ import Link from "next/link";
 import { useEffect, useState, type SyntheticEvent } from "react";
 
 const Create: NextPage = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showMessage, setShowMessage] = useState<boolean>(false);
+
   const [options, setOptions] = useState<OptionsData>({
     service: "",
     operator: "",
     location: "",
   });
-
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [showMessage, setShowMessage] = useState<boolean>(false);
 
   useEffect(() => {
     // Get saved options
@@ -65,55 +64,52 @@ const Create: NextPage = () => {
         <meta name="description" content="Create calendar events and share them via QR Codes." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex h-screen w-screen flex-col justify-between bg-white text-black dark:bg-[#212529] dark:text-white-ish">
-        <main className="flex h-full w-full flex-col items-center justify-center">
-          <h1 className="text-6xl font-bold tracking-tight">Options 🛠️</h1>
+      <main className="flex h-full w-full flex-col items-center justify-center">
+        <h1 className="text-6xl font-bold tracking-tight">Options 🛠️</h1>
+        <br />
+        <p>Set default values for this site.</p>
+        <form className="card" onSubmit={handleSubmit} autoComplete="off">
+          <label htmlFor="service">Service</label>
+          <input
+            type="text"
+            name="service"
+            id="service"
+            placeholder="Haircut"
+            value={options.service}
+            onChange={(e) => setOptions({ ...options, service: e.target.value })}
+          />
+          <label htmlFor="operator">Operator</label>
+          <input
+            type="text"
+            name="operator"
+            id="operator"
+            placeholder="Lana"
+            value={options.operator}
+            onChange={(e) => setOptions({ ...options, operator: e.target.value })}
+          />
+          <label htmlFor="location">Location</label>
+          <input
+            type="text"
+            name="location"
+            id="location"
+            placeholder="Lana's Hair Salon"
+            value={options.location}
+            onChange={(e) => setOptions({ ...options, location: e.target.value })}
+          />
           <br />
-          <p>Set default values for this site.</p>
-          <form className="card" onSubmit={handleSubmit} autoComplete="off">
-            <label htmlFor="service">Service</label>
-            <input
-              type="text"
-              name="service"
-              id="service"
-              placeholder="Haircut"
-              value={options.service}
-              onChange={(e) => setOptions({ ...options, service: e.target.value })}
-            />
-            <label htmlFor="operator">Operator</label>
-            <input
-              type="text"
-              name="operator"
-              id="operator"
-              placeholder="Lana"
-              value={options.operator}
-              onChange={(e) => setOptions({ ...options, operator: e.target.value })}
-            />
-            <label htmlFor="location">Location</label>
-            <input
-              type="text"
-              name="location"
-              id="location"
-              placeholder="Lana's Hair Salon"
-              value={options.location}
-              onChange={(e) => setOptions({ ...options, location: e.target.value })}
-            />
+          <br />
+          <div className="flex flex-col justify-between">
+            <button className="button" type="submit" disabled={isLoading}>
+              {isLoading ? "Loading..." : "Save"}
+            </button>
+            {showMessage && <p className="mt-2 text-center">Saved to local storage.</p>}
             <br />
-            <br />
-            <div className="flex flex-col justify-between">
-              <button className="button" type="submit" disabled={isLoading}>
-                {isLoading ? "Loading..." : "Save"}
-              </button>
-              {showMessage && <p className="mt-2 text-center">Saved to local storage.</p>}
-              <br />
-              <Link href="/" className="button">
-                Back
-              </Link>
-            </div>
-          </form>
-        </main>
-        <Footer />
-      </div>
+            <Link href="/" className="button">
+              Back
+            </Link>
+          </div>
+        </form>
+      </main>
     </>
   );
 };

@@ -1,4 +1,5 @@
 // import { pageView } from "@/lib/gtag";
+import Layout from "@/components/Layout";
 import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -48,11 +49,11 @@ const App: AppType = ({ Component, pageProps }) => {
   // );
 
   return (
-    <>
+    <Layout>
       <Component {...pageProps} />
       <Analytics />
-    </>
-  )
+    </Layout>
+  );
 };
 
 export default App;
