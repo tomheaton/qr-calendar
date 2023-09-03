@@ -1,5 +1,6 @@
 // import { pageView } from "@/lib/gtag";
 import "@/styles/globals.css";
+import { Analytics } from "@vercel/analytics/react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import type { AppType } from "next/app";
 // import { useRouter } from "next/router";
@@ -46,7 +47,12 @@ const App: AppType = ({ Component, pageProps }) => {
   //   <Component {...pageProps} />
   // );
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Component {...pageProps} />
+      <Analytics />
+    </>
+  )
 };
 
 export default App;

@@ -17,6 +17,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@vercel/analytics": "^1.0.2",
     "bootstrap-icons": "^1.10.5",
     "calendar-link": "^2.5.1",
     "dayjs": "^1.11.9",
